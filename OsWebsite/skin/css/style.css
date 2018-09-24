@@ -742,7 +742,7 @@ h3.sothutu {
     display: block;
     position: relative;
     padding: 25px 0px 15px;
-    background: #870000;
+    background-image: url(/Icon/Footer/Footer.png);
     margin-top: 30px;
     /* background: #1f9c10; */
 }
@@ -2264,21 +2264,24 @@ table {
     color: white;
     padding-left: 10px;
 }
-.kienthucchung ul li i
-{
-    border: solid white;
+.kienthucchung ul li i {
+    /*border: solid white;
     border-width: 0 3px 3px 0;
     display: inline-block;
-    padding: 5px;
+    padding: 5px;*/
+    color: #fff;
+    font-size: 17px;
 }
 .kienthucchung > ul > li > ul > li {
     border-bottom: 1px solid white;
 }
 .thongtinthem ul li i {
-    border: solid white;
+    /*border: solid white;
     border-width: 0 3px 3px 0;
     display: inline-block;
-    padding: 5px;
+    padding: 5px;*/
+    color: #fff;
+    font-size: 17px;
 }
 .right {
     transform: rotate(-45deg);
