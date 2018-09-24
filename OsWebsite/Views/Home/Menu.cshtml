@@ -35,7 +35,7 @@
                         {
                             if (item.IDCha == 0)
                             {
-                                if (item.Tag == link)
+                                if (item.Tag == link || (item.Tag == "trang-chu" && link == ""))
                                 {
                                     <li class="active">
                                         <a href="@item.Link">@item.Name</a>
