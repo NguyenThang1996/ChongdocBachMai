@@ -1,0 +1,239 @@
+﻿@model OsWebsite.Models.Menu
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .tree-dm {
+        color: #fff;
+        background: #2984ff;
+        border-left-color: white;
+    }
+
+        .tree-dm a {
+            border-left-color: white !important;
+        }
+</style>
+<section class="content-header"><h1>Câp nhập Danh Mục </h1></section>
+<div class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box adm1">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading adm2">
+                                Cập nhật thông tin
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12"></div>
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        <div class="form-horizontal">
+                                            @Html.ValidationSummary(true)
+                                            @Html.HiddenFor(model => model.ID)
+
+                                            <div class="form-group">
+                                                @Html.Label("Tên Danh Mục", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Name)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Nhóm Danh Mục", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.DropDownList("IDCha", "-- Chọn danh mục --")
+                                                    @Html.ValidationMessageFor(model => model.IDCha)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Liên kết", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.Link, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Link)
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.Label("Chọn định dạng", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.DropDownList("ModID", "-- Chọn định dạng --")
+                                                    @Html.ValidationMessageFor(model => model.Position)
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.Label("Hình ảnh", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.Images, new { @class = "form-control", @id = "anhbia" })
+                                                    @Html.ValidationMessageFor(model => model.Images)
+                                                    <br />
+                                                    <input id="chonanhbia" class="btn btn-default" type="button" value="Chọn hình ảnh" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.Label("Vị trí trang chủ", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.DropDownList("Position", "-- Chọn định dạng --")
+                                                    @Html.ValidationMessageFor(model => model.Position)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Kiểu menu", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.DropDownList("Style", "-- Chọn kiểu menu --")
+                                                    @Html.ValidationMessageFor(model => model.Style)
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Title)
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Keyword, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-8">
+                                                    @Html.TextAreaFor(model => model.Keyword, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Keyword)
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-8">
+                                                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Description)
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.Label("Thứ Tự", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.IsOrder, new { @class = "form-control"})
+                                                    @Html.ValidationMessageFor(model => model.IsOrder)
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.Label("Kích Hoạt", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.CheckBoxFor(model => model.IsActive)
+                                                    @Html.ValidationMessageFor(model => model.IsActive)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-10">
+                                                    <label id="lblerror" name="lblerror" class="control-label" style="color:red">@ViewBag.Tontai</label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-offset-2 col-md-10">
+                                                    <input type="submit" value="Lưu" class="btn btn-default" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+    </div>
+    @Html.ActionLink("Trở về", "Index", "", new { @class = "btn btn-default" })
+</div>
+<script type="text/javascript">
+    $("#chonanhbia").click(function () {
+        var finder = new CKFinder();
+        finder.selectActionFunction = function (fileUrl) {
+            $("#anhbia").val(fileUrl);
+        };
+        finder.popup();
+    });
+    $("#Position").addClass("form-control");
+    $("#IDCha").addClass("form-control");
+    $("#ModID").addClass("form-control");
+
+    $("form").submit(function (e) {
+        if ($("#Name").val() == "") {
+            alert("Tên danh mục không được để trống");
+            $("#Name").focus();
+            return false;
+        }
+        if ($("#ModID").val() == "") {
+            alert("Bạn chưa chọn định dạng");
+            $("#ModID").focus();
+            return false;
+        }
+        if ($("#IsOrder").val() == "") {
+            alert("Bạn chưa nhập số thứ tự");
+            $("#IsOrder").focus();
+            return false;
+        }
+        var isorder = document.getElementById('IsOrder').value
+        if (isNaN(isorder)) {
+            alert("Số thứ tự phải bằng số");
+            $("#IsOrder").focus();
+            return false;
+        }
+    });
+</script>
+@*<script type="text/javascript">
+        $(document).ready(function () {
+            ChangeType($("#LinkSelect").val());
+            $("#LinkSelect").change(function () {
+                ChangeType(this.value);
+            });
+            $("#LinkType").change(function () {
+                ChangeLinkType(this.value);
+                ChangeLink("");
+            });
+            $("#ddlLink").change(function () {
+                ChangeLink(this.value);
+            });
+            function ChangeType(value) {
+                if (value == 1) {
+
+                    $("#Content").css("display", "none");
+                    $("#typestyle").css("display", "none");
+                }
+                else {
+
+                    $("#Content").css("display", "");
+                    $("#Content").css("height", "320px");
+                    $("#typestyle").css("display", "");
+                }
+            }
+
+            function ChangeLinkType(value) {
+                if (value == 1) {
+                    $("#LinkInput").css("display", "");
+                    $("#LinkModule").css("display", "none");
+                    $("#Link").val("");
+                    $("#Link").focus();
+                } else {
+                    $("#LinkInput").css("display", "none");
+                    $("#LinkModule").css("display", "");
+                }
+            }
+            function ChangeLink(value) {
+                $("#Link").val(value);
+            }
+        });
+</script>*@

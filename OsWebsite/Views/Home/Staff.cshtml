@@ -1,0 +1,115 @@
+﻿@using OsWebsite.Models;
+@model List<OsWebsite.Models.News>
+
+@{
+    <title>@ViewBag.MetaTitle</title>
+    if (ViewBag.MetaDescription != null)
+    {
+        <meta name="description" content="@ViewBag.MetaDescription" />
+    }
+    if (ViewBag.MetaKeywords != null)
+    {
+        <meta name="keywords" content="@ViewBag.MetaKeywords" />
+    }
+    string Tag = System.IO.Path.GetFileNameWithoutExtension(Request.RawUrl);
+    //kiểm tra tag xem có kèm gì khác ngoài tag
+    string Tagcheck = Tag.Substring(Tag.LastIndexOf("?") + 1);
+    //Replace hết kí tự lạ
+    Tag = Tag.Replace("?" + Tagcheck, "");
+}
+<div class="box-product-hot">
+    <div class="container">
+        <div class="row">
+            <div style="padding-left: 0px;" class="col-md-12">
+                <ul style="border-bottom: 0px!important;" class="nav nav-tabs nav-prod">
+                    <li class="active">
+                        <a style="border: 0px!important; border-radius: 15px 15px 0 0; font-size: 18px; font-weight: bold; background-color: #870000; color: #fff !important; transition: background-color 500ms;" href="/danh-cho-nhan-vien-y-duoc">@ViewBag.NameGroupStaff1</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div style="background: #f5f5f5" class="col-md-9">
+                @foreach (var item in Model.Take(6))
+                {
+                    <div class="col-sm-6 col-lg-4 box-item-pro-main item_product ">
+                        <div class="box-item-product-hot" style="height: 300px;">
+                            <div class="box-img-product">
+                                <a href="/@item.Tag">
+                                    <img src="@item.Img" alt="Phòng tránh ngộ độc thực phẩm">
+                                </a>
+                            </div>
+                            <h3 class="title-product-main title_sanPham">
+                                <a href="/@item.Tag">@item.Name</a>
+                            </h3>
+                            <span class="IdProduct-main">@Html.Raw(item.Decription.Substring(0, 110))...</span>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div style="background: #525252; height: 660px" class="col-md-3 thongtinthem">
+                <ul>
+                    <li>
+                        <i class="arrow right"></i>
+                        <a style="font-size: 18px; font-weight: bold" href="#">
+                            Đào tạo tập huấn
+                        </a>
+
+                    </li>
+                    <li>
+                        <i class="arrow right"></i>
+                        <a style="font-size: 18px; font-weight: bold" href="#">
+                            Nghiên cứu Khoa học
+                        </a>
+
+                    </li>
+                    <li>
+                        <i class="arrow right"></i>
+                        <a style="font-size: 18px; font-weight: bold" href="#">
+                            Tài liệu chuyên môn
+                        </a>
+
+                    </li>
+                    <li>
+                        <i class="arrow right"></i>
+                        <a style="font-size: 18px; font-weight: bold" href="#">
+                            Hội nghị - Hội thảo
+                        </a>
+
+                    </li>
+                    <li>
+                        <i class="arrow right"></i>
+                        <a style="font-size: 18px; font-weight: bold" href="#">
+                            Thông tin khác
+                        </a>
+                    </li>
+
+                </ul>
+                <div">
+                    <a href="#">
+                        <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/Bach-Mai.png" />
+                    </a>
+
+                    <a href="#">
+                        <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/BacSiNoitru.png" />
+                    </a>
+
+                    <a href="#">
+                        <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/Facebook.png" />
+                    </a>
+
+                    <a href="#">
+                        <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/Zalo.png" />
+                    </a>
+
+                    <a href="#">
+                        <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/Viber.png" />
+                    </a>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+

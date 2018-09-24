@@ -1,0 +1,34 @@
+﻿@model List<OsWebsite.Models.Menu>
+
+@foreach (var itemchild in Model)
+{
+    string chuoi = "---";
+    <tr class="trOdd">
+        <td><input type="checkbox" class="CheckboxID" name="ID" value="@itemchild.ID" /></td>
+        <td style="text-align:left">
+            @chuoi @Html.DisplayFor(modelitemchild => itemchild.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelitemchild => itemchild.Link)
+        </td>
+        <td>
+            @Html.DisplayFor(modelitemchild => itemchild.IsOrder)
+        </td>
+        <td>
+            @if (itemchild.IsActive == true)
+            {
+                @Html.Label("Hiển thị");
+            }
+            else
+            {
+                @Html.Label("Ẩn");
+            }
+        </td>
+        <td>            
+            @Html.ActionLink(" ", "Edit", new { id = itemchild.ID }, new { @class = "bnedit" })
+            @Html.ActionLink(" ", "Delete", new { id = itemchild.ID }, new { @class = "bndelete", @Onclick = "return confirm('Bạn có muốn xóa menu này ?')" })
+            @Html.ActionLink(" ", "Status", new { id = itemchild.ID }, new { @class = "bnstatus" })
+        </td>
+    </tr>
+    @Html.Action("ChildMenu", "Menu", new { IDCha = itemchild.ID });
+}

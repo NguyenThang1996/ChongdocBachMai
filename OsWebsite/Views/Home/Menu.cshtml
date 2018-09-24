@@ -1,0 +1,89 @@
+﻿@model List<OsWebsite.Models.Menu>
+@{
+    string link = System.IO.Path.GetFileNameWithoutExtension(Request.RawUrl);
+    var IconShare = ViewBag.IconShare as List<OsWebsite.Models.Advertise>;
+    var Language = ViewBag.Language as List<OsWebsite.Models.Language>;
+}
+<div class="box-menu">
+    <div class="container">
+        <div class="row">
+            <div class="box-logo col-md-6">
+                <h1>
+                    <a href="/" style="text-indent: -9999px;font-size: 0px;">
+                        <img src="@ViewBag.logo" alt="logo">
+                    </a>
+                </h1>
+            </div>
+            <div class="btn-search-mobile">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="search"><i class="fa fa-2x fa-search" aria-hidden="true"></i></a>
+                <div class="dropdown-menu">
+                    <div class="box-search">
+                        <form action="/Search">
+                            <input type="text" name="Search" class="form-control text-search" placeholder="Tìm kiếm sản phẩm">
+                            <button type="submit" class="btn-search-3 btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="btnmenu-mobile" style="display:none"><a href="#menu"><i class="fa fa-bars" aria-hidden="true"></i></a> </div>
+            <div class="box-menu-head">
+
+                <div class="clear"></div>
+                <div class="menu-head-bottom">
+                    <ul class="menu-top">
+                        @foreach (var item in Model)
+                        {
+                            if (item.IDCha == 0)
+                            {
+                                if (item.Tag == link)
+                                {
+                                    <li class="active">
+                                        <a href="@item.Link">@item.Name</a>
+                                        <ul class="menu-child">
+                                            @foreach (var childitem in Model)
+                                            {
+                                                if (childitem.IDCha == item.ID)
+                                                {
+                                                    <li>
+                                                        <a href="@childitem.Link">@childitem.Name</a>
+                                                        <ul class="menu-child2"></ul>
+                                                    </li>
+                                                }
+
+                                            }
+
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a href="@item.Link">@item.Name</a>
+                                        <ul class="menu-child">
+                                            @foreach (var childitem in Model)
+                                            {
+                                                if (childitem.IDCha == item.ID)
+                                                {
+                                                    <li>
+                                                        <a href="@childitem.Link">@childitem.Name</a>
+                                                        <ul class="menu-child2"></ul>
+                                                    </li>
+                                                }
+
+                                            }
+
+                                        </ul>
+                                    </li>
+                                }
+                            }
+
+                        }                     
+                    </ul>
+                </div>
+            </div>
+            <div class="menu-mobile" style="display:none">
+
+            </div>
+        </div>
+    </div>
+</div>

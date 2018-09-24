@@ -1,0 +1,271 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Chống độc Bạch Mai</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="/skin/img/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="~/skin/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/skin/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/skin/css/css-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="~/skin/css/font-awesome.min.css" />
+    <link href="~/skin/owl-carousel/owl.carousel.css" rel="stylesheet" />
+    <link href="~/skin/owl-carousel/owl.theme.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="~/skin/css/menumobile/css/jquery.mmenu.all.css" />
+    <link href="~/skin/css/animate.css" rel="stylesheet" />
+    <style>
+        .search-item a {
+            font-size: 18px !important;
+            font-weight: 700 !important;
+        }
+
+        .box-ord {
+            display: block;
+            position: relative;
+            clear: left;
+            overflow: hidden;
+            padding-top: 0px;
+        }
+
+        .open > .dropdown-menu {
+            display: block;
+            min-width: 250px;
+            left: -275px;
+            /* overflow: hidden; */
+            padding: 0px;
+            margin: 3px 0 0 0;
+        }
+
+        .box-search {
+            margin-top: 0px;
+        }
+
+        .box-ord .text-search {
+            margin-right: 0px;
+        }
+
+        .btn-search-2 {
+            display: inline-block;
+            background: #5c7fb7;
+            color: white;
+            height: 34px;
+            margin-left: -45px;
+            border: 1px solid #5c7fb7;
+            padding: 6px 15px;
+            position: fixed;
+            border-radius: 0;
+            /*z-index: 10000;*/
+        }
+
+        @@media (min-width: 300px) and (max-width: 767px) {
+            .btn-search-mobile {
+                position: absolute;
+                top: 22px;
+                right: 75px;
+            }
+
+                .btn-search-mobile a {
+                    color: gray;
+                }
+
+            .btn-search-3 {
+                display: inline-block;
+                background: #5c7fb7;
+                color: white;
+                height: 34px;
+                margin-left: -45px;
+                border: 1px solid #5c7fb7;
+                padding: 6px 15px;
+                position: fixed;
+                border-radius: 0;
+            }
+
+            .btn-search-mobile .dropdown-menu {
+                margin: 17px 0 0 0;
+                left: -200px;
+            }
+
+            .btn-search-mobile .box-search {
+                position: relative;
+            }
+
+                .btn-search-mobile .box-search .btn-search-3 {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+        }
+
+        @@media (min-width: 768px) and (max-width: 900px) {
+            .btn-search-mobile {
+                position: absolute;
+                top: 22px;
+                right: 75px;
+            }
+
+                .btn-search-mobile a {
+                    color: gray;
+                }
+
+            .btn-search-3 {
+                display: inline-block;
+                background: #5c7fb7;
+                color: white;
+                height: 34px;
+                margin-left: -45px;
+                border: 1px solid #5c7fb7;
+                padding: 6px 15px;
+                position: fixed;
+                border-radius: 0;
+            }
+
+            .btn-search-mobile .dropdown-menu {
+                margin: 25px 0 0 0;
+                left: -200px;
+            }
+
+            .btn-search-mobile .box-search {
+                position: relative;
+            }
+
+                .btn-search-mobile .box-search .btn-search-3 {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+        }
+
+        @@media (min-width: 901px) {
+            .btn-search-mobile {
+                display: none;
+            }
+        }
+    </style>
+    <script src="~/skin/js/jquery-2.1.4.min.js"></script>
+    <script src="~/skin/js/bootstrap.min.js"></script>
+    <script src="~/skin/js/owl.carousel.js"></script>
+    <script src="~/Areas/Admin/Content/js/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/Admin/Content/js/ckfinder/ckfinder.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#owl-slider").owlCarousel({
+                navigation: true,
+                pagination: false,
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true,
+                autoPlay: true,
+                autoPlay: 5000,
+                navigationText: ["<i class='fa fa-angle-left' aria-hidden='true'></i>", "<i class='fa fa-angle-right' aria-hidden='true'></i>"]
+            });
+            $("#owl-about").owlCarousel({
+                navigation: true,
+                pagination: false,
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true,
+                autoPlay: true,
+                autoPlay: 5000,
+                navigationText: ["<i class='fa fa-angle-left' aria-hidden='true'></i>", "<i class='fa fa-angle-right' aria-hidden='true'></i>"]
+            });
+            $("#owl-project").owlCarousel({
+                navigation: false, // Show next and prev buttons
+                slideSpeed: 300,
+                pagination: true,
+                paginationSpeed: 400,
+                singleItem: true,
+                autoPlay: true,
+                autoPlay: 5000,
+                navigationText: false,
+                autoHeight: true
+            });
+            $("#owl-logopro").owlCarousel({
+                navigation: false,
+                navigationText: false,
+                pagination: false,
+                items: 5,
+                autoPlay: true,
+                autoPlay: 5000
+            });
+        });
+        var a = $('.img-sp').height() / 2 - $('.item-con').height() / 2;
+        $('.item-con').css("margin-top", a);
+
+
+        jQuery.fn.vjustify = function () {
+            var maxHeight = 0;
+            this.each(function () {
+                if (this.offsetHeight > maxHeight) { maxHeight = this.offsetHeight; }
+            });
+            this.each(function () {
+                jQuery(this).height(maxHeight + "px");
+                if (this.offsetHeight > maxHeight) {
+                    jQuery(this).height((maxHeight - (this.offsetHeight - maxHeight)) + "px");
+                }
+            });
+        };
+
+        function runOnLoad(f) {
+            if (runOnLoad.loaded) f();
+            else runOnLoad.funcs.push(f);
+        }
+        runOnLoad.funcs = [];
+        runOnLoad.loaded = false;
+        runOnLoad.run = function () {
+            if (runOnLoad.loaded) return;
+            for (var i = 0; i < runOnLoad.funcs.length; i++) {
+                try { runOnLoad.funcs[i](); }
+                catch (e) { / An exception in one function shouldn't stop the rest / }
+            }
+            runOnLoad.loaded = true;
+            delete runOnLoad.funcs;
+            delete runOnLoad.run;
+        };
+        if (window.addEventListener)
+            window.addEventListener("load", runOnLoad.run, false);
+        else if (window.attachEvent) window.attachEvent("onload", runOnLoad.run);
+        else window.onload = runOnLoad.run;
+        runOnLoad(function () {
+            jQuery(".fixheight").vjustify();
+        });
+    </script>    
+</head>
+<body>
+    <div id="mm-0" class="mm-page mm-slideout">
+        <div class="wapper">            
+            <div class="header-top">
+                <div class="container">
+                    <div style="padding-top: 15px" class="row">
+
+                        <div class="col-md-4">
+                            <p>
+                                <span>A: Số 78, Đường Giải Phóng, Quận Đống Đa, Hà Nội</span>
+                            </p>
+                        </div>
+                        <div class="col-md-2">
+                            <p>
+                                <span>E: pcc@@bachmai.edu.vn</span>
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>
+                                <span>P: 024.869.3731 (Máy lẻ 6821)</span>
+                            </p>
+                        </div>
+                        <div class="col-md-2">
+                            <img src="/Areas/Admin/Content/Images/logo/Eng-Flag.png" />
+                            <img src="/Areas/Admin/Content/Images/logo/Viet-Flag.png" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            @Html.Action("Menu", "Home")
+            @RenderBody()
+            @Html.Action("Footer", "Home")
+        </div>
+    </div>
+    @*@RenderSection("scripts", required: false)*@
+</body>
+</html>

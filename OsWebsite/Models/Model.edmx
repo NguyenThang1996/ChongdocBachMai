@@ -1,0 +1,2015 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OsWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Advertise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Summary" Type="nvarchar" MaxLength="500" />
+          <Property Name="Image" Type="varchar" MaxLength="255" />
+          <Property Name="ImageSmall" Type="varchar" MaxLength="255" />
+          <Property Name="Width" Type="int" />
+          <Property Name="Height" Type="int" />
+          <Property Name="Link" Type="varchar" MaxLength="255" />
+          <Property Name="Target" Type="varchar" MaxLength="10" />
+          <Property Name="ContentDetail" Type="ntext" />
+          <Property Name="Position" Type="int" Nullable="false" />
+          <Property Name="IsOrder" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IDLang" Type="int" Nullable="false" />
+          <Property Name="MenuID" Type="int" />
+          <Property Name="MenuID2" Type="int" />
+        </EntityType>
+        <EntityType Name="Agency">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="250" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="DateCreate" Type="smalldatetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IDRegional" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="website" Type="nvarchar(max)" />
+          <Property Name="Content" Type="ntext" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" />
+          <Property Name="DateComment" Type="smalldatetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Logo" Type="varchar" MaxLength="250" />
+          <Property Name="PlaceHead" Type="nvarchar" MaxLength="500" />
+          <Property Name="PlaceBody" Type="nvarchar" MaxLength="500" />
+          <Property Name="Contact" Type="ntext" />
+          <Property Name="Copyright" Type="ntext" />
+          <Property Name="Title" Type="nvarchar" MaxLength="256" />
+          <Property Name="Description" Type="nvarchar" MaxLength="256" />
+          <Property Name="Keyword" Type="nvarchar" MaxLength="512" />
+          <Property Name="Email" Type="nvarchar" MaxLength="500" />
+          <Property Name="Password" Type="nvarchar" MaxLength="250" />
+          <Property Name="Address" Type="nvarchar" MaxLength="1000" />
+          <Property Name="HotLine" Type="nvarchar(max)" />
+          <Property Name="IDLang" Type="int" />
+          <Property Name="GoogleId" Type="ntext" />
+          <Property Name="FacebookId" Type="ntext" />
+          <Property Name="TwitterID" Type="ntext" />
+          <Property Name="InstagramID" Type="ntext" />
+          <Property Name="PhotoID" Type="ntext" />
+          <Property Name="MailFooter" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="250" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="DateCreate" Type="datetime" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="30" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="PaymentMethods" Type="int" Nullable="false" />
+          <Property Name="ModeTransport" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Tag" Type="nvarchar" MaxLength="500" />
+          <Property Name="Images" Type="nvarchar" MaxLength="500" />
+          <Property Name="Link" Type="nvarchar" MaxLength="500" />
+          <Property Name="Position" Type="int" />
+          <Property Name="IDLang" Type="int" Nullable="false" />
+          <Property Name="IsOrder" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GalleryDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GalleryID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Images" Type="nvarchar" MaxLength="500" />
+          <Property Name="Link" Type="nvarchar" MaxLength="500" />
+          <Property Name="Position" Type="int" />
+          <Property Name="IsOrder" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="IDLang" />
+          </Key>
+          <Property Name="IDLang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameLang" Type="nvarchar" MaxLength="100" />
+          <Property Name="IconLang" Type="nvarchar" MaxLength="500" />
+          <Property Name="CodeLang" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsOrder" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Manufacturer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Summary" Type="nvarchar" MaxLength="250" />
+          <Property Name="Image" Type="varchar" MaxLength="250" />
+          <Property Name="IDLang" Type="int" Nullable="false" />
+          <Property Name="IsOrder" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Tag" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IDCha" Type="int" />
+          <Property Name="Link" Type="varchar" MaxLength="500" />
+          <Property Name="Target" Type="varchar" MaxLength="10" />
+          <Property Name="ModID" Type="int" />
+          <Property Name="Position" Type="int" />
+          <Property Name="Level" Type="int" />
+          <Property Name="Images" Type="nvarchar" MaxLength="250" />
+          <Property Name="Summary" Type="nvarchar" MaxLength="500" />
+          <Property Name="Content" Type="ntext" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" />
+          <Property Name="Keyword" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Style" Type="int" />
+          <Property Name="Hot" Type="int" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="Views" Type="int" />
+          <Property Name="IDLang" Type="int" Nullable="false" />
+          <Property Name="IsOrder" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MenuPage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="CodeMenu" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MenuType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuPageID" Type="int" Nullable="false" />
+          <Property Name="MenuID" Type="int" Nullable="false" />
+          <Property Name="IDLang" Type="int" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="CodeMod" Type="varchar" MaxLength="250" />
+          <Property Name="Mod_Url" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="IsOrder" Type="int" Nullable="false" />
+          <Property Name="Position" Type="int" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Tag" Type="varchar" MaxLength="500" />
+          <Property Name="MenuID" Type="int" />
+          <Property Name="Decription" Type="nvarchar(max)" />
+          <Property Name="DecriptionTag" Type="varchar(max)" />
+          <Property Name="ContentNew" Type="ntext" />
+          <Property Name="DateCreate" Type="datetime" />
+          <Property Name="DateUpdate" Type="datetime" />
+          <Property Name="Img" Type="nvarchar" MaxLength="500" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" />
+          <Property Name="Keyword" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="View" Type="int" />
+          <Property Name="Position" Type="int" Nullable="false" />
+          <Property Name="IDLang" Type="int" Nullable="false" />
+          <Property Name="IsOder" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ActiveTop" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsImages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NewsID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Images" Type="nvarchar" MaxLength="250" />
+          <Property Name="Decription" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsOrder" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="TotalPrice" Type="float" />
+          <Property Name="DateCreate" Type="smalldatetime" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="TotalAmount" Type="float" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PageMenu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Link" Type="nvarchar" MaxLength="500" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Tag" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="GroupProductId" Type="int" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="500" />
+          <Property Name="Summary" Type="nvarchar(max)" />
+          <Property Name="ContentDetail" Type="ntext" />
+          <Property Name="ContentDetail2" Type="ntext" />
+          <Property Name="Price" Type="float" />
+          <Property Name="PriceOld" Type="float" />
+          <Property Name="Discount" Type="varchar" MaxLength="500" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Views" Type="int" />
+          <Property Name="Priority" Type="int" />
+          <Property Name="Date" Type="smalldatetime" />
+          <Property Name="Title" Type="nvarchar" MaxLength="300" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+          <Property Name="Keyword" Type="nvarchar" MaxLength="300" />
+          <Property Name="IDLang" Type="int" Nullable="false" />
+          <Property Name="IsOrder" Type="int" Nullable="false" />
+          <Property Name="Hot" Type="bit" Nullable="false" />
+          <Property Name="New" Type="bit" Nullable="false" />
+          <Property Name="Main" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="MaSanPham" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProductImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Id" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Images" Type="varchar" MaxLength="500" />
+          <Property Name="Decription" Type="nvarchar" MaxLength="500" />
+          <Property Name="Content" Type="ntext" />
+          <Property Name="IsOrder" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Regional">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="IDLang" Type="int" />
+          <Property Name="IsOrder" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VN" Type="nvarchar" MaxLength="500" />
+          <Property Name="EN" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" />
+          <Property Name="Username" Type="varchar" MaxLength="64" />
+          <Property Name="Password" Type="varchar" MaxLength="200" />
+          <Property Name="Email" Type="varchar" MaxLength="250" />
+          <Property Name="Image" Type="nvarchar" MaxLength="500" />
+          <Property Name="DateCreate" Type="datetime" />
+          <Property Name="Role" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Visitor">
+          <Key>
+            <PropertyRef Name="MaTB" />
+          </Key>
+          <Property Name="MaTB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Thoigian" Type="datetime" />
+          <Property Name="SoTruyCap" Type="bigint" />
+        </EntityType>
+        <Association Name="FK_Advertise_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="Advertise" Type="Self.Advertise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="IDLang" />
+            </Principal>
+            <Dependent Role="Advertise">
+              <PropertyRef Name="IDLang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agency_Regional">
+          <End Role="Regional" Type="Self.Regional" Multiplicity="1" />
+          <End Role="Agency" Type="Self.Agency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regional">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Agency">
+              <PropertyRef Name="IDRegional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Config_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="0..1" />
+          <End Role="Config" Type="Self.Config" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="IDLang" />
+            </Principal>
+            <Dependent Role="Config">
+              <PropertyRef Name="IDLang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gallery_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="Gallery" Type="Self.Gallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="IDLang" />
+            </Principal>
+            <Dependent Role="Gallery">
+              <PropertyRef Name="IDLang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GalleryDetail_Gallery">
+          <End Role="Gallery" Type="Self.Gallery" Multiplicity="1" />
+          <End Role="GalleryDetail" Type="Self.GalleryDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gallery">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GalleryDetail">
+              <PropertyRef Name="GalleryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="IDLang" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="IDLang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuTpe_Menu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+          <End Role="MenuType" Type="Self.MenuType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuType">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuTpe_MenuPage">
+          <End Role="MenuPage" Type="Self.MenuPage" Multiplicity="1" />
+          <End Role="MenuType" Type="Self.MenuType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuPage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuType">
+              <PropertyRef Name="MenuPageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="IDLang" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="IDLang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Module">
+          <End Role="Module" Type="Self.Module" Multiplicity="1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="Position" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Topics">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewsImages_News">
+          <End Role="News" Type="Self.News" Multiplicity="1" />
+          <End Role="NewsImages" Type="Self.NewsImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NewsImages">
+              <PropertyRef Name="NewsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customers">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Menu">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="GroupProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Module">
+          <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Priority" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductGal_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="ProductImages" Type="Self.ProductImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductImages">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Regional_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="0..1" />
+          <End Role="Regional" Type="Self.Regional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="IDLang" />
+            </Principal>
+            <Dependent Role="Regional">
+              <PropertyRef Name="IDLang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="DacapMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDLang" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DacapProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDLang" Type="int" Mode="In" />
+          <Parameter Name="Position" Type="int" Mode="In" />
+        </Function>
+        <Function Name="News_Get4Cap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="News_Others" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Product_Get4Cap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Visitor_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="OsWebModelStoreContainer">
+          <EntitySet Name="Advertise" EntityType="Self.Advertise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Agency" EntityType="Self.Agency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Config" EntityType="Self.Config" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gallery" EntityType="Self.Gallery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GalleryDetail" EntityType="Self.GalleryDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuPage" EntityType="Self.MenuPage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuType" EntityType="Self.MenuType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Module" EntityType="Self.Module" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsImages" EntityType="Self.NewsImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PageMenu" EntityType="Self.PageMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductImages" EntityType="Self.ProductImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Regional" EntityType="Self.Regional" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Setting" EntityType="Self.Setting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Visitor" EntityType="Self.Visitor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Advertise_Language" Association="Self.FK_Advertise_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Advertise" EntitySet="Advertise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agency_Regional" Association="Self.FK_Agency_Regional">
+            <End Role="Regional" EntitySet="Regional" />
+            <End Role="Agency" EntitySet="Agency" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Config_Language" Association="Self.FK_Config_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Config" EntitySet="Config" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gallery_Language" Association="Self.FK_Gallery_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Gallery" EntitySet="Gallery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GalleryDetail_Gallery" Association="Self.FK_GalleryDetail_Gallery">
+            <End Role="Gallery" EntitySet="Gallery" />
+            <End Role="GalleryDetail" EntitySet="GalleryDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Language" Association="Self.FK_Menu_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuTpe_Menu" Association="Self.FK_MenuTpe_Menu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="MenuType" EntitySet="MenuType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuTpe_MenuPage" Association="Self.FK_MenuTpe_MenuPage">
+            <End Role="MenuPage" EntitySet="MenuPage" />
+            <End Role="MenuType" EntitySet="MenuType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Language" Association="Self.FK_News_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Module" Association="Self.FK_News_Module">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Topics" Association="Self.FK_News_Topics">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsImages_News" Association="Self.FK_NewsImages_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="NewsImages" EntitySet="NewsImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customers" Association="Self.FK_Order_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Product" Association="Self.FK_OrderDetail_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Menu" Association="Self.FK_Product_Menu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Module" Association="Self.FK_Product_Module">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductGal_Product" Association="Self.FK_ProductGal_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductImages" EntitySet="ProductImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Regional_Language" Association="Self.FK_Regional_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Regional" EntitySet="Regional" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OsWebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="website" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DateComment" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentMethods" Type="Int32" Nullable="false" />
+          <Property Name="ModeTransport" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="OsWebModel.FK_Order_Customers" FromRole="Customers" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Tag" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Images" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="Int32" />
+          <Property Name="IDLang" Type="Int32" Nullable="false" />
+          <Property Name="IsOrder" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="GalleryDetail" Relationship="Self.FK_GalleryDetail_Gallery" FromRole="Gallery" ToRole="GalleryDetail" />
+          <NavigationProperty Name="Language" Relationship="OsWebModel.FK_Gallery_Language" FromRole="Gallery" ToRole="Language" />
+        </EntityType>
+        <EntityType Name="GalleryDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GalleryID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Images" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="Int32" />
+          <Property Name="IsOrder" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Gallery" Relationship="Self.FK_GalleryDetail_Gallery" FromRole="GalleryDetail" ToRole="Gallery" />
+        </EntityType>
+        <EntityType Name="Manufacturer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Summary" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IDLang" Type="Int32" Nullable="false" />
+          <Property Name="IsOrder" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MenuPage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CodeMenu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MenuType" Relationship="Self.FK_MenuTpe_MenuPage" FromRole="MenuPage" ToRole="MenuType" />
+        </EntityType>
+        <EntityType Name="MenuType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuPageID" Type="Int32" Nullable="false" />
+          <Property Name="MenuID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MenuPage" Relationship="Self.FK_MenuTpe_MenuPage" FromRole="MenuType" ToRole="MenuPage" />
+          <NavigationProperty Name="Menu" Relationship="OsWebModel.FK_MenuTpe_Menu" FromRole="MenuType" ToRole="Menu" />
+          <Property Name="IDLang" Type="Int32" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="TotalAmount" Type="Double" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="OsWebModel.FK_OrderDetail_Order" FromRole="OrderDetail" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="OsWebModel.FK_OrderDetail_Product" FromRole="OrderDetail" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="PageMenu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ProductImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Id" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Images" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Decription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsOrder" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="OsWebModel.FK_ProductGal_Product" FromRole="ProductImages" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreate" Type="DateTime" Precision="3" />
+          <Property Name="Role" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_GalleryDetail_Gallery">
+          <End Role="Gallery" Type="Self.Gallery" Multiplicity="1" />
+          <End Role="GalleryDetail" Type="Self.GalleryDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gallery">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GalleryDetail">
+              <PropertyRef Name="GalleryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenuTpe_MenuPage">
+          <End Role="MenuPage" Type="Self.MenuPage" Multiplicity="1" />
+          <End Role="MenuType" Type="Self.MenuType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuPage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MenuType">
+              <PropertyRef Name="MenuPageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OsWebEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Comment" EntityType="Self.Comment" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" />
+          <EntitySet Name="Gallery" EntityType="Self.Gallery" />
+          <EntitySet Name="GalleryDetail" EntityType="Self.GalleryDetail" />
+          <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" />
+          <EntitySet Name="MenuPage" EntityType="Self.MenuPage" />
+          <EntitySet Name="MenuType" EntityType="Self.MenuType" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" />
+          <EntitySet Name="PageMenu" EntityType="Self.PageMenu" />
+          <EntitySet Name="ProductImages" EntityType="Self.ProductImages" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_GalleryDetail_Gallery" Association="Self.FK_GalleryDetail_Gallery">
+            <End Role="Gallery" EntitySet="Gallery" />
+            <End Role="GalleryDetail" EntitySet="GalleryDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenuTpe_MenuPage" Association="Self.FK_MenuTpe_MenuPage">
+            <End Role="MenuPage" EntitySet="MenuPage" />
+            <End Role="MenuType" EntitySet="MenuType" />
+          </AssociationSet>
+          <FunctionImport Name="DacapMenu" ReturnType="Collection(OsWebModel.DacapMenu_Result)">
+            <Parameter Name="IDLang" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="News" EntityType="OsWebModel.News" />
+          <EntitySet Name="NewsImages" EntityType="OsWebModel.NewsImages" />
+          <AssociationSet Name="FK_NewsImages_News" Association="OsWebModel.FK_NewsImages_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="NewsImages" EntitySet="NewsImages" />
+          </AssociationSet>
+          <EntitySet Name="Menu" EntityType="OsWebModel.Menu" />
+          <EntitySet Name="Module" EntityType="OsWebModel.Module" />
+          <AssociationSet Name="FK_MenuTpe_Menu" Association="OsWebModel.FK_MenuTpe_Menu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="MenuType" EntitySet="MenuType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Topics" Association="OsWebModel.FK_News_Topics">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Module" Association="OsWebModel.FK_News_Module">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <FunctionImport Name="News_Get4Cap" EntitySet="News" ReturnType="Collection(OsWebModel.News)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Product_Get4Cap" EntitySet="Product" ReturnType="Collection(OsWebModel.Product)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Config" EntityType="OsWebModel.Config" />
+          <EntitySet Name="Order" EntityType="OsWebModel.Order" />
+          <AssociationSet Name="FK_Order_Customers" Association="OsWebModel.FK_Order_Customers">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Order" Association="OsWebModel.FK_OrderDetail_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <EntitySet Name="Language" EntityType="OsWebModel.Language" />
+          <EntitySet Name="Regional" EntityType="OsWebModel.Regional" />
+          <AssociationSet Name="FK_Config_Language" Association="OsWebModel.FK_Config_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Config" EntitySet="Config" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gallery_Language" Association="OsWebModel.FK_Gallery_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Gallery" EntitySet="Gallery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Language" Association="OsWebModel.FK_Menu_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Menu" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Language" Association="OsWebModel.FK_News_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Regional_Language" Association="OsWebModel.FK_Regional_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Regional" EntitySet="Regional" />
+          </AssociationSet>
+          <EntitySet Name="Agency" EntityType="OsWebModel.Agency" />
+          <AssociationSet Name="FK_Agency_Regional" Association="OsWebModel.FK_Agency_Regional">
+            <End Role="Regional" EntitySet="Regional" />
+            <End Role="Agency" EntitySet="Agency" />
+          </AssociationSet>
+          <EntitySet Name="Product" EntityType="OsWebModel.Product" />
+          <AssociationSet Name="FK_Product_Menu" Association="OsWebModel.FK_Product_Menu">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Module" Association="OsWebModel.FK_Product_Module">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Product" Association="OsWebModel.FK_OrderDetail_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductGal_Product" Association="OsWebModel.FK_ProductGal_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductImages" EntitySet="ProductImages" />
+          </AssociationSet>
+          <EntitySet Name="Visitor" EntityType="OsWebModel.Visitor" />
+          <FunctionImport Name="DacapProduct" ReturnType="Collection(OsWebModel.DacapProduct_Result)">
+            <Parameter Name="IDLang" Mode="In" Type="Int32" />
+            <Parameter Name="Position" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Visitor_GetByAll" ReturnType="Collection(OsWebModel.sp_Visitor_GetByAll_Result)" />
+          <EntitySet Name="Contact" EntityType="OsWebModel.Contact" />
+          <FunctionImport Name="News_Others" EntitySet="News" ReturnType="Collection(OsWebModel.News)">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Advertise" EntityType="OsWebModel.Advertise" />
+          <AssociationSet Name="FK_Advertise_Language" Association="OsWebModel.FK_Advertise_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Advertise" EntitySet="Advertise" />
+          </AssociationSet>
+          <EntitySet Name="Setting" EntityType="OsWebModel.Setting" />
+        </EntityContainer>
+        <ComplexType Name="DacapMenu_Result">
+          <Property Type="Int32" Name="ID" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Link" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="IsOrder" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Tag" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MenuID" Type="Int32" />
+          <Property Name="Decription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DecriptionTag" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ContentNew" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreate" Type="DateTime" Precision="3" />
+          <Property Name="DateUpdate" Type="DateTime" Precision="3" />
+          <Property Name="Img" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Keyword" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="View" Type="Int32" />
+          <Property Name="Position" Type="Int32" Nullable="false" />
+          <Property Name="IDLang" Type="Int32" Nullable="false" />
+          <Property Name="IsOder" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ActiveTop" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="NewsImages" Relationship="OsWebModel.FK_NewsImages_News" FromRole="News" ToRole="NewsImages" />
+          <NavigationProperty Name="Menu" Relationship="OsWebModel.FK_News_Topics" FromRole="News" ToRole="Menu" />
+          <NavigationProperty Name="Module" Relationship="OsWebModel.FK_News_Module" FromRole="News" ToRole="Module" />
+          <NavigationProperty Name="Language" Relationship="OsWebModel.FK_News_Language" FromRole="News" ToRole="Language" />
+        </EntityType>
+        <EntityType Name="NewsImages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NewsID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Images" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Decription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsOrder" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="News" Relationship="OsWebModel.FK_NewsImages_News" FromRole="NewsImages" ToRole="News" />
+        </EntityType>
+        <Association Name="FK_NewsImages_News">
+          <End Type="OsWebModel.News" Role="News" Multiplicity="1" />
+          <End Type="OsWebModel.NewsImages" Role="NewsImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NewsImages">
+              <PropertyRef Name="NewsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Tag" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IDCha" Type="Int32" />
+          <Property Name="Link" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Target" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ModID" Type="Int32" />
+          <Property Name="Position" Type="Int32" />
+          <Property Name="Level" Type="Int32" />
+          <Property Name="Images" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Summary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Keyword" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Style" Type="Int32" />
+          <Property Name="Hot" Type="Int32" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="Views" Type="Int32" />
+          <Property Name="IDLang" Type="Int32" Nullable="false" />
+          <Property Name="IsOrder" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MenuType" Relationship="OsWebModel.FK_MenuTpe_Menu" FromRole="Menu" ToRole="MenuType" />
+          <NavigationProperty Name="News" Relationship="OsWebModel.FK_News_Topics" FromRole="Menu" ToRole="News" />
+          <NavigationProperty Name="Language" Relationship="OsWebModel.FK_Menu_Language" FromRole="Menu" ToRole="Language" />
+          <NavigationProperty Name="Product" Relationship="OsWebModel.FK_Product_Menu" FromRole="Menu" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CodeMod" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Mod_Url" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsOrder" Type="Int32" Nullable="false" />
+          <Property Name="Position" Type="Int32" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="News" Relationship="OsWebModel.FK_News_Module" FromRole="Module" ToRole="News" />
+          <NavigationProperty Name="Product" Relationship="OsWebModel.FK_Product_Module" FromRole="Module" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_MenuTpe_Menu">
+          <End Type="OsWebModel.Menu" Role="Menu" Multiplicity="1" />
+          <End Type="OsWebModel.MenuType" Role="MenuType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MenuType">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Topics">
+          <End Type="OsWebModel.Menu" Role="Menu" Multiplicity="0..1" />
+          <End Type="OsWebModel.News" Role="News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Module">
+          <End Type="OsWebModel.Module" Role="Module" Multiplicity="1" />
+          <End Type="OsWebModel.News" Role="News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="Position" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="News_Get4Cap_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Tag" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="MenuID" Nullable="true" />
+          <Property Type="String" Name="Decription" Nullable="true" />
+          <Property Type="String" Name="DecriptionTag" Nullable="true" />
+          <Property Type="String" Name="ContentNew" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="DateCreate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DateUpdate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Img" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Keyword" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="Int32" Name="View" Nullable="true" />
+          <Property Type="Int32" Name="Position" Nullable="false" />
+          <Property Type="Int32" Name="IDLang" Nullable="false" />
+          <Property Type="Int32" Name="IsOder" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Boolean" Name="ActiveTop" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Product_Get4Cap_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="Tag" Nullable="false" MaxLength="256" />
+          <Property Type="Int32" Name="GroupProductId" Nullable="false" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Summary" Nullable="true" />
+          <Property Type="String" Name="ContentDetail" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="ContentDetail2" Nullable="true" MaxLength="Max" />
+          <Property Type="Double" Name="Price" Nullable="true" />
+          <Property Type="Double" Name="PriceOld" Nullable="true" />
+          <Property Type="String" Name="Discount" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="Amount" Nullable="true" />
+          <Property Type="Int32" Name="Views" Nullable="true" />
+          <Property Type="Int32" Name="Priority" Nullable="true" />
+          <Property Type="DateTime" Name="Date" Nullable="true" Precision="16" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Keyword" Nullable="true" MaxLength="300" />
+          <Property Type="Int32" Name="IDLang" Nullable="false" />
+          <Property Type="Int32" Name="IsOrder" Nullable="false" />
+          <Property Type="Boolean" Name="Main" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Logo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PlaceHead" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PlaceBody" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Copyright" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Keyword" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="HotLine" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDLang" Type="Int32" />
+          <Property Name="GoogleId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FacebookId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TwitterID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InstagramID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhotoID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Language" Relationship="OsWebModel.FK_Config_Language" FromRole="Config" ToRole="Language" />
+          <Property Name="MailFooter" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="TotalPrice" Type="Double" />
+          <Property Name="DateCreate" Type="DateTime" Precision="0" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="OsWebModel.FK_Order_Customers" FromRole="Order" ToRole="Customers" />
+          <NavigationProperty Name="OrderDetail" Relationship="OsWebModel.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
+        </EntityType>
+        <Association Name="FK_Order_Customers">
+          <End Type="OsWebModel.Customers" Role="Customers" Multiplicity="0..1" />
+          <End Type="OsWebModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Order">
+          <End Type="OsWebModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="OsWebModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="IDLang" />
+          </Key>
+          <Property Name="IDLang" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameLang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IconLang" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CodeLang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsOrder" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Config" Relationship="OsWebModel.FK_Config_Language" FromRole="Language" ToRole="Config" />
+          <NavigationProperty Name="Gallery" Relationship="OsWebModel.FK_Gallery_Language" FromRole="Language" ToRole="Gallery" />
+          <NavigationProperty Name="Menu" Relationship="OsWebModel.FK_Menu_Language" FromRole="Language" ToRole="Menu" />
+          <NavigationProperty Name="News" Relationship="OsWebModel.FK_News_Language" FromRole="Language" ToRole="News" />
+          <NavigationProperty Name="Regional" Relationship="OsWebModel.FK_Regional_Language" FromRole="Language" ToRole="Regional" />
+          <NavigationProperty Name="Advertise" Relationship="OsWebModel.FK_Advertise_Language" FromRole="Language" ToRole="Advertise" />
+        </EntityType>
+        <EntityType Name="Regional">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IDLang" Type="Int32" />
+          <Property Name="IsOrder" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Language" Relationship="OsWebModel.FK_Regional_Language" FromRole="Regional" ToRole="Language" />
+          <NavigationProperty Name="Agency" Relationship="OsWebModel.FK_Agency_Regional" FromRole="Regional" ToRole="Agency" />
+        </EntityType>
+        <Association Name="FK_Config_Language">
+          <End Type="OsWebModel.Language" Role="Language" Multiplicity="0..1" />
+          <End Type="OsWebModel.Config" Role="Config" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="IDLang" />
+            </Principal>
+            <Dependent Role="Config">
+              <PropertyRef Name="IDLang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gallery_Language">
+          <End Type="OsWebModel.Language" Role="Language" Multiplicity="1" />
+          <End Type="OsWebModel.Gallery" Role="Gallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="IDLang" />
+            </Principal>
+            <Dependent Role="Gallery">
+              <PropertyRef Name="IDLang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Language">
+          <End Type="OsWebModel.Language" Role="Language" Multiplicity="1" />
+          <End Type="OsWebModel.Menu" Role="Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="IDLang" />
+            </Principal>
+            <Dependent Role="Menu">
+              <PropertyRef Name="IDLang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Language">
+          <End Type="OsWebModel.Language" Role="Language" Multiplicity="1" />
+          <End Type="OsWebModel.News" Role="News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="IDLang" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="IDLang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Regional_Language">
+          <End Type="OsWebModel.Language" Role="Language" Multiplicity="0..1" />
+          <End Type="OsWebModel.Regional" Role="Regional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="IDLang" />
+            </Principal>
+            <Dependent Role="Regional">
+              <PropertyRef Name="IDLang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Agency">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IDRegional" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Regional" Relationship="OsWebModel.FK_Agency_Regional" FromRole="Agency" ToRole="Regional" />
+        </EntityType>
+        <Association Name="FK_Agency_Regional">
+          <End Type="OsWebModel.Regional" Role="Regional" Multiplicity="1" />
+          <End Type="OsWebModel.Agency" Role="Agency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Regional">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Agency">
+              <PropertyRef Name="IDRegional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Tag" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="GroupProductId" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContentDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContentDetail2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="PriceOld" Type="Double" />
+          <Property Name="Discount" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="Views" Type="Int32" />
+          <Property Name="Priority" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Keyword" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="IDLang" Type="Int32" Nullable="false" />
+          <Property Name="IsOrder" Type="Int32" Nullable="false" />
+          <Property Name="Hot" Type="Boolean" Nullable="false" />
+          <Property Name="New" Type="Boolean" Nullable="false" />
+          <Property Name="Main" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Menu" Relationship="OsWebModel.FK_Product_Menu" FromRole="Product" ToRole="Menu" />
+          <NavigationProperty Name="Module" Relationship="OsWebModel.FK_Product_Module" FromRole="Product" ToRole="Module" />
+          <NavigationProperty Name="OrderDetail" Relationship="OsWebModel.FK_OrderDetail_Product" FromRole="Product" ToRole="OrderDetail" />
+          <NavigationProperty Name="ProductImages" Relationship="OsWebModel.FK_ProductGal_Product" FromRole="Product" ToRole="ProductImages" />
+          <Property Name="MaSanPham" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Product_Menu">
+          <End Type="OsWebModel.Menu" Role="Menu" Multiplicity="1" />
+          <End Type="OsWebModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="GroupProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Module">
+          <End Type="OsWebModel.Module" Role="Module" Multiplicity="0..1" />
+          <End Type="OsWebModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Priority" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Product">
+          <End Type="OsWebModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="OsWebModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductGal_Product">
+          <End Type="OsWebModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="OsWebModel.ProductImages" Role="ProductImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductImages">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Visitor">
+          <Key>
+            <PropertyRef Name="MaTB" />
+          </Key>
+          <Property Name="MaTB" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Thoigian" Type="DateTime" Precision="3" />
+          <Property Name="SoTruyCap" Type="Int64" />
+        </EntityType>
+        <ComplexType Name="DacapProduct_Result">
+          <Property Type="Int32" Name="ID" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Link" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="IsOrder" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="String" Name="Tag" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Names" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="sp_Visitor_GetByAll_Result">
+          <Property Type="Int64" Name="HomNay" Nullable="true" />
+          <Property Type="Int64" Name="HomQua" Nullable="true" />
+          <Property Type="Int64" Name="TuanNay" Nullable="true" />
+          <Property Type="Int64" Name="TuanTruoc" Nullable="true" />
+          <Property Type="Int64" Name="ThangNay" Nullable="true" />
+          <Property Type="Int64" Name="ThangTruoc" Nullable="true" />
+          <Property Type="Int64" Name="TatCa" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="News_Others_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Tag" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="MenuID" Nullable="true" />
+          <Property Type="String" Name="Decription" Nullable="true" />
+          <Property Type="String" Name="DecriptionTag" Nullable="true" />
+          <Property Type="String" Name="ContentNew" Nullable="true" MaxLength="Max" />
+          <Property Type="DateTime" Name="DateCreate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DateUpdate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Img" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Keyword" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="Int32" Name="View" Nullable="true" />
+          <Property Type="Int32" Name="Position" Nullable="false" />
+          <Property Type="Int32" Name="IDLang" Nullable="false" />
+          <Property Type="Int32" Name="IsOder" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Boolean" Name="ActiveTop" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Advertise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Summary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ImageSmall" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Width" Type="Int32" />
+          <Property Name="Height" Type="Int32" />
+          <Property Name="Link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Target" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ContentDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="Int32" Nullable="false" />
+          <Property Name="IsOrder" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IDLang" Type="Int32" Nullable="false" />
+          <Property Name="MenuID" Type="Int32" />
+          <NavigationProperty Name="Language" Relationship="OsWebModel.FK_Advertise_Language" FromRole="Advertise" ToRole="Language" />
+          <Property Name="MenuID2" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_Advertise_Language">
+          <End Type="OsWebModel.Language" Role="Language" Multiplicity="1" />
+          <End Type="OsWebModel.Advertise" Role="Advertise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="IDLang" />
+            </Principal>
+            <Dependent Role="Advertise">
+              <PropertyRef Name="IDLang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VN" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EN" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OsWebModelStoreContainer" CdmEntityContainer="OsWebEntities">
+          <EntitySetMapping Name="Comment">
+            <EntityTypeMapping TypeName="OsWebModel.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NameUser" ColumnName="NameUser" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="website" ColumnName="website" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DateComment" ColumnName="DateComment" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="OsWebModel.Customers">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PaymentMethods" ColumnName="PaymentMethods" />
+                <ScalarProperty Name="ModeTransport" ColumnName="ModeTransport" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gallery">
+            <EntityTypeMapping TypeName="OsWebModel.Gallery">
+              <MappingFragment StoreEntitySet="Gallery">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="IDLang" ColumnName="IDLang" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GalleryDetail">
+            <EntityTypeMapping TypeName="OsWebModel.GalleryDetail">
+              <MappingFragment StoreEntitySet="GalleryDetail">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GalleryID" ColumnName="GalleryID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manufacturer">
+            <EntityTypeMapping TypeName="OsWebModel.Manufacturer">
+              <MappingFragment StoreEntitySet="Manufacturer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="IDLang" ColumnName="IDLang" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuPage">
+            <EntityTypeMapping TypeName="OsWebModel.MenuPage">
+              <MappingFragment StoreEntitySet="MenuPage">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CodeMenu" ColumnName="CodeMenu" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuType">
+            <EntityTypeMapping TypeName="OsWebModel.MenuType">
+              <MappingFragment StoreEntitySet="MenuType">
+                <ScalarProperty Name="IDLang" ColumnName="IDLang" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MenuPageID" ColumnName="MenuPageID" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetail">
+            <EntityTypeMapping TypeName="OsWebModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PageMenu">
+            <EntityTypeMapping TypeName="OsWebModel.PageMenu">
+              <MappingFragment StoreEntitySet="PageMenu">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductImages">
+            <EntityTypeMapping TypeName="OsWebModel.ProductImages">
+              <MappingFragment StoreEntitySet="ProductImages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Decription" ColumnName="Decription" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="OsWebModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DacapMenu" FunctionName="OsWebModel.Store.DacapMenu">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OsWebModel.DacapMenu_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="OsWebModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="ActiveTop" ColumnName="ActiveTop" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsOder" ColumnName="IsOder" />
+                <ScalarProperty Name="IDLang" ColumnName="IDLang" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="View" ColumnName="View" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Img" ColumnName="Img" />
+                <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="ContentNew" ColumnName="ContentNew" />
+                <ScalarProperty Name="DecriptionTag" ColumnName="DecriptionTag" />
+                <ScalarProperty Name="Decription" ColumnName="Decription" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsImages">
+            <EntityTypeMapping TypeName="OsWebModel.NewsImages">
+              <MappingFragment StoreEntitySet="NewsImages">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="Decription" ColumnName="Decription" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NewsID" ColumnName="NewsID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu">
+            <EntityTypeMapping TypeName="OsWebModel.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IDLang" ColumnName="IDLang" />
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Hot" ColumnName="Hot" />
+                <ScalarProperty Name="Style" ColumnName="Style" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Images" ColumnName="Images" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="ModID" ColumnName="ModID" />
+                <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="IDCha" ColumnName="IDCha" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Module">
+            <EntityTypeMapping TypeName="OsWebModel.Module">
+              <MappingFragment StoreEntitySet="Module">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="Mod_Url" ColumnName="Mod_Url" />
+                <ScalarProperty Name="CodeMod" ColumnName="CodeMod" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="News_Get4Cap" FunctionName="OsWebModel.Store.News_Get4Cap">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Product_Get4Cap" FunctionName="OsWebModel.Store.Product_Get4Cap">
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Config">
+            <EntityTypeMapping TypeName="OsWebModel.Config">
+              <MappingFragment StoreEntitySet="Config">
+                <ScalarProperty Name="MailFooter" ColumnName="MailFooter" />
+                <ScalarProperty Name="PhotoID" ColumnName="PhotoID" />
+                <ScalarProperty Name="InstagramID" ColumnName="InstagramID" />
+                <ScalarProperty Name="TwitterID" ColumnName="TwitterID" />
+                <ScalarProperty Name="FacebookId" ColumnName="FacebookId" />
+                <ScalarProperty Name="GoogleId" ColumnName="GoogleId" />
+                <ScalarProperty Name="IDLang" ColumnName="IDLang" />
+                <ScalarProperty Name="HotLine" ColumnName="HotLine" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Copyright" ColumnName="Copyright" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="PlaceBody" ColumnName="PlaceBody" />
+                <ScalarProperty Name="PlaceHead" ColumnName="PlaceHead" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="OsWebModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Language">
+            <EntityTypeMapping TypeName="OsWebModel.Language">
+              <MappingFragment StoreEntitySet="Language">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="CodeLang" ColumnName="CodeLang" />
+                <ScalarProperty Name="IconLang" ColumnName="IconLang" />
+                <ScalarProperty Name="NameLang" ColumnName="NameLang" />
+                <ScalarProperty Name="IDLang" ColumnName="IDLang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regional">
+            <EntityTypeMapping TypeName="OsWebModel.Regional">
+              <MappingFragment StoreEntitySet="Regional">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IDLang" ColumnName="IDLang" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agency">
+            <EntityTypeMapping TypeName="OsWebModel.Agency">
+              <MappingFragment StoreEntitySet="Agency">
+                <ScalarProperty Name="IDRegional" ColumnName="IDRegional" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="OsWebModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Main" ColumnName="Main" />
+                <ScalarProperty Name="New" ColumnName="New" />
+                <ScalarProperty Name="Hot" ColumnName="Hot" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IDLang" ColumnName="IDLang" />
+                <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="PriceOld" ColumnName="PriceOld" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ContentDetail2" ColumnName="ContentDetail2" />
+                <ScalarProperty Name="ContentDetail" ColumnName="ContentDetail" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="GroupProductId" ColumnName="GroupProductId" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visitor">
+            <EntityTypeMapping TypeName="OsWebModel.Visitor">
+              <MappingFragment StoreEntitySet="Visitor">
+                <ScalarProperty Name="SoTruyCap" ColumnName="SoTruyCap" />
+                <ScalarProperty Name="Thoigian" ColumnName="Thoigian" />
+                <ScalarProperty Name="MaTB" ColumnName="MaTB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DacapProduct" FunctionName="OsWebModel.Store.DacapProduct">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OsWebModel.DacapProduct_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+                <ScalarProperty Name="Names" ColumnName="Names" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Visitor_GetByAll" FunctionName="OsWebModel.Store.sp_Visitor_GetByAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="OsWebModel.sp_Visitor_GetByAll_Result">
+                <ScalarProperty Name="HomNay" ColumnName="HomNay" />
+                <ScalarProperty Name="HomQua" ColumnName="HomQua" />
+                <ScalarProperty Name="TuanNay" ColumnName="TuanNay" />
+                <ScalarProperty Name="TuanTruoc" ColumnName="TuanTruoc" />
+                <ScalarProperty Name="ThangNay" ColumnName="ThangNay" />
+                <ScalarProperty Name="ThangTruoc" ColumnName="ThangTruoc" />
+                <ScalarProperty Name="TatCa" ColumnName="TatCa" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Contact">
+            <EntityTypeMapping TypeName="OsWebModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DateCreate" ColumnName="DateCreate" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="News_Others" FunctionName="OsWebModel.Store.News_Others">
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Advertise">
+            <EntityTypeMapping TypeName="OsWebModel.Advertise">
+              <MappingFragment StoreEntitySet="Advertise">
+                <ScalarProperty Name="MenuID2" ColumnName="MenuID2" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="IDLang" ColumnName="IDLang" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsOrder" ColumnName="IsOrder" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="ContentDetail" ColumnName="ContentDetail" />
+                <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="ImageSmall" ColumnName="ImageSmall" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Setting">
+            <EntityTypeMapping TypeName="OsWebModel.Setting">
+              <MappingFragment StoreEntitySet="Setting">
+                <ScalarProperty Name="EN" ColumnName="EN" />
+                <ScalarProperty Name="VN" ColumnName="VN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

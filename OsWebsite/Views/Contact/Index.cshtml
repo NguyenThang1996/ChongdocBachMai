@@ -1,0 +1,205 @@
+﻿@model OsWebsite.Models.Config
+
+@{
+    <title>Liên hệ</title>
+    <meta name="description" content="Liên hệ" />
+    <meta name="keywords" content="Liên hệ" />
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var IconShare = ViewBag.IconShare as List<OsWebsite.Models.Advertise>;
+}
+<div class="banner-page">
+
+</div>
+<div class="box-product">
+    <div class="container">
+        <div class="row">
+            <div style="padding-left: 0px;" class="col-md-12">
+                @if (Session["ContactUs"] != null)
+                {
+                    <ul style="border-bottom: 0px!important;" class="nav nav-tabs nav-prod">
+                        <li class="active">
+                            <a style="border: 0px!important; border-radius: 15px 15px 0 0; font-size: 18px; font-weight: bold; background-color: #870000; color: #fff !important; transition: background-color 500ms;" href="/Contact/Index">LIÊN HỆ</a>
+                        </li>
+                    </ul>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="box-content-product-page">
+        <div class="box-contact-main">
+            <div class="contact-main">
+                <div style="padding-top: 10px; background: #f5f5f5;" class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="box-contact-page">
+                                <div class="row">
+                                    @if (int.Parse(Session["LangWeb"].ToString()) == 1)
+                                    {
+                                        <div class="col-md-12 col-md-offset-0">
+                                            <div>
+                                                <input type="text" name="Name" id="Name" class="form-control" placeholder="Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-md-offset-0">
+                                            <div>
+                                                <input type="text" name="Phone" id="Phone" class="form-control" placeholder="Phone">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-md-offset-0">
+                                            <div>
+                                                <input type="text" name="Email" id="Email" class="form-control" placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-md-offset-0">
+                                            <div>
+                                                <input type="text" name="Address" id="Address" class="form-control" placeholder="Address">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-md-offset-0">
+                                            <div>
+                                                <input type="text" name="Title" id="Title" class="form-control" placeholder="Title">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-md-offset-0">
+                                            <div>
+                                                <textarea rows="3" cols="25" name="Content" id="Content" class="form-control" placeholder="Content" style="height: 103px"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="clear15"></div>
+                                        <div class="col-md-12 col-md-offset-0 view-more-box page-contact">
+                                            <input type="submit" class="view-more-spall btn-contact-main" value="SEND">
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-md-12 col-md-offset-0">
+                                            <div>
+                                                <input type="text" name="Name" id="Name" class="form-control" placeholder="Họ và tên">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-md-offset-0">
+                                            <div>
+                                                <input type="text" name="Phone" id="Phone" class="form-control" placeholder="Số điện thoại">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-md-offset-0">
+                                            <div>
+                                                <input type="text" name="Email" id="Email" class="form-control" placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-md-offset-0">
+                                            <div>
+                                                <input type="text" name="Address" id="Address" class="form-control" placeholder="Địa chỉ">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-md-offset-0">
+                                            <div>
+                                                <input type="text" name="Title" id="Title" class="form-control" placeholder="Tiêu đề">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-md-offset-0">
+                                            <div>
+                                                <textarea rows="3" cols="25" name="Content" id="Content" class="form-control" placeholder="Nội dung" style="height: 103px"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="clear15"></div>
+                                        <div class="col-md-12 col-md-offset-0 view-more-box page-contact">
+                                            <input type="submit" class="view-more-spall btn-contact-main" value="GỬI LIÊN HỆ">
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6 ">
+                            <div class="box-maps">
+                                <p><iframe frameborder="0" height="350" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.7873158432058!2d105.83872231493218!3d21.001160986013346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjHCsDAwJzA0LjIiTiAxMDXCsDUwJzI3LjMiRQ!5e0!3m2!1sen!2s!4v1537325261245" style="border:0" width="100%"></iframe></p>
+
+                            </div>
+                            <div class="box-contact-top">
+                                <p>
+                                    <span style="color: #000000; font-size: 20px; font-weight: bold">TRUNG TÂM CHỐNG ĐỘC - BỆNH VIỆN BẠCH MAI</span>
+                                </p>
+                                <br />
+                                <p>
+                                    <span style="color: #000000">A: Nhà A9, số 78 đường Giải Phóng, Đống Đa, Hà Nội, Việt Nam</span>
+                                </p>
+                                <p>
+                                    <span style="color: #000000">P: 024.8697.501</span>
+                                </p>
+                                <p>
+                                    <span>Fax: 024.8686.774</span>
+                                </p>
+                            </div>
+                            <div class="box-share">
+                                <div class="box-item-share">
+                                    <a href="https://www.facebook.com" target="_blank">
+                                        <img src="/Areas/Admin/Content/files/iconFACE.png" alt="IconShare">
+                                    </a>
+                                </div>
+                                <div class="box-item-share">
+                                    <a href="https://plus.google.com/discover" target="_blank">
+                                        <img src="/Areas/Admin/Content/files/iconGG.png" alt="IconShare">
+                                    </a>
+                                </div>
+                                <div class="box-item-share">
+                                    <a href="https://www.youtube.com/channel/UC7vLDEgpAORBDyXcyDm5yJg" target="_blank">
+                                        <img src="/Areas/Admin/Content/files/iconYOU.png" alt="IconShare">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(".btn-contact-main").click(function () {
+        if ($("#Name").val() === "") {
+            alert("Bạn vui lòng nhập tên");
+            $("#Name").focus();
+            return false;
+        }
+        if ($("#Email").val() === "") {
+            alert("Bạn vui lòng nhập Email");
+            $("#Email").focus();
+            return false;
+        }
+        if ($("#Title").val() === "") {
+            alert("Bạn vui lòng nhập tiêu đề liên hệ");
+            $("#Title").focus();
+            return false;
+        }
+        if ($("#Content").val() === "") {
+            alert("Bạn vui lòng nhập nội dung liên hệ");
+            $("#Content").focus();
+            return false;
+        }
+        var isorder = document.getElementById('Phone').value
+        if (isNaN(isorder)) {
+            alert("Số điện thoại phải bằng số");
+            $("#Phone").focus();
+            return false;
+        }
+        var Name = $("#Name").val();
+        var Email = $("#Email").val();
+        var Phone = $("#Phone").val();
+        var Address = $("#Address").val();
+        var Title = $("#Title").val();
+        var Content = $("#Content").val();
+        $.ajax({
+            url: "/Contact/Contact",
+            data: { Name: Name, Email: Email, Phone: Phone, Address: Address, Title: Title, Content: Content },
+            success: function (response) {
+                $("#Name").val("");
+                $("#Email").val("");
+                $("#Phone").val("");
+                $("#Address").val("");
+                $("#Title").val("");
+                $("#Content").val("");
+                alert("Cảm ơn bạn đã gửi câu hỏi. Chúng tôi sẽ liên hệ lại bạn sớm nhất có thể!");
+            }
+        });
+    });
+</script>

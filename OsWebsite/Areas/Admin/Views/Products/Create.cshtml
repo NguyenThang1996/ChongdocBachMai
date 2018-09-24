@@ -1,0 +1,237 @@
+﻿@model OsWebsite.Models.Product
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .tree-product {
+        color: #fff;
+        background: #2984ff;
+        border-left-color: white;
+    }
+
+        .tree-product a {
+            border-left-color: white !important;
+        }
+</style>
+<section class="content-header"><h1>Thêm mới sản phẩm</h1></section>
+<div class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box adm1">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading adm2">
+                                Cập nhật thông tin
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12"></div>
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        <div class="form-horizontal">
+                                            @Html.ValidationSummary(true)
+                                            <div class="form-group">
+                                                @Html.Label("Mã sản phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.MaSanPham, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.MaSanPham)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Tên sản phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Name)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Nhóm sản phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.DropDownList("GroupProductId", "-- Chọn nhóm sản phẩm --")
+                                                    @Html.ValidationMessageFor(model => model.GroupProductId)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Định dạng", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.DropDownList("Priority", "-- Chọn định dạng --")
+                                                    @Html.ValidationMessageFor(model => model.GroupProductId)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Mô tả", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-6">
+                                                    @Html.TextArea("Summary", new { @class = "ckeditor" })
+                                                    @Html.ValidationMessageFor(model => model.Summary)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Nội dung", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextArea("ContentDetail", new { @class = "ckeditor" })
+                                                    @Html.ValidationMessageFor(model => model.ContentDetail)
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.Label("Hình ảnh", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.Image, new { @class = "form-control", @id = "anhbia" })
+                                                    @Html.ValidationMessageFor(model => model.Image)
+                                                    <br />
+                                                    <input id="chonanhbia" class="btn btn-default" type="button" value="Chọn hình ảnh" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.Label("Giá bán", new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.Price, new { @class = "form-control", Value = 0 })
+                                                    @Html.ValidationMessageFor(model => model.Price)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Giá khuyến mại", new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.PriceOld, new { @class = "form-control" , Value = 0})
+                                                    @Html.ValidationMessageFor(model => model.PriceOld)
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Title)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Keyword, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextAreaFor(model => model.Keyword, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Keyword)
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Description)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Thứ tự", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.IsOrder, new { @class = "form-control", Value = @ViewBag.OrderMax })
+                                                    @Html.ValidationMessageFor(model => model.IsOrder)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Sản phẩm nổi bật", htmlAttributes: new { @class = "col-md-2 text-right" })
+                                                <div class="col-md-10">
+                                                    @Html.CheckBoxFor(model => model.Hot)
+                                                    @Html.ValidationMessageFor(model => model.Hot)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Sản phẩm mới", htmlAttributes: new { @class = "col-md-2 text-right" })
+                                                <div class="col-md-10">
+                                                    @Html.CheckBoxFor(model => model.New)
+                                                    @Html.ValidationMessageFor(model => model.New)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Hiển thị trang chủ", htmlAttributes: new { @class = "col-md-2 text-right" })
+                                                <div class="col-md-10">
+                                                    @Html.CheckBoxFor(model => model.Main)
+                                                    @Html.ValidationMessageFor(model => model.Main)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Kích hoạt", htmlAttributes: new { @class = "col-md-2 text-right"  })
+                                                <div class="col-md-10">
+                                                    @Html.CheckBoxFor(model => model.IsActive, new { @checked = true})
+                                                    @Html.ValidationMessageFor(model => model)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-offset-2 col-md-10">
+                                                    <input type="submit" value="Lưu" class="btn btn-default" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+    </div>
+    @Html.ActionLink("Trở lại", "Index", "", new { @class = "btn btn-default" })
+</div>
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $("#chonanhbia").click(function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $("#anhbia").val(fileUrl);
+            };
+            finder.popup();
+        });
+        $("#GroupProductId").addClass("form-control");
+        $("#Priority").addClass("form-control");
+        $('select[id="Priority"]').first().val(6);
+    });
+
+    $("form").submit(function (e) {
+        if ($("#Name").val() == "") {
+            alert("Tên sản phẩm không được để trống");
+            $("#Name").focus();
+            return false;
+        }
+        if ($("#GroupProductId").val() == "") {
+            alert("Bạn chưa chọn nhóm sản phẩm");
+            $("#GroupProductId").focus();
+            return false;
+        }
+
+        if ($("#Price").val() == "") {
+            alert("Bạn chưa nhập giá bán sản phẩm");
+            $("#Price").focus();
+            return false;
+        }
+
+        var Price = document.getElementById('Price').value
+        if (isNaN(Price)) {
+            alert("Giá bán sản phẩm phải bằng số");
+            $("#Price").focus();
+            return false;
+        }
+
+        if ($("#IsOrder").val() == "") {
+            alert("Số thứ tự không được để trống");
+            $("#IsOrder").focus();
+            return false;
+        }
+        
+        var isorder = document.getElementById('IsOrder').value
+        if (isNaN(isorder)) {
+            alert("Số thứ tự phải bằng số");
+            $("#IsOrder").focus();
+            return false;
+        }
+
+    });
+</script>
