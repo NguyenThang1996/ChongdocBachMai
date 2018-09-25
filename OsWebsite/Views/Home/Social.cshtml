@@ -1,6 +1,20 @@
 ﻿@using OsWebsite.Models;
 @model List<OsWebsite.Models.News>
 
+<style>
+    .dropdown-top-right {
+        display: block;
+        padding-left: 0px !important;
+        padding-bottom: 15px;
+    }
+        .dropdown-top-right:hover {
+            cursor: pointer;
+        }
+    .dropdown-menu-top-right {
+        display: none;
+    }
+</style>
+
 @{
     <title>@ViewBag.MetaTitle</title>
     if (ViewBag.MetaDescription != null)
@@ -53,11 +67,12 @@
             <div style="background: #525252; height: 660px" class="col-md-3 kienthucchung">
                 <ul>
                     <li class="congdong">
-                        <i class="fa fa-caret-right"></i>
-                        <a style="font-size: 17px; font-weight: bold" href="#">
+                        
+                        <a class="dropdown-top-right" style="font-size: 17px; font-weight: bold">
+                            <i class="fa fa-caret-right"></i>
                             Kiến thức chung
                         </a>
-                        <ul style="padding-left: 20px; padding-top: 15px;">
+                        <ul class="dropdown-menu-top-right" style="padding-left: 20px;">
                             <li class="sub-congdong">
                                 <img src="/Areas/Admin/Content/Images/Rightbox/1.png" />
                                 <a href="#">
@@ -86,11 +101,11 @@
                         </ul>
                     </li>
                     <li class="congdong">
-                        <i class="fa fa-caret-right"></i>
-                        <a style="font-size: 17px; font-weight: bold" href="#">
+                        <a class="dropdown-top-right" style="font-size: 17px; font-weight: bold">
+                            <i class="fa fa-caret-right"></i>
                             Các Ngộ độc thường gặp
                         </a>
-                        <ul style="padding-left: 20px; padding-top: 15px;">
+                        <ul class="dropdown-menu-top-right" style="padding-left: 20px;">
                             <li class="sub-congdong">
                                 <img src="/Areas/Admin/Content/Images/Rightbox/5.png" />
                                 <a href="#">
@@ -129,8 +144,8 @@
                         </ul>
                     </li>
                     <li  class="congdong">
-                        <i class="fa fa-caret-right"></i>
-                        <a style="font-size: 17px; font-weight: bold" href="#">
+                        <a class="dropdown-top-right" style="font-size: 17px; font-weight: bold" href="#">
+                            <i class="fa fa-caret-right"></i>
                             Thông tin khác
                         </a>
                     </li>
@@ -141,3 +156,19 @@
     </div>
 </div>
 
+<script>
+    var dropdown = document.getElementsByClassName("dropdown-top-right");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+</script>

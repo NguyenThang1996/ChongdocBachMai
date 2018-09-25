@@ -2278,6 +2278,7 @@ table {
     padding: 5px;*/
     color: #fff;
     font-size: 17px;
+    padding-right: 10px;
 }
 .kienthucchung > ul > li > ul > li {
     /*border-bottom: 1px solid #757575;*/
