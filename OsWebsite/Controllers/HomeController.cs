@@ -74,5 +74,11 @@ namespace OsWebsite.Controllers
             var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
             return PartialView(News);
         }
+        public PartialViewResult Social_Banner()
+        {
+            int IDLang = int.Parse(Session["LangWeb"].ToString());
+            var socialbanner = db.Advertise.Where(x => x.Position == 5 && x.IDLang == IDLang && x.IsActive == true).ToList();
+            return PartialView(socialbanner);
+        }
     }
 }

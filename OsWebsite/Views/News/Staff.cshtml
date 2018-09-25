@@ -63,7 +63,8 @@
                             @Html.PagedListPager(Model, page => Url.Action("", Tag, new { page }))
                         </div>
                 </div>
-                <div style="padding: 0px 15px!important" class="col-md-3">
+                @Html.Action("Social_Banner", "Home")
+                @*<div style="padding: 0px 15px!important" class="col-md-3">
                     <div>
                         <a href="#">
                             <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/Bach-Mai.png" />
@@ -85,9 +86,7 @@
                             <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/Viber.png" />
                         </a>
                     </div>
-
-
-                </div>
+                </div>*@
             </div>
 
         </div>
