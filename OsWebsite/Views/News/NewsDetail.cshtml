@@ -32,7 +32,7 @@
     <div class="box-content-product-page">
         <div class="container">
             <div class="row">
-                <div style="height: 1480px; background: #f5f5f5; padding-top: 10px; padding-bottom: 10px" class="col-md-9">
+                <div style="background-color: #f5f5f5; padding-top: 10px" class="col-md-9">
                     <h4>
                         <a style="text-decoration: none; color: #000; font-weight: bold;" href="#">
                             @Model[0].Name
@@ -43,7 +43,7 @@
                         <a href="#"><img style="padding-bottom: 10px" class="img img-responsive" src="~/Icon/Tin chi tiet/Viber.png" /></a>
                         <a href="#"><img style="padding-bottom: 10px" class="img img-responsive" src="~/Icon/Tin chi tiet/Zalo.png" /></a>
                     </div>
-                    <div style="padding-top: 10px" class="col-md-11">
+                    <div style="padding-top: 10px;  padding-bottom: 10px" class="col-md-11">
                         @Html.Raw(@Model[0].ContentNew)
                     </div>
                     @Html.Action("NewsOthers", "News", new { MenuID = Model[0].MenuID, IdNews = Model[0].ID })
