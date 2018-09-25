@@ -1,0 +1,184 @@
+﻿<div class="banner-page">
+
+</div>
+<div class="box-product">
+    @*<div class="container">
+        <div class="row">
+            <div style="padding-left: 0px;" class="col-md-12">
+                <ul style="border-bottom: 0px!important;" class="nav nav-tabs nav-prod">
+                    @foreach (var item in ViewBag.MenuIdStaff)
+                    {
+                        <li class="active">
+                            <a style="border: 0px!important; border-radius: 15px 15px 0 0; font-size: 18px; font-weight: bold; background-color: #EBEBEB; color: #000000 !important; transition: background-color 500ms;" href="@item.Link">@item.Name</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>*@
+    <div class="box-content-product-page">
+        <div class="container">
+            <div class="row">
+                <div style="background: #f5f5f5; padding-top: 15px;" class="col-md-9 hoinghi">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item active">
+                            <a class="nav-link" data-toggle="tab" href="#tab_1" role="tab">Tin tức</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tab_2" role="tab">Đào tạo tập huấn</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tab_3" role="tab">Nghiên cứu Khoa học</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tab_4" role="tab">Tài liệu Chuyên môn</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tab_5" role="tab">Hội nghị - Hội thảo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tab_6" role="tab">Thông tin khác</a>
+                        </li>
+                    </ul>
+                    <div class="col-md-12">
+                        <div class="content-tab">
+                            <div id="tab_1" class="tab-pane fade active"><h3>Tin tuc</h3></div>
+                            <div id="tab_2" class="tab-pane fade"><h3>Dao tao</h3></div>
+                            <div id="tab_3" class="tab-pane fade"><h3>Nghien cuu</h3></div>
+                            <div id="tab_4" class="tab-pane fade"><h3>Tai lieu</h3></div>
+                            <div id="tab_5" class="tab-pane fade">
+                                <div class="row">
+                                    <div class="col-md-3 address-date">Bạch Mai</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <img src="" alt="Kỷ niệm" />
+                                        <div class="title-hoinghi">
+                                            Lễ kỷ niệm 20 năm thành lập
+                                        </div>
+                                        <ul class="vertical-hoinghi">
+                                            <li class="collapsed" data-toggle="collapse" data-target="#content_1">
+                                                <a class="tab-sub">Giới thiệu</a>
+                                                <i class="fa fa-angle-up"></i>
+                                                <i class="fa fa-angle-down"></i>
+                                                <div class="clearfix" style="border-bottom: 1px solid #dcdcdc;"></div>
+                                                <div id="content_1" class="panel-collapse collapse content-sub-tab">Giới thiệu</div>
+                                            </li>
+                                            <li class="collapsed" data-toggle="collapse" data-target="#content_2">
+                                                <a class="tab-sub">Chương trình</a>
+                                                <i class="fa fa-angle-up"></i>
+                                                <i class="fa fa-angle-down"></i>
+                                                <div class="clearfix" style="border-bottom: 1px solid #dcdcdc;"></div>
+                                                <div id="content_2" class="panel-collapse collapse content-sub-tab">Chương trình</div>
+                                            </li>
+                                            <li class="collapsed" data-toggle="collapse" data-target="#content_3">
+                                                <a class="tab-sub">Diễn giả</a>
+                                                <i class="fa fa-angle-up"></i>
+                                                <i class="fa fa-angle-down"></i>
+                                                <div class="clearfix" style="border-bottom: 1px solid #dcdcdc;"></div>
+                                                <div id="content_3" class="panel-collapse collapse content-sub-tab">Diễn giả</div>
+                                            </li>
+                                            <li class="collapsed" data-toggle="collapse" data-parent="#tab_5" href="#content_4" @*data-target="#content_4"*@>
+                                                <a class="tab-sub">Đăng ký</a>
+                                                <i class="fa fa-angle-up"></i>
+                                                <i class="fa fa-angle-down"></i>
+                                                <div id="content_4" class="panel-collapse collapse">
+                                                    <div class="row dangky">
+                                                        <span class="col-md-2" style="font-size:12px;">Họ và tên (*)</span>
+                                                        <div class="col-md-6">
+                                                            <input class="data-dky" type="text" placeholder="Nhập họ và tên" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row dangky">
+                                                        <span class="col-md-2" style="font-size:12px;">Quý vị là (*)</span>
+                                                        <div class="col-md-6">
+                                                            <input class="data-dky" type="text" placeholder="-- Chọn --" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row dangky">
+                                                        <span class="col-md-2" style="font-size:12px;">Bệnh viện/ Đơn vị (*)</span>
+                                                        <div class="col-md-6">
+                                                            <input class="data-dky" type="text" placeholder="Nhập Bệnh viện/ Tổ chức" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row dangky">
+                                                        <span class="col-md-2" style="font-size:12px;">Khoa/ Phòng</span>
+                                                        <div class="col-md-6">
+                                                            <input class="data-dky" type="text" placeholder="Nhập Khoa/ Phòng" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row dangky">
+                                                        <span class="col-md-2" style="font-size:12px;">Địa chỉ liên hệ</span>
+                                                        <div class="col-md-6">
+                                                            <input class="data-dky" type="text" placeholder="Nhập Địa chỉ liên hệ" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row dangky">
+                                                        <span class="col-md-2" style="font-size:12px;">Số điện thoại (*)</span>
+                                                        <div class="col-md-6">
+                                                            <input class="data-dky" type="tel" placeholder="Nhập Số điện thoại" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row dangky">
+                                                        <span class="col-md-2" style="font-size:12px;">Email (*)</span>
+                                                        <div class="col-md-6">
+                                                            <input class="data-dky" type="text" placeholder="Nhập Email" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row dangky">
+                                                        <span class="col-md-2" style="font-size:12px;">Thông tin góp ý</span>
+                                                        <div class="col-md-8">
+                                                            <textarea class="content-dky" type="text"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row dangky">
+                                                        <div class="col-md-10" style="font-style:italic;font-size:12px;">
+                                                            *Vui lòng nhập thông tin chính xác để góp phần tổ chức được tốt đẹp hơn
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <button type="submit" class="button-dky">ĐĂNG KÝ THAM DỰ</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab_6" class="tab-pane fade"><h3>Tin khac</h3></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div style="padding: 0px 15px!important" class="col-md-3">
+                    <div>
+                        <a href="#">
+                            <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/Bach-Mai.png" />
+                        </a>
+
+                        <a href="#">
+                            <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/BacSiNoitru.png" />
+                        </a>
+
+                        <a href="#">
+                            <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/Facebook.png" />
+                        </a>
+
+                        <a href="#">
+                            <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/Zalo.png" />
+                        </a>
+
+                        <a href="#">
+                            <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/Viber.png" />
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
