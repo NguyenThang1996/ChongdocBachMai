@@ -1,0 +1,11 @@
+﻿@model List<OsWebsite.Models.Advertise>
+<div class="col-md-3" style="padding: 0">
+    <div style="style="margin: 0px -15px!important"">
+        @foreach (var item in Model)
+        {
+            <a href="@item.Link">
+                <img class="img img-responsive" src="@item.Image" alt="@item.Name" />
+            </a>
+        }
+    </div>
+</div>
