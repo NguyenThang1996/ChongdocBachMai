@@ -12,9 +12,10 @@
 
             </div>
             <div class="col-sm-5 col-md-5 box-menu-footer">
-                <img style="float: right; margin: 40px 10px" src="/Areas/Admin/Content/Images/Footer/Youtube.png" />
-                <img style="float: right; margin: 40px 10px" src="/Areas/Admin/Content/Images/Footer/Facebook.png" />
-                <img style="float: right; margin: 40px 10px" src="/Areas/Admin/Content/Images/Footer/GG.png" />
+                @foreach (var item in ViewBag.IconShare)
+                {
+                    <a href="@item.Link"><img style="float: right; margin: 40px 10px" src="@item.Image" alt="@item.Name" /></a>
+                }
             </div>
         </div>
     </div>

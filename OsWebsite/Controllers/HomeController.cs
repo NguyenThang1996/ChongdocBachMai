@@ -48,7 +48,7 @@ namespace OsWebsite.Controllers
             int LangWeb = int.Parse(Session["LangWeb"].ToString());
             ViewBag.Contact = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).Contact;
             ViewBag.Maps = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).GoogleId;
-            var IconShare = db.Advertise.Where(x => x.Position == 3 && x.IDLang == LangWeb).OrderBy(x => x.IsOrder).ToList();
+            var IconShare = db.Advertise.Where(x => x.Position == 3 && x.IDLang == LangWeb && x.IsActive == true).OrderBy(x => x.IsOrder).ToList();
             ViewBag.IconShare = IconShare;
             ViewBag.MailFooter = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).MailFooter;
             var menu = db.Menu.Where(x => x.IDLang == LangWeb && x.IsActive == true && x.MenuType.Count(m => m.MenuPage.CodeMenu == "Footer") > 0).OrderBy(x => x.IsOrder).ToList();
