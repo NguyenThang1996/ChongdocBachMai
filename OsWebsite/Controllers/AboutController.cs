@@ -10,7 +10,6 @@ namespace OsWebsite.Controllers
     public class AboutController : Controller
     {
         OsWebEntities db = new OsWebEntities();
-        // GET: About
         public ActionResult Index()
         {
             string Tag = System.IO.Path.GetFileNameWithoutExtension(Request.RawUrl);

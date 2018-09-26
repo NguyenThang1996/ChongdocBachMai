@@ -39,7 +39,7 @@ namespace OsWebsite.Controllers
         public PartialViewResult Slider()
         {
             int LangWeb = int.Parse(Session["LangWeb"].ToString());
-            var slider = db.Advertise.Where(x => x.Position == 1 /*&& x.IDLang == LangWeb*/ && x.IsActive == true && x.IDLang == LangWeb).OrderBy(x => x.IsOrder).ToList();
+            var slider = db.Advertise.Where(x => x.Position == 1 && x.IDLang == LangWeb && x.IsActive == true).OrderBy(x => x.IsOrder).ToList();
 
             return PartialView(slider);
         }
@@ -48,19 +48,16 @@ namespace OsWebsite.Controllers
             int LangWeb = int.Parse(Session["LangWeb"].ToString());
             ViewBag.Contact = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).Contact;
             ViewBag.Maps = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).GoogleId;
-            var IconShare = db.Advertise.Where(x => x.Position == 3 && x.IDLang == LangWeb).OrderBy(x => x.IsOrder).ToList();
-            ViewBag.IconShare = IconShare;
-            ViewBag.MailFooter = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).MailFooter;
-            var menu = db.Menu.Where(x => x.IDLang == LangWeb && x.IsActive == true && x.MenuType.Count(m => m.MenuPage.CodeMenu == "Footer") > 0).OrderBy(x => x.IsOrder).ToList();
-            return PartialView(menu);
+            ViewBag.IconShare = db.Advertise.Where(x => x.Position == 3 && x.IDLang == LangWeb && x.IsActive == true).OrderBy(x => x.IsOrder).ToList();          
+            return PartialView();
         }
         public PartialViewResult Social()
         {
             int LangWeb = int.Parse(Session["LangWeb"].ToString());
             var Newscheck = db.Menu.Where(x => x.Tag == "danh-cho-cong-dong" && x.IsActive == true).ToList();
-            ViewBag.NameGroupSocial1 = Newscheck[0].Name.ToUpper();
+            ViewBag.NameGroupSocial = Newscheck[0].Name.ToUpper();
             var parentid = Newscheck[0].ID;
-            ViewBag.MenuIdSocial1 = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true).ToList();
+            ViewBag.MenuIdSocial = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true).ToList();
             var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
             return PartialView(News);
         }
@@ -68,21 +65,21 @@ namespace OsWebsite.Controllers
         {
             int LangWeb = int.Parse(Session["LangWeb"].ToString());
             var Newscheck = db.Menu.Where(x => x.Tag == "danh-cho-nhan-vien-y-duoc" && x.IsActive == true).ToList();
-            ViewBag.NameGroupStaff1 = Newscheck[0].Name.ToUpper();
+            ViewBag.NameGroupStaff = Newscheck[0].Name.ToUpper();
             var parentid = Newscheck[0].ID;
-            ViewBag.MenuIdStaff1 = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true).ToList();
+            ViewBag.MenuIdStaff = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true).ToList();
             var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
             return PartialView(News);
         }
         public PartialViewResult Social_Banner()
         {
-            int IDLang = int.Parse(Session["LangWeb"].ToString());
-            var socialbanner = db.Advertise.Where(x => x.Position == 5 && x.IDLang == IDLang && x.IsActive == true).OrderBy(x => x.IsOrder).ToList();
+            int LangWeb = int.Parse(Session["LangWeb"].ToString());
+            var socialbanner = db.Advertise.Where(x => x.Position == 5 && x.IDLang == LangWeb && x.IsActive == true).OrderBy(x => x.IsOrder).ToList();
             return PartialView(socialbanner);
         }
         public PartialViewResult Header()
         {
-            int IDLang = int.Parse(Session["LangWeb"].ToString());           
+            int LangWeb = int.Parse(Session["LangWeb"].ToString());           
             return PartialView();
         }
     }

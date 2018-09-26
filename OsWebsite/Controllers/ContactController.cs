@@ -15,6 +15,11 @@ namespace OsWebsite.Controllers
         OsWebEntities db = new OsWebEntities();
         public ActionResult Index()
         {
+            int LangWeb = int.Parse(Session["LangWeb"].ToString());
+            ViewBag.Contact = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).Contact;
+            ViewBag.Maps = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).GoogleId;
+            var IconShare = db.Advertise.Where(x => x.Position == 3 && x.IDLang == LangWeb && x.IsActive == true).OrderBy(x => x.IsOrder).ToList();
+            ViewBag.IconShare = IconShare;
             return View();
         }
         public string Contact(string Name, string Email, string Phone, string Address, string Title, string Content)
