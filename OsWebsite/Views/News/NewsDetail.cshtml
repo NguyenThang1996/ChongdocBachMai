@@ -48,33 +48,8 @@
                     </div>
                     @Html.Action("NewsOthers", "News", new { MenuID = Model[0].MenuID, IdNews = Model[0].ID })
                 </div>
-                <div style="padding: 0px 15px!important" class="col-md-3">
-                    <div>
-                        <a href="#">
-                            <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/Bach-Mai.png" />
-                        </a>
-
-                        <a href="#">
-                            <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/BacSiNoitru.png" />
-                        </a>
-
-                        <a href="#">
-                            <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/Facebook.png" />
-                        </a>
-
-                        <a href="#">
-                            <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/Zalo.png" />
-                        </a>
-
-                        <a href="#">
-                            <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/Viber.png" />
-                        </a>
-                    </div>
-
-
-                </div>
+                @Html.Action("Social_Banner", "Home")
             </div>
-
         </div>
     </div>
 </div>

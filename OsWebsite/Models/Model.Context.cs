@@ -49,89 +49,63 @@ namespace OsWebsite.Models
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductImages> ProductImages { get; set; }
         public virtual DbSet<Regional> Regional { get; set; }
+        public virtual DbSet<Register> Register { get; set; }
         public virtual DbSet<Setting> Setting { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Visitor> Visitor { get; set; }
-
+    
         public virtual ObjectResult<DacapMenu_Result> DacapMenu(Nullable<int> iDLang)
         {
             var iDLangParameter = iDLang.HasValue ?
                 new ObjectParameter("IDLang", iDLang) :
                 new ObjectParameter("IDLang", typeof(int));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DacapMenu_Result>("DacapMenu", iDLangParameter);
         }
-
-        public virtual ObjectResult<News> News_Get4Cap(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<News>("News_Get4Cap", idParameter);
-        }
-
-        public virtual ObjectResult<News> News_Get4Cap(Nullable<int> id, MergeOption mergeOption)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<News>("News_Get4Cap", mergeOption, idParameter);
-        }
-
-        public virtual ObjectResult<Product> Product_Get4Cap(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product>("Product_Get4Cap", idParameter);
-        }
-
-        public virtual ObjectResult<Product> Product_Get4Cap(Nullable<int> id, MergeOption mergeOption)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product>("Product_Get4Cap", mergeOption, idParameter);
-        }
-
+    
         public virtual ObjectResult<DacapProduct_Result> DacapProduct(Nullable<int> iDLang, Nullable<int> position)
         {
             var iDLangParameter = iDLang.HasValue ?
                 new ObjectParameter("IDLang", iDLang) :
                 new ObjectParameter("IDLang", typeof(int));
-
+    
             var positionParameter = position.HasValue ?
                 new ObjectParameter("Position", position) :
                 new ObjectParameter("Position", typeof(int));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DacapProduct_Result>("DacapProduct", iDLangParameter, positionParameter);
         }
-
+    
+        public virtual ObjectResult<News_Get4Cap_Result> News_Get4Cap(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<News_Get4Cap_Result>("News_Get4Cap", idParameter);
+        }
+    
+        public virtual ObjectResult<News_Others_Result> News_Others(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<News_Others_Result>("News_Others", idParameter);
+        }
+    
+        public virtual ObjectResult<Product_Get4Cap_Result> Product_Get4Cap(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Product_Get4Cap_Result>("Product_Get4Cap", idParameter);
+        }
+    
         public virtual ObjectResult<sp_Visitor_GetByAll_Result> sp_Visitor_GetByAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Visitor_GetByAll_Result>("sp_Visitor_GetByAll");
-        }
-
-        public virtual ObjectResult<News> News_Others(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<News>("News_Others", idParameter);
-        }
-
-        public virtual ObjectResult<News> News_Others(Nullable<int> id, MergeOption mergeOption)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("Id", id) :
-                new ObjectParameter("Id", typeof(int));
-
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<News>("News_Others", mergeOption, idParameter);
         }
     }
 }
