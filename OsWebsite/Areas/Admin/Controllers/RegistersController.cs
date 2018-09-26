@@ -18,19 +18,50 @@ namespace OsWebsite.Areas.Admin.Controllers
         // GET: Admin/Register
         public ActionResult Index(int page = 1, int pagesize = 10)
         {
-            var Register = db.Register.OrderByDescending(x => x.Id).ToList();
-            return View(Register.ToPagedList(page, pagesize));
+            var register = db.Register.OrderByDescending(x => x.Id).ToList();
+            foreach(var item in register)
+            {
+                if (item.Job == "1")
+                {
+                    item.Job = "Giáo sư";
+                }
+                if (item.Job == "2")
+                {
+                    item.Job = "Phó giáo sư";
+                }
+                if (item.Job == "3")
+                {
+                    item.Job = "Thạc sĩ";
+                }
+                if (item.Job == "4")
+                {
+                    item.Job = "Tiến sĩ";
+                }
+                if (item.Job == "5")
+                {
+                    item.Job = "Bác sĩ";
+                }
+                if (item.Job == "6")
+                {
+                    item.Job = "Nghiên cứu sinh";
+                }
+                if (item.Job == "7")
+                {
+                    item.Job = "Khác";
+                }
+            }
+            return View(register.ToPagedList(page, pagesize));
         }
 
         [HttpPost]
         public ActionResult DeleteMuti(FormCollection formCollection)
         {
             string[] ids = formCollection["Id"].Split(new char[] { ',' });
-            foreach (string RegisterId in ids)
+            foreach (string registerId in ids)
             {
-                int RegisterId1 = int.Parse(RegisterId);
-                var Register = db.Register.Find(RegisterId1);
-                db.Register.Remove(Register);
+                int registerId1 = int.Parse(registerId);
+                var register = db.Register.Find(registerId1);
+                db.Register.Remove(register);
                 db.SaveChanges();
             }
             return RedirectToAction("Index");
@@ -43,14 +74,24 @@ namespace OsWebsite.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Register Register = db.Register.Find(id);
-            if (Register == null)
+            Register register = db.Register.Find(id);
+            if (register == null)
             {
                 return HttpNotFound();
             }
-            Register.IsActive = true;
+            ViewBag.Job = new SelectList(new List<SelectListItem>
+            {
+                    new SelectListItem { Text = "Giáo sư", Value = "1"},
+                    new SelectListItem { Text = "Phó giáo sư", Value = "2"},
+                    new SelectListItem { Text = "Thạc sĩ", Value = "3"},
+                    new SelectListItem { Text = "Tiến sĩ", Value = "4"},
+                    new SelectListItem { Text = "Bác sĩ", Value = "5"},
+                    new SelectListItem { Text = "Nghiên cứu sinh", Value = "6"},
+                    new SelectListItem { Text = "Khác", Value = "7"}
+            }, "Value", "Text", register.Job);
+            register.IsActive = true;
             db.SaveChanges();
-            return View(Register);
+            return View(register);
         }
 
         // GET: Admin/Register/Create
@@ -114,12 +155,12 @@ namespace OsWebsite.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Register Register = db.Register.Find(id);
-            if (Register == null)
+            Register register = db.Register.Find(id);
+            if (register == null)
             {
                 return HttpNotFound();
             }
-            return View(Register);
+            return View(register);
         }
 
         // POST: Admin/Register/Delete/5
@@ -127,8 +168,8 @@ namespace OsWebsite.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Register Register = db.Register.Find(id);
-            db.Register.Remove(Register);
+            Register register = db.Register.Find(id);
+            db.Register.Remove(register);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

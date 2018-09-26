@@ -49,7 +49,7 @@ namespace OsWebsite.Areas.Admin.Controllers
                 new SelectListItem { Text = "Hình nền trang", Value = "2"},
                 new SelectListItem { Text = "Icon Share", Value = "3"},
                 new SelectListItem { Text = "Logo đối tác", Value = "4"},
-                new SelectListItem { Text = "Banner Lafco", Value = "5"},
+                new SelectListItem { Text = "Banner Social", Value = "5"},
             }, "Value", "Text");
             int IDLang = int.Parse(Session["LangWeb"].ToString());
 

@@ -41,36 +41,36 @@ namespace OsWebsite.Controllers
             return View(News.ToPagedList(page, pagesize));
         }
 
-        //public string Conference(string Name, string Chucvu, string Tochuc, string Phong, string Address, string Phone, string Email, string Content)
-        //{
-        //    var obj = new Register();
-        //    obj.Name = Name;
-        //    obj.Chucvu = Chucvu;
-        //    obj.Tochuc = Tochuc;
-        //    obj.Phong = Phong;
-        //    obj.Address = Address;
-        //    obj.Phone = Phone;
-        //    obj.Email = Email;
-        //    obj.Content = Content;
-        //    obj.DateCreate = DateTime.Now;
-        //    obj.IsActive = false;
-        //    db.Register.Add(obj);
-        //    db.SaveChanges();
-        //    string str = "";
-        //    str += "<h3>Khách hàng " + Name + " đã gửi </h3>";
-        //    str += "<h4>Tên khách hàng : " + Name + "</h4>";
-        //    str += "<h4>Email : " + Email + "</h4>";
-        //    str += "<h4>Số điện thoại : " + Phone + "</h4>";
-        //    str += "<h4>Tổ chức : " + Tochuc + "</h4>";
-        //    str += "<h4>Nội dung : " + Content + "</h4>";
-        //    //gửi mail cho admin
-        //    var Mail = db.Config.Select(x => x.Email).FirstOrDefault();
-        //    Task.Factory.StartNew(() =>
-        //    {
-        //        Sendmail_Gmail(Mail, Content, "Khách hàng " + Name + " đã gửi thông tin đăng ký", str);
-        //    });
-        //    return "";
-        //}
+        public string Conference(string Name, string Chucvu, string Tochuc, string Phong, string Address, string Phone, string Email, string Content)
+        {
+            var obj = new Register();
+            obj.Name = Name;
+            obj.Job = Chucvu;
+            obj.Hospital = Tochuc;
+            obj.Room = Phong;
+            obj.Address = Address;
+            obj.Phone = Phone;
+            obj.Email = Email;
+            obj.Content = Content;
+            obj.DateCreate = DateTime.Now;
+            obj.IsActive = false;
+            db.Register.Add(obj);
+            db.SaveChanges();
+            string str = "";
+            str += "<h3>Khách hàng " + Name + " đã gửi </h3>";
+            str += "<h4>Tên khách hàng : " + Name + "</h4>";
+            str += "<h4>Email : " + Email + "</h4>";
+            str += "<h4>Số điện thoại : " + Phone + "</h4>";
+            str += "<h4>Tổ chức : " + Tochuc + "</h4>";
+            str += "<h4>Nội dung : " + Content + "</h4>";
+            //gửi mail cho admin
+            var Mail = db.Config.Select(x => x.Email).FirstOrDefault();
+            Task.Factory.StartNew(() =>
+            {
+                Sendmail_Gmail(Mail, Content, "Khách hàng " + Name + " đã gửi thông tin đăng ký", str);
+            });
+            return "";
+        }
 
         private string MailBody(string content, string mdh, string str)
         {
