@@ -222,7 +222,7 @@ body {
 
                 .menu-head-bottom > ul > li:hover a {
                     color: #990100 !important;
-                    font-weight: bold;
+                    /*font-weight: bold;*/
                 }
                 .menu-head-bottom > ul > li.active > a {
                     color: #990100 !important;
@@ -242,6 +242,7 @@ body {
                 color: #000000;
                 text-decoration: none;
             }
+
 
             .menu-head-bottom > ul > li > .menu-child {
                 display: none;
