@@ -23,7 +23,7 @@
             <div style="padding-left: 0px;" class="col-md-12">
                 <ul style="border-bottom: 0px!important;" class="nav nav-tabs nav-prod">
                     <li class="active">
-                        <a style="border: 0px!important; border-radius: 15px 15px 0 0; font-size: 18px; font-weight: bold; background-color: #870000; color: #fff !important; transition: background-color 500ms;" href="/danh-cho-nhan-vien-y-duoc">@ViewBag.NameGroupStaff1</a>
+                        <a style="border: 0px!important; border-radius: 15px 15px 0 0; font-size: 18px; font-weight: bold; background-color: #870000; color: #fff !important; transition: background-color 500ms;" href="/danh-cho-nhan-vien-y-duoc">@ViewBag.NameGroupStaff</a>
                     </li>
                 </ul>
             </div>
@@ -52,7 +52,7 @@
             <div style="height: 660px;">
                 <div style="background: #525252;" class="col-md-3 thongtinthem">
                     <ul>
-                        @foreach (var item in ViewBag.MenuIdStaff1)
+                        @foreach (var item in ViewBag.MenuIdStaff)
                         {
                             <li class="dichvu-yte">
                                 <i class="fa fa-caret-right"></i>
@@ -67,27 +67,6 @@
 
                 </div>
                 @Html.Action("Social_Banner", "Home")
-                @*<div class="col-md-3" style="padding-left:0px; padding-right:0px;">
-                    <a href="#">
-                        <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/Bach-Mai.png" />
-                    </a>
-
-                    <a href="#">
-                        <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/BacSiNoitru.png" />
-                    </a>
-
-                    <a href="#">
-                        <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/Facebook.png" />
-                    </a>
-
-                    <a href="#">
-                        <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/Zalo.png" />
-                    </a>
-
-                    <a href="#">
-                        <img class="img img-responsive" src="/Areas/Admin/Content/Images/Rightbox/Viber.png" />
-                    </a>
-                </div>*@
             </div>
             
         </div>
