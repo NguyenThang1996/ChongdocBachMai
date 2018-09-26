@@ -46,7 +46,7 @@
     }
 
     .title-hoinghi {
-        padding-top: 10px;
+        padding-top: 15px;
         padding-bottom: 5px;
     }
 
@@ -63,7 +63,7 @@
         padding-top: 5px;
         padding-bottom: 5px;
     }
-
+    
     .content-dky {
         border: 1px solid #ccc;
         border-radius: 5px;
@@ -91,6 +91,7 @@
         padding-right: 0;
         background-color: #f7f7f7;
         padding-bottom: 20px;
+        /*padding-top: 15px;*/
     }
 
     .address-date {
@@ -113,6 +114,7 @@
     .tab-sub {
         font-weight: bold;
         color: #000;
+        font-size: 16px;
     }
 
         .tab-sub:hover {
@@ -153,7 +155,7 @@
     <div class="box-content-product-page">
         <div class="container">
             <div class="row">
-                <div style="background: #f5f5f5; padding-top: 15px;" class="col-md-9 hoinghi">
+                <div style="background: #f5f5f5;" class="col-md-9 hoinghi">
                     @if (Tag != "hoi-nghi--hoi-thao")
                     {
                         foreach (var item in Model)
@@ -183,15 +185,16 @@
                     {
                         <div class="col-md-12">
                             <div class="content-tab">
-                                <div class="tab-pane fade">
+                                <div class="tab-pane">
                                     <div class="row">
-                                        <div class="col-md-3 address-date">Bạch Mai</div>
+                                        <div class="col-md-3 address-date" style="font-size: 16px;">Bạch Mai, 5/11/2018</div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <img src="" alt="Kỷ niệm" />
-                                            <div class="title-hoinghi">
-                                                Lễ kỷ niệm 20 năm thành lập
+                                            <img src="~/Icon/Img_kyniem20.png" alt="Kỷ niệm" style="width:100%;"/>
+                                            <div class="title-hoinghi" style="text-transform: uppercase; color:#ff0000; font-weight: bold; font-size: 18px;">
+                                                Lễ kỷ niệm 20 năm thành lập trung tâm chống độc Bạch Mai<br />
+                                                Hội nghị quốc tế chuyên ngành chống độc 2018
                                             </div>
                                             <ul class="vertical-hoinghi">
                                                 <li>
@@ -201,7 +204,13 @@
                                                         <i class="fa fa-angle-down"></i>
                                                         <div class="clearfix"></div>
                                                     </div>
-                                                    <div id="content_1" class="panel-collapse collapse content-sub-tab">Giới thiệu</div>
+                                                    <div id="content_1" class="panel-collapse collapse content-sub-tab">
+                                                        THAM GIA GIẢI QUYẾT NHIỀU VỤ NGỘ ĐỘC<br />
+                                                        Ngộ độc khí: Thái Nguyên, Đà Nẵng, Buôn Mê Thuột<br />
+                                                        Ngộ độc hóa chất gây co giật: Bắc Ninh, Thái Bình, Nam Định, Vĩnh Phúc, Bắc Giang<br />
+                                                        Ngộ độc Thallium: Quỳnh Lôi, Hà Nội<br />
+                                                        Ngộ độc cá Nóc: Hà Nội, Hà Tây<br />
+                                                    </div>
                                                 </li>
                                                 <li>
                                                     <div class="collapsed title-sub-hoinghi" data-toggle="collapse" data-target="#content_2">
@@ -210,7 +219,13 @@
                                                         <i class="fa fa-angle-down"></i>
                                                         <div class="clearfix"></div>
                                                     </div>
-                                                    <div id="content_2" class="panel-collapse collapse content-sub-tab">Chương trình</div>
+                                                    <div id="content_2" class="panel-collapse collapse content-sub-tab">
+                                                        MỞ LỚP ĐÀO TẠO, HUẤN LUYỆN <br />
+                                                        43 lớp/41 địa phương bao gồm: 1.100 Bác sĩ tuyến Tỉnh và 1.300 bác sĩ tuyến Huyện<br />
+                                                        Viết tài liệu giảng dạy, phác đồ, sách chuyên ngành<br />
+                                                        Hướng dẫn kỹ thuật điều trị và xét nghiệm độc chất<br />
+                                                        Tổ chức hội thảo Chống độc toàn quốc<br />
+                                                    </div>
                                                 </li>
                                                 <li>
                                                     <div class="collapsed title-sub-hoinghi" data-toggle="collapse" data-target="#content_3">
@@ -219,7 +234,12 @@
                                                         <i class="fa fa-angle-down"></i>
                                                         <div class="clearfix"></div>
                                                     </div>
-                                                    <div id="content_3" class="panel-collapse collapse content-sub-tab">Diễn giả</div>
+                                                    <div id="content_3" class="panel-collapse collapse content-sub-tab">
+                                                        THAM GIA HỘI NGHỊ QUỐC TẾ<br />
+                                                        Là thành viên của Hội Chống độc IPCS khu vực ĐNA và một số mối quan hệ với các TTCĐ nước ngoài<br />
+                                                        6 báo cáo tham luận quốc gia<br />
+                                                        3 báo cáo khoa học tại hội nghị CĐ nước ngoài (1 Pháp, 2 ở Mỹ)<br />
+                                                    </div>
                                                 </li>
                                                 <li>
                                                     <div class="collapsed title-sub-hoinghi" data-toggle="collapse" data-parent="#tab_5" href="#content_4" data-target="#content_4">
@@ -233,49 +253,59 @@
                                                         <div class="row dangky">
                                                             <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Họ và tên (*)</span>
                                                             <div class="col-md-6" style="padding-left:0px;">
-                                                                <input class="data-dky" type="text" placeholder="Nhập họ và tên" />
+                                                                <input class="data-dky" id="Name" name="Name" type="text" placeholder="Nhập Họ và tên" />
                                                             </div>
                                                         </div>
                                                         <div class="row dangky">
                                                             <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Quý vị là (*)</span>
                                                             <div class="col-md-6" style="padding-left:0px;">
-                                                                <input class="data-dky" type="text" placeholder="-- Chọn --" />
+                                                                @*<input class="data-dky" id="Chucvu" type="text" placeholder="-- Chọn --" />*@
+                                                                <select class="data-dky" id="Chucvu" name="Chucvu">
+                                                                    <option value="">-- Chọn --</option>
+                                                                    <option value="1">Giáo sư</option>
+                                                                    <option value="2">Phó giáo sư</option>
+                                                                    <option value="3">Thạc sĩ</option>
+                                                                    <option value="4">Tiến sĩ</option>
+                                                                    <option value="5">Bác sĩ</option>
+                                                                    <option value="6">Nghiên cứu sinh</option>
+                                                                    <option value="7">Khác</option>
+                                                                </select> 
                                                             </div>
                                                         </div>
                                                         <div class="row dangky">
                                                             <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Bệnh viện/ Đơn vị (*)</span>
                                                             <div class="col-md-6" style="padding-left:0px;">
-                                                                <input class="data-dky" type="text" placeholder="Nhập Bệnh viện/ Tổ chức" />
+                                                                <input class="data-dky" id="Tochuc" name="Tochuc" type="text" placeholder="Nhập Bệnh viện/ Tổ chức" />
                                                             </div>
                                                         </div>
                                                         <div class="row dangky">
                                                             <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Khoa/ Phòng</span>
                                                             <div class="col-md-6" style="padding-left:0px;">
-                                                                <input class="data-dky" type="text" placeholder="Nhập Khoa/ Phòng" />
+                                                                <input class="data-dky" id="Phong" name="Phong" type="text" placeholder="Nhập Khoa/ Phòng" />
                                                             </div>
                                                         </div>
                                                         <div class="row dangky">
                                                             <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Địa chỉ liên hệ</span>
                                                             <div class="col-md-6" style="padding-left:0px;">
-                                                                <input class="data-dky" type="text" placeholder="Nhập Địa chỉ liên hệ" />
+                                                                <input class="data-dky" id="Address" name="Address" type="text" placeholder="Nhập Địa chỉ liên hệ" />
                                                             </div>
                                                         </div>
                                                         <div class="row dangky">
                                                             <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Số điện thoại (*)</span>
                                                             <div class="col-md-6" style="padding-left:0px;">
-                                                                <input class="data-dky" type="tel" placeholder="Nhập Số điện thoại" />
+                                                                <input class="data-dky" id="Phone" name="Phone" type="tel" placeholder="Nhập Số điện thoại" />
                                                             </div>
                                                         </div>
                                                         <div class="row dangky">
                                                             <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Email (*)</span>
                                                             <div class="col-md-6" style="padding-left:0px;">
-                                                                <input class="data-dky" type="text" placeholder="Nhập Email" />
+                                                                <input class="data-dky" id="Email" name="Email" type="text" placeholder="Nhập Email" />
                                                             </div>
                                                         </div>
                                                         <div class="row dangky">
                                                             <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Thông tin góp ý</span>
                                                             <div class="col-md-8" style="padding-left:0px;">
-                                                                <textarea class="content-dky" type="text"></textarea>
+                                                                <textarea class="content-dky" id="Content" name="Content" type="text"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="row dangky">
@@ -285,10 +315,11 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-md-3">
-                                                                <button type="submit" class="button-dky">ĐĂNG KÝ THAM DỰ</button>
+                                                                <input type="submit" class="button-dky" value="ĐĂNG KÝ THAM DỰ" />
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                 </li>
                                             </ul>
                                         </div>
@@ -327,3 +358,62 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(".button-dky").click(function () {
+        if ($("#Name").val() === "") {
+            alert("Bạn vui lòng nhập tên");
+            $("#Name").focus();
+            return false;
+        }
+        if ($("#Tochuc").val() === "") {
+            alert("Bạn vui lòng nhập tổ chức");
+            $("#Tochuc").focus();
+            return false;
+        }
+        if ($("#Email").val() === "") {
+            alert("Bạn vui lòng nhập email");
+            $("#Email").focus();
+            return false;
+        }
+        if ($("#Chucvu").val() === "") {
+            alert("Bạn vui lòng nhập chức vụ");
+            $("#Chucvu").focus();
+            return false;
+        }
+        if ($("#Content").val() === "") {
+            alert("Bạn vui lòng nhập thông tin góp ý");
+            $("#Content").focus();
+            return false;
+        }
+        var isorder = document.getElementById('Phone').value
+        if (isNaN(isorder)) {
+            alert("Số điện thoại phải bằng số");
+            $("#Phone").focus();
+            return false;
+        }
+        var Name = $("#Name").val();
+        var Chucvu = $("#Chucvu").val();
+        var Tochuc = $("#Tochuc").val();
+        var Phong = $("#Phong").val();
+        var Address = $("#Address").val();
+        var Phone = $("#Phone").val();
+        var Email = $("#Email").val();
+        var Content = $("#Content").val();
+        $.ajax({
+            url: "/Conference/Conference",
+            data: { Name: Name, Chucvu: Chucvu, Tochuc: Tochuc, Phong: Phong, Address: Address, Phone: Phone, Email: Email, Content: Content },
+            success: function (response) {
+                $("#Name").val("");
+                $("#Chucvu").val("");
+                $("#Tochuc").val("");
+                $("Phong").val("");
+                $("#Address").val("");
+                $("#Phone").val("");
+                $("#Email").val("");
+                $("#Content").val("");
+                alert("Cảm ơn bạn đã đăng ký. Chúng tôi sẽ gửi email xác nhận cho bạn sớm nhất có thể!");
+            }
+        });
+    });
+</script>
