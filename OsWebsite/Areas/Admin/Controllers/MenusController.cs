@@ -269,7 +269,7 @@ namespace OsWebsite.Areas.Admin.Controllers
                     new SelectListItem { Text = "Box bên phải", Value = "2"},
                     //new SelectListItem { Text = "Dự án", Value = "3"},
                     //new SelectListItem { Text = "Sản Phẩm", Value = "4"}
-            }, "Value", "Text");
+            }, "Value", "Text", menu.Position);
             //ViewBag.Style = new SelectList(new List<SelectListItem>
             //    {
             //        new SelectListItem { Text = "Menu dọc", Value = "1"},
@@ -308,6 +308,13 @@ namespace OsWebsite.Areas.Admin.Controllers
                 {
                     menu.Position = 0;
                 }
+                ViewBag.Position = new SelectList(new List<SelectListItem>
+                {
+                        new SelectListItem { Text = "Menu", Value = "1"},
+                        new SelectListItem { Text = "Box bên phải", Value = "2"},
+                        //new SelectListItem { Text = "Dự án", Value = "3"},
+                        //new SelectListItem { Text = "Sản Phẩm", Value = "4"}
+                }, "Value", "Text", menu.Position);
                 menu.Summary = "";
                 menu.Content = "";
                 menu.Tag = StringClass.NameToTag(menu.Name);
@@ -317,11 +324,11 @@ namespace OsWebsite.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Style = new SelectList(new List<SelectListItem>
-            {
-                new SelectListItem { Text = "Menu Đầu Trang", Value = "0"},
-                new SelectListItem { Text = "Menu Cuối Trang", Value = "1"},
-            }, "Value", "Text", menu.Style);
+            //ViewBag.Style = new SelectList(new List<SelectListItem>
+            //{
+            //    new SelectListItem { Text = "Menu Đầu Trang", Value = "0"},
+            //    new SelectListItem { Text = "Menu Cuối Trang", Value = "1"},
+            //}, "Value", "Text", menu.Style);
             ViewBag.IDCha = new SelectList(db.DacapMenu(IDLang), "ID", "Name", menu.IDCha);
 
             var items = new SelectList(db.Module.Where(x => x.IsActive == true), "ID", "Name").ToList();
