@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Advertise">
           <Key>
             <PropertyRef Name="Id" />
@@ -339,7 +339,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="250" />
           <Property Name="Job" Type="nvarchar" MaxLength="50" />
           <Property Name="Hospital" Type="nvarchar" MaxLength="250" />
@@ -730,8 +730,7 @@
             <End Role="Regional" EntitySet="Regional" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1107,7 +1106,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Job" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Hospital" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
@@ -1481,20 +1480,20 @@
             <End Role="ProductImages" EntitySet="ProductImages" />
           </AssociationSet>
           <FunctionImport Name="DacapMenu" ReturnType="Collection(Model.DacapMenu_Result)">
-            <Parameter Name="IDLang" Mode="In" Type="Int32" />
+          <Parameter Name="IDLang" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DacapProduct" ReturnType="Collection(Model.DacapProduct_Result)">
             <Parameter Name="IDLang" Mode="In" Type="Int32" />
             <Parameter Name="Position" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="News_Get4Cap" ReturnType="Collection(Model.News_Get4Cap_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="News_Others" ReturnType="Collection(Model.News_Others_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Product_Get4Cap" ReturnType="Collection(Model.Product_Get4Cap_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_Visitor_GetByAll" ReturnType="Collection(Model.sp_Visitor_GetByAll_Result)" />
         </EntityContainer>

@@ -19,7 +19,7 @@ namespace OsWebsite.Areas.Admin.Controllers
         public ActionResult Index(int page = 1, int pagesize = 10)
         {
             var register = db.Register.OrderByDescending(x => x.Id).ToList();
-            foreach(var item in register)
+            foreach (var item in register)
             {
                 if (item.Job == "1")
                 {

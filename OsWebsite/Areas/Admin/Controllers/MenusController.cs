@@ -120,18 +120,18 @@ namespace OsWebsite.Areas.Admin.Controllers
 
                 ViewBag.Position = new SelectList(new List<SelectListItem>
                 {
-                    new SelectListItem { Text = "Giới Thiệu", Value = "1"},
-                    new SelectListItem { Text = "Tin Tức", Value = "2"},
-                    new SelectListItem { Text = "Dự án", Value = "3"},
-                    new SelectListItem { Text = "Sản Phẩm", Value = "4"}
+                    new SelectListItem { Text = "Menu", Value = "1"},
+                    new SelectListItem { Text = "Box bên phải", Value = "2"},
+                    //new SelectListItem { Text = "Dự án", Value = "3"},
+                    //new SelectListItem { Text = "Sản Phẩm", Value = "4"}
                 }, "Value", "Text",menu.Position);
 
-                ViewBag.Style = new SelectList(new List<SelectListItem>
-                {
-                    new SelectListItem { Text = "Menu dọc", Value = "1"},
-                    new SelectListItem { Text = "Menu ngang", Value = "2"}
+                //ViewBag.Style = new SelectList(new List<SelectListItem>
+                //{
+                //    new SelectListItem { Text = "Menu dọc", Value = "1"},
+                //    new SelectListItem { Text = "Menu ngang", Value = "2"}
 
-                }, "Value", "Text", menu.Style);
+                //}, "Value", "Text", menu.Style);
 
                 int countmax = db.Menu.Where(x => x.IDCha == ID).Count();
                 int ordermax = 0;
@@ -156,18 +156,18 @@ namespace OsWebsite.Areas.Admin.Controllers
 
                 ViewBag.Position = new SelectList(new List<SelectListItem>
                 {
-                    new SelectListItem { Text = "Giới Thiệu", Value = "1"},
-                    new SelectListItem { Text = "Tin Tức", Value = "2"},
-                    new SelectListItem { Text = "Dự án", Value = "3"},
-                    new SelectListItem { Text = "Sản Phẩm", Value = "4"}
+                    new SelectListItem { Text = "Menu", Value = "1"},
+                    new SelectListItem { Text = "Box bên phải", Value = "2"},
+                    //new SelectListItem { Text = "Dự án", Value = "3"},
+                    //new SelectListItem { Text = "Sản Phẩm", Value = "4"}
                 }, "Value", "Text");
 
-                ViewBag.Style = new SelectList(new List<SelectListItem>
-                {
-                    new SelectListItem { Text = "Menu dọc", Value = "1"},
-                    new SelectListItem { Text = "Menu ngang", Value = "2"}
+                //ViewBag.Style = new SelectList(new List<SelectListItem>
+                //{
+                //    new SelectListItem { Text = "Menu dọc", Value = "1"},
+                //    new SelectListItem { Text = "Menu ngang", Value = "2"}
 
-                }, "Value", "Text");
+                //}, "Value", "Text");
 
                 int countmax = db.Menu.Where(x => x.IsActive == true).Count();
                 int ordermax = 0;
@@ -192,8 +192,8 @@ namespace OsWebsite.Areas.Admin.Controllers
             int IDLang = int.Parse(Session["LangWeb"].ToString());
             if (ModelState.IsValid)
             {
-                int check = db.Menu.Where(x => x.Name == menu.Name && x.IDLang == IDLang).Count();
-                if (check != 0)
+                int check = db.Menu.Where(x => x.ID == menu.ID).Count();
+                if (check == 0)
                 {
                     return Create(menu.IDCha,"tontai");
                 }
@@ -215,7 +215,7 @@ namespace OsWebsite.Areas.Admin.Controllers
                 }
                 menu.IDLang = IDLang;
                 menu.Tag = StringClass.NameToTag(menu.Name);
-                menu.Style = menu.Style;
+                //menu.Style = menu.Style;
                 menu.Summary = "";
                 menu.Content = "";
                 menu.Target = "";
@@ -231,10 +231,10 @@ namespace OsWebsite.Areas.Admin.Controllers
 
             ViewBag.Position = new SelectList(new List<SelectListItem>
             {
-                    new SelectListItem { Text = "Giới Thiệu", Value = "1"},
-                    new SelectListItem { Text = "Tin Tức", Value = "2"},
-                    new SelectListItem { Text = "Dự án", Value = "3"},
-                    new SelectListItem { Text = "Sản Phẩm", Value = "4"}
+                    new SelectListItem { Text = "Menu", Value = "1"},
+                    new SelectListItem { Text = "Box bên phải", Value = "2"},
+                    //new SelectListItem { Text = "Dự án", Value = "3"},
+                    //new SelectListItem { Text = "Sản Phẩm", Value = "4"}
             }, "Value", "Text");
             return View(menu);
         }
@@ -262,19 +262,20 @@ namespace OsWebsite.Areas.Admin.Controllers
             items.Insert(0, (new SelectListItem { Text = "Tùy chỉnh liên kết", Value = "0" }));
             ViewBag.ModID = new SelectList(items, "Value", "Text", menu.ModID);
 
+
             ViewBag.Position = new SelectList(new List<SelectListItem>
             {
-                    new SelectListItem { Text = "Giới Thiệu", Value = "1"},
-                    new SelectListItem { Text = "Tin Tức", Value = "2"},
-                    new SelectListItem { Text = "Dự án", Value = "3"},
-                    new SelectListItem { Text = "Sản Phẩm", Value = "4"}
-            }, "Value", "Text",menu.Position);
-            ViewBag.Style = new SelectList(new List<SelectListItem>
-                {
-                    new SelectListItem { Text = "Menu dọc", Value = "1"},
-                    new SelectListItem { Text = "Menu ngang", Value = "2"}
+                    new SelectListItem { Text = "Menu", Value = "1"},
+                    new SelectListItem { Text = "Box bên phải", Value = "2"},
+                    //new SelectListItem { Text = "Dự án", Value = "3"},
+                    //new SelectListItem { Text = "Sản Phẩm", Value = "4"}
+            }, "Value", "Text");
+            //ViewBag.Style = new SelectList(new List<SelectListItem>
+            //    {
+            //        new SelectListItem { Text = "Menu dọc", Value = "1"},
+            //        new SelectListItem { Text = "Menu ngang", Value = "2"}
 
-                }, "Value", "Text", menu.Style);
+            //    }, "Value", "Text", menu.Style);
             return View(menu);
         }
 
@@ -285,8 +286,8 @@ namespace OsWebsite.Areas.Admin.Controllers
             int IDLang = int.Parse(Session["LangWeb"].ToString());
             if (ModelState.IsValid)
             {
-                int check = db.Menu.Where(x => x.ID != menu.ID && x.Name == menu.Name && x.IDLang == IDLang).Count();
-                if (check != 0)
+                int check = db.Menu.Where(x => x.ID == menu.ID).Count();
+                if (check == 0)
                 {
                     return Edit(menu.ID, "error");
                 }
@@ -327,13 +328,14 @@ namespace OsWebsite.Areas.Admin.Controllers
             items.Insert(0, (new SelectListItem { Text = "Tùy chỉnh liên kết", Value = "0" }));
             ViewBag.ModID = new SelectList(items, "Value", "Text", menu.ModID);
 
+
             ViewBag.Position = new SelectList(new List<SelectListItem>
             {
-                new SelectListItem { Text = "Sản Phẩm", Value = "1"},
-                new SelectListItem { Text = "Tin Tức", Value = "2"},
-                new SelectListItem { Text = "Giới Thiệu", Value = "3"},
-                new SelectListItem { Text = "Dịch vụ", Value = "4"}
-            }, "Value", "Text", menu.Position);
+                    new SelectListItem { Text = "Menu", Value = "1"},
+                    new SelectListItem { Text = "Box bên phải", Value = "2"},
+                    //new SelectListItem { Text = "Dự án", Value = "3"},
+                    //new SelectListItem { Text = "Sản Phẩm", Value = "4"}
+            }, "Value", "Text");
             return View(menu);
         }
 
