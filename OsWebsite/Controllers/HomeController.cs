@@ -65,10 +65,6 @@ namespace OsWebsite.Controllers
             var parentid = Newscheck[0].ID;
             ViewBag.MenuIdSocial = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true && x.Position == 1).OrderBy(x => x.IsOrder).Skip(1).ToList();
             var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
-            foreach (var item in News)
-            {
-                helper.cut_String(item.Decription, 300);
-            }
             return PartialView(News);
         }
         public PartialViewResult Staff()
@@ -80,10 +76,6 @@ namespace OsWebsite.Controllers
             var parentid = Newscheck[0].ID;
             ViewBag.MenuIdStaff = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true && x.Position == 1).OrderBy(x => x.IsOrder).Skip(1).ToList();
             var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
-            foreach (var item in News)
-            {
-                helper.cut_String(item.Decription, 300);
-            }
             return PartialView(News);
         }
         public PartialViewResult Social_Banner()

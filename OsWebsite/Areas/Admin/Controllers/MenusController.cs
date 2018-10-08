@@ -100,7 +100,7 @@ namespace OsWebsite.Areas.Admin.Controllers
 
 
         // GET: Admin/Menu/Create
-        public ActionResult Create(int? ID, string error = "")
+        public ActionResult Create(int ID, string error = "")
 
         {
             if (error == "tontai")
@@ -109,80 +109,79 @@ namespace OsWebsite.Areas.Admin.Controllers
             }
             int IDLang = int.Parse(Session["LangWeb"].ToString());
             Menu mm = new Menu();
-            if (ID != null)
+
+            var menu = db.Menu.Where(x => x.ID == ID).FirstOrDefault();
+            ViewBag.IDCha = new SelectList(db.DacapMenu(IDLang), "ID", "Name",menu.ID);
+            mm.IDCha = ID;
+            mm.IsActive = true;
+            var items = new SelectList(db.Module.Where(x => x.IsActive == true).OrderBy(x=>x.Position), "ID", "Name").ToList();
+            items.Insert(0, (new SelectListItem { Text = "Tùy chỉnh liên kết", Value = "0" }));
+            ViewBag.ModID = new SelectList(items,"Value", "Text",menu.ModID);
+
+            ViewBag.Position = new SelectList(new List<SelectListItem>
             {
-                var menu = db.Menu.Where(x => x.ID == ID).FirstOrDefault();
-                ViewBag.IDCha = new SelectList(db.DacapMenu(IDLang), "ID", "Name",menu.ID);
-                mm.IDCha = ID;
-                mm.IsActive = true;
-                var items = new SelectList(db.Module.Where(x => x.IsActive == true).OrderBy(x=>x.Position), "ID", "Name").ToList();
-                items.Insert(0, (new SelectListItem { Text = "Tùy chỉnh liên kết", Value = "0" }));
-                ViewBag.ModID = new SelectList(items,"Value", "Text",menu.ModID);
+                new SelectListItem { Text = "Menu", Value = "1"},
+                new SelectListItem { Text = "Box bên phải", Value = "2"},
+                //new SelectListItem { Text = "Dự án", Value = "3"},
+                //new SelectListItem { Text = "Sản Phẩm", Value = "4"}
+            }, "Value", "Text",menu.Position);
 
-                ViewBag.Position = new SelectList(new List<SelectListItem>
-                {
-                    new SelectListItem { Text = "Menu", Value = "1"},
-                    new SelectListItem { Text = "Box bên phải", Value = "2"},
-                    //new SelectListItem { Text = "Dự án", Value = "3"},
-                    //new SelectListItem { Text = "Sản Phẩm", Value = "4"}
-                }, "Value", "Text",menu.Position);
+            //ViewBag.Style = new SelectList(new List<SelectListItem>
+            //{
+            //    new SelectListItem { Text = "Menu dọc", Value = "1"},
+            //    new SelectListItem { Text = "Menu ngang", Value = "2"}
 
-                //ViewBag.Style = new SelectList(new List<SelectListItem>
-                //{
-                //    new SelectListItem { Text = "Menu dọc", Value = "1"},
-                //    new SelectListItem { Text = "Menu ngang", Value = "2"}
+            //}, "Value", "Text", menu.Style);
 
-                //}, "Value", "Text", menu.Style);
-
-                int countmax = db.Menu.Where(x => x.IDCha == ID).Count();
-                int ordermax = 0;
-                if (countmax == 0)
-                {
-                    ordermax = 1;
-                }
-                else
-                {
-                    ordermax = db.Menu.Where(x => x.IDCha == ID).Max(e => e.IsOrder) + 1;
-                }
-                ViewBag.OrderMax = ordermax;
-                ViewBag.enable = "enable";
+            int countmax = db.Menu.Where(x => x.IDCha == ID).Count();
+            int ordermax = 0;
+            if (countmax == 0)
+            {
+                ordermax = 1;
             }
             else
             {
-                ViewBag.IDCha = new SelectList(db.DacapMenu(IDLang), "ID", "Name");
-
-                List<SelectListItem> items = new SelectList(db.Module.Where(x => x.IsActive == true).OrderBy(x => x.Position), "ID", "Name").ToList();
-                items.Insert(0, (new SelectListItem { Text = "Tùy chỉnh liên kết", Value = "0" }));
-                ViewBag.ModID = items;
-
-                ViewBag.Position = new SelectList(new List<SelectListItem>
-                {
-                    new SelectListItem { Text = "Menu", Value = "1"},
-                    new SelectListItem { Text = "Box bên phải", Value = "2"},
-                    //new SelectListItem { Text = "Dự án", Value = "3"},
-                    //new SelectListItem { Text = "Sản Phẩm", Value = "4"}
-                }, "Value", "Text");
-
-                //ViewBag.Style = new SelectList(new List<SelectListItem>
-                //{
-                //    new SelectListItem { Text = "Menu dọc", Value = "1"},
-                //    new SelectListItem { Text = "Menu ngang", Value = "2"}
-
-                //}, "Value", "Text");
-
-                int countmax = db.Menu.Where(x => x.IsActive == true).Count();
-                int ordermax = 0;
-                if (countmax == 0)
-                {
-                    ordermax = 1;
-                }
-                else
-                {
-                    ordermax = db.Menu.Max(e => e.IsOrder) + 1;
-                }
-                ViewBag.OrderMax = ordermax;
-                mm.IsActive = true;
+                ordermax = db.Menu.Where(x => x.IDCha == ID).Max(e => e.IsOrder) + 1;
             }
+            ViewBag.OrderMax = ordermax;
+            ViewBag.enable = "enable";
+
+            //else
+            //{
+            //    ViewBag.IDCha = new SelectList(db.DacapMenu(IDLang), "ID", "Name");
+
+            //    List<SelectListItem> items = new SelectList(db.Module.Where(x => x.IsActive == true).OrderBy(x => x.Position), "ID", "Name").ToList();
+            //    items.Insert(0, (new SelectListItem { Text = "Tùy chỉnh liên kết", Value = "0" }));
+            //    ViewBag.ModID = items;
+
+            //    ViewBag.Position = new SelectList(new List<SelectListItem>
+            //    {
+            //        new SelectListItem { Text = "Menu", Value = "1"},
+            //        new SelectListItem { Text = "Box bên phải", Value = "2"},
+            //        //new SelectListItem { Text = "Dự án", Value = "3"},
+            //        //new SelectListItem { Text = "Sản Phẩm", Value = "4"}
+            //    }, "Value", "Text");
+
+            //    //ViewBag.Style = new SelectList(new List<SelectListItem>
+            //    //{
+            //    //    new SelectListItem { Text = "Menu dọc", Value = "1"},
+            //    //    new SelectListItem { Text = "Menu ngang", Value = "2"}
+
+            //    //}, "Value", "Text");
+
+            //    int countmax = db.Menu.Where(x => x.IsActive == true).Count();
+            //    int ordermax = 0;
+            //    if (countmax == 0)
+            //    {
+            //        ordermax = 1;
+            //    }
+            //    else
+            //    {
+            //        ordermax = db.Menu.Max(e => e.IsOrder) + 1;
+            //    }
+            //    ViewBag.OrderMax = ordermax;
+            //    mm.IsActive = true;
+            //}
             return View(mm);
         }
 
@@ -198,10 +197,10 @@ namespace OsWebsite.Areas.Admin.Controllers
                 //{
                 //    return Create(menu.IDCha,"tontai");
                 //}
-                if (menu.IDCha == null)
-                {
-                    menu.IDCha = 0;
-                }              
+                //if (menu.IDCha == null)
+                //{
+                //    menu.IDCha = 0;
+                //}              
                 if (menu.ModID == 0)
                 {
                     menu.Link = menu.Link;
@@ -292,10 +291,10 @@ namespace OsWebsite.Areas.Admin.Controllers
                 {
                     return Edit(menu.ID, "error");
                 }
-                if (menu.IDCha ==null)
-                {
-                    menu.IDCha = 0;
-                }
+                //if (menu.IDCha ==null)
+                //{
+                //    menu.IDCha = 0;
+                //}
 
                 if (menu.ModID == 0)
                 {

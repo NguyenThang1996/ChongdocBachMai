@@ -23,7 +23,7 @@ namespace OsWebsite.Models
         public int ID { get; set; }
         public string Name { get; set; }
         public string Tag { get; set; }
-        public Nullable<int> MenuID { get; set; }
+        public int MenuID { get; set; }
         public string Decription { get; set; }
         public string DecriptionTag { get; set; }
         public string ContentNew { get; set; }
