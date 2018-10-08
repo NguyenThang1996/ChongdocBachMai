@@ -1,0 +1,126 @@
+﻿@model OsWebsite.Models.Language
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header"><h1>Câp nhập ngôn ngữ </h1></section>
+<div class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box adm1">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading adm2">
+                                Cập nhật thông tin
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12"></div>
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        <div class="form-horizontal">
+                                            @Html.ValidationSummary(true)
+                                            @Html.HiddenFor(model => model.IDLang)
+
+                                            <div class="form-group">
+                                                @Html.Label("Tên ngôn ngữ", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.NameLang, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.NameLang)
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.Label("Icon ngôn ngữ", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.IconLang, new { @class = "form-control", @id = "anhbia" })                                                    
+                                                    @Html.ValidationMessageFor(model => model.IconLang)
+                                                    <br />
+                                                    <input id="chonanhbia" class="btn btn-default" type="button" value="Chọn hình ảnh" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.Label("Mã code", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.CodeLang, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.CodeLang)
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.Label("Thứ tự", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.IsOrder, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.IsOrder)
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor("Kích hoạt", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.CheckBoxFor(model => model.IsActive)
+                                                    @Html.ValidationMessageFor(model => model.IsActive)
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-md-offset-2 col-md-10">
+                                                    <input type="submit" value="Lưu" class="btn btn-default" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+    </div>
+    @Html.ActionLink("Trở lại", "Index", "", new { @class = "btn btn-default" })
+</div>
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $("#chonanhbia").click(function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $("#anhbia").val(fileUrl);
+            };
+            finder.popup();
+        });
+        $("form").submit(function (e) {
+            if ($("#NameLang").val() == "") {
+                alert("Tên ngôn ngữ không được để trống");
+                $("#NameLang").focus();
+                return false;
+            }
+            if ($("#IconLang").val() == "") {
+                alert("Bạn chưa chọn hình ảnh đại diện cho ngôn ngữ");
+                $("#IconLang").focus();
+                return false;
+            }
+            if ($("#IsOrder").val() == "") {
+                alert("Bạn chưa nhập số thứ tự");
+                $("#IsOrder").focus();
+                return false;
+            }
+            var isorder = document.getElementById('IsOrder').value
+            if (isNaN(isorder)) {
+                alert("Số thứ tự phải bằng số");
+                $("#IsOrder").focus();
+                return false;
+            }
+        });
+    });
+</script>

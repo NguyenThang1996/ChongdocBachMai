@@ -178,7 +178,9 @@
         $("#MenuID").addClass("form-control");
         $("#Position").addClass("form-control");
     });
-
+    if ($("#anhbia").val() == "") {
+        $("#anhbia").val("/Icon/NoImage.png");
+    }
     $("form").submit(function (e) {
         if ($("#Name").val() == "") {
             alert("Tên bài viết không được để trống");

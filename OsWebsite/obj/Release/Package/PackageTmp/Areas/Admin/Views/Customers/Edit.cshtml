@@ -1,0 +1,160 @@
+﻿@model OsWebsite.Models.Customers
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .tree-orders {
+        color: #fff;
+        background: #2984ff;
+        border-left-color: white;
+    }
+
+    .tree-orders a {
+        border-left-color: white !important;
+    }
+    .sidebar-menu .treeview-menu>li.tree-customer {
+        border-left: 3px solid white !important;
+    }
+    .tree-orders .tree-customer a{
+        color: #fff !important;
+    }
+</style>
+<div class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box adm1">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading adm2">
+                                Cập nhật thông tin
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12"></div>
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <div class="form-horizontal">
+                                            @Html.ValidationSummary(true)
+                                            <div class="form-group">
+                                                @Html.Label("Tên", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Name)
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.Label("Số điện thoại", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.Label("Địa chỉ", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-8">
+                                                    @Html.TextAreaFor(model => model.Address, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.Label("Phương thức thanh toán", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.DropDownList("PaymentMethods", "-- Chọn kiểu thanh toán --")
+                                                    @Html.ValidationMessageFor(model => model.PaymentMethods, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.Label("Phương thức vận chuyển", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.DropDownList("ModeTransport", "-- Chọn phương thức vận chuyển --")
+                                                    @Html.ValidationMessageFor(model => model.ModeTransport, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.Label("Kích hoạt", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.CheckBoxFor(model => model.IsActive)
+                                                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-offset-2 col-md-10">
+                                                    <input type="submit" value="Cập nhập" class="btn btn-default" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+    </div>
+    @Html.ActionLink("Trở lại", "Index", "", new { @class = "btn btn-default" })
+</div>
+<script language="javascript" type="text/javascript">
+    $(".tree-orders").addClass("active");
+    $("#PaymentMethods").addClass("form-control");
+    $("#ModeTransport").addClass("form-control");
+    $("form").submit(function (e) {
+        if ($("#Name").val() == "") {
+            alert("Tên khách hàng không được để trống");
+            $("#Name").focus();
+            return false;
+        }
+        if ($("#Phone").val() == "") {
+            alert("Bạn chưa nhập số điện thoại");
+            $("#Phone").focus();
+            return false;
+        }
+        var phone = document.getElementById('Phone').value
+        if (isNaN(phone)) {
+            alert("Số điện thoại phải bằng số");
+            $("#Phone").focus();
+            return false;
+        }
+        if ($("#Address").val() == "") {
+            alert("Bạn chưa nhập địa chỉ");
+            $("#Address").focus();
+            return false;
+        }
+        if ($("#PaymentMethods").val() == "") {
+            alert("Bạn vui lòng chọn phương thức thanh toán");
+            $("#PaymentMethods").focus();
+            return false;
+        }
+        if ($("#PaymentMethods").val() == "") {
+            alert("Bạn chưa chọn phương thức thanh toán");
+            $("#PaymentMethods").focus();
+            return false;
+        }
+        if ($("#ModeTransport").val() == "") {
+            alert("Bạn chưa chọn phương thức thanh toán");
+            $("#ModeTransport").focus();
+            return false;
+        }
+    });
+</script>

@@ -101,6 +101,7 @@ namespace OsWebsite.Areas.Admin.Controllers
 
         // GET: Admin/Menu/Create
         public ActionResult Create(int? ID, string error = "")
+
         {
             if (error == "tontai")
             {
@@ -193,10 +194,10 @@ namespace OsWebsite.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 int check = db.Menu.Where(x => x.ID == menu.ID).Count();
-                if (check == 0)
-                {
-                    return Create(menu.IDCha,"tontai");
-                }
+                //if (check != 0)
+                //{
+                //    return Create(menu.IDCha,"tontai");
+                //}
                 if (menu.IDCha == null)
                 {
                     menu.IDCha = 0;

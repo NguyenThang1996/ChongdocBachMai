@@ -1,0 +1,60 @@
+﻿@model OsWebsite.Models.User
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Đăng nhập Hệ thống Quản trị</title>       
+    <link href="~/Areas/Admin/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Areas/Admin/Content/css/AllSkinLTE.css" rel="stylesheet" type="text/css" />
+    <link href="~/Areas/Admin/Content/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .field-validation-error{
+            margin-top: 5px;
+            display: block;
+        }
+    </style>
+</head>
+<body class="login-page">
+    <div class="container col-lg-8 col-sm-10 login-box">
+        <div class="row">
+            <div class="login-box2 col-md-5">
+                <div class="nopd" style="display:block;position:relative;text-align:center">
+                    <a href="/"><img class="img-responsive" src="~/Areas/Admin/Content/css/images/banner.png" /></a>
+                </div>              
+                <div class="login-box-body">                    
+                    @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+                    {
+                        @Html.ValidationSummary(true);
+                        <div class="col-md-12 box-control-login">
+                            <div class="form-group has-feedback">
+                                <label for="edit-name">Tên người dùng <span class="form-required">*</span></label>
+                                @Html.TextBoxFor(m => m.Username, new { @class = "form-control",@name="username", @autofocus = "autofocus" })
+                                @Html.ValidationMessageFor(m => m.Username)
+                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="edit-pass">Mật khẩu <span class="form-required">*</span></label>
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @name = "password" })
+                                @Html.ValidationMessageFor(m => m.Password)
+                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                            </div>
+                            <div class="form-group">@ViewBag.errorlogin</div>
+                            <div class="form-group form-actions">
+                                <button type="submit" class="form-submit btn btn-primary" style="font-weight:bold">Đăng Nhập</button>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!-- /.login-box-body -->
+                <div class='clear10'>
+                </div>
+                <div class='clear10'>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <script src="~/Areas/Admin/Content/js/bootstrap.min.js"></script>
+    <script src="~/Areas/Admin/Content/js/jquery-1.10.2.min.js"></script>
+    
+</body>
+</html>

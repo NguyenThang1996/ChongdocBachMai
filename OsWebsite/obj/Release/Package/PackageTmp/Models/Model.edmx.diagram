@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f73e4496cb3347fe820e9d3d8c0af0b6" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Advertise" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Agency" Width="1.5" PointX="5.25" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Comment" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Config" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Contact" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Customers" Width="1.5" PointX="6" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Gallery" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GalleryDetail" Width="1.5" PointX="5.25" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Language" Width="1.5" PointX="0.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Manufacturer" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Menu" Width="1.5" PointX="3" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MenuPage" Width="1.5" PointX="3" PointY="33.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MenuType" Width="1.5" PointX="5.25" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Module" Width="1.5" PointX="6" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.News" Width="1.5" PointX="8.25" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.NewsImages" Width="1.5" PointX="10.5" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Order" Width="1.5" PointX="8.25" PointY="34.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.OrderDetail" Width="1.5" PointX="10.5" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PageMenu" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="8.25" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ProductImages" Width="1.5" PointX="10.5" PointY="32" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Regional" Width="1.5" PointX="3" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Register" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Setting" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Visitor" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Advertise_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Agency_Regional" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Config_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Order_Customers" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Gallery_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_GalleryDetail_Gallery" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Menu_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_News_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Regional_Language" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_MenuTpe_Menu" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_News_Topics" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Product_Menu" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_MenuTpe_MenuPage" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_News_Module" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Product_Module" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_NewsImages_News" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_OrderDetail_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_OrderDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_ProductGal_Product" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

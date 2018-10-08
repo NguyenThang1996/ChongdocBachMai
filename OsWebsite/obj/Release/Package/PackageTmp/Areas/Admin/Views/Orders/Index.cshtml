@@ -1,0 +1,301 @@
+﻿@model PagedList.IPagedList<OsWebsite.Models.Order>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .tree-orders {
+        color: #fff;
+        background: #2984ff;
+        border-left-color: white;
+    }
+
+   .tree-orders a {
+        border-left-color: white !important;
+    }
+    .sidebar-menu .treeview-menu>li.tree-order {
+        border-left: 3px solid white !important;
+    }
+    .tree-orders .tree-order a{
+        color: #fff !important;
+    }
+    tr.Bold td {
+        font-weight:bold !important;
+    }
+    tr.Bold td label {
+        font-weight:bold !important;
+    }
+    tr td {
+        font-weight:normal;
+    }
+    tr td label {
+        font-weight:normal
+    }
+    tr.Blue td {
+        color: #5c7fb7;
+    }
+    tr.green td{
+        color:darkgreen
+    }
+    tr.red td{
+        color:red
+    }
+    tr.none-bold td {
+        font-weight:bold
+    }
+    tr.none-bold td label {
+        font-weight:bold
+    }
+    .w250px{
+            width:250px;
+            float:left;
+            margin-right:10px
+    }
+</style>
+<section class="content-header"><h1>Quản lý đơn hàng</h1></section>
+<section class="content">
+    @using (Html.BeginForm("Index", "Orders", FormMethod.Get))
+    {
+        <input type="text" name="Keyword" class="form-control w250px" />
+        <select class="form-control ddl-filter w250px" id="ddlIsActive" name="IsStatus">
+            <option value="">--- Chọn trạng thái ---</option>
+            <option value="0">Đơn hàng chưa xác nhận</option>
+            <option value="1">Đơn hàng đã duyệt</option>
+            <option value="2">Đơn hàng đã hoàn thành</option>
+            <option value="3">Đơn hàng bị hủy</option>
+        </select>
+        <button type="submit" class="btn btn-default">Tìm kiếm</button>
+    }
+    <div style='clear: both; height: 10px'></div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box adm1">
+                <div class="row">
+                    <div class="col-lg-12">
+                        @using (Html.BeginForm("DeleteMuti", "Orders", FormMethod.Post))
+                        {                            
+                            <a href="/Admin/Orders" class="btn btn-default">Làm mới</a>
+                            <input type="submit" value="Xóa" class="btn btn-default" onclick="return confirm('Bạn có muốn xóa đơn hàng đã chọn ?')" />
+                            <div style='clear: both; height: 10px'></div>
+                            <div class="panel panel-default">
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">
+                                    <div class="dataTable_wrapper">
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <tr class="trHeader">
+                                                <th><input type="checkbox" id="CheckAll" /></th>
+                                                <th style="text-align:left">
+                                                    Tên khách hàng
+                                                </th>
+                                                <th>
+                                                    Ngày tạo
+                                                </th>
+                                                <th>
+                                                    Tổng giá trị
+                                                </th>
+                                                <th>
+                                                    Trạng thái đơn hàng
+                                                </th>
+                                                <th>
+                                                    Chức năng
+                                                </th>
+                                            </tr>
+
+                                            @foreach (var item in Model)
+                                            {
+                                                if (item.IsActive == 0)
+                                                {
+                                                    <tr class="trOdd Bold Blue">
+                                                        <td><input type="checkbox" class="CheckboxID" name="ID" value="@item.Id" /></td>
+                                                        <td style="text-align:left">
+                                                            @Html.DisplayFor(modelItem => item.Customers.Name)
+                                                        </td>
+                                                        <td>
+                                                            @Html.Label(@item.DateCreate.Value.ToString("dd/MM/yyyy"))
+                                                        </td>
+                                                        <td>
+                                                            @if (item.TotalPrice != 0)
+                                                            {
+                                                                @String.Format("{0:0,0 VNĐ}", item.TotalPrice)
+                                                            }
+                                                            else
+                                                            {
+                                                                <label>0 VNĐ</label>
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            @if (item.IsActive == 0)
+                                                            {
+                                                                @Html.Label("Đơn hàng chưa xác nhận");
+                                                            }
+                                                            else if (item.IsActive == 1)
+                                                            {
+                                                                @Html.Label("Đơn hàng đã duyệt");
+                                                            }
+                                                            else if (item.IsActive == 2)
+                                                            {
+                                                                @Html.Label("Đơn hàng đã hoàn thành");
+                                                            }
+                                                            else if (item.IsActive == 3)
+                                                            {
+                                                                @Html.Label("Đơn hàng bị hủy");
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            @Html.RouteLink(" ", new { controller = "OrderDetails", action = "Index", OrderId = item.Id }, new { @class = "bnviews" })
+                                                            @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "bndelete", @Onclick = "return confirm('Bạn có muốn xóa đơn hàng này ?')" })
+                                                        </td>
+                                                    </tr>
+                                                }
+                                                else if (item.IsActive == 1)
+                                                {
+                                                    <tr class="trOdd green">
+                                                        <td><input type="checkbox" class="CheckboxID" name="ID" value="@item.Id" /></td>
+                                                        <td style="text-align:left">
+                                                            @Html.DisplayFor(modelItem => item.Customers.Name)
+                                                        </td>
+                                                        <td>
+                                                            @Html.Label(@item.DateCreate.Value.ToString("dd/MM/yyyy"))
+                                                        </td>
+                                                        <td>
+                                                            @if (item.TotalPrice != 0)
+                                                            {
+                                                                @String.Format("{0:0,0 VNĐ}", item.TotalPrice)
+                                                            }
+                                                            else
+                                                            {
+                                                                <label style="font-weight:300">0 VNĐ</label>
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            @if (item.IsActive == 0)
+                                                            {
+                                                                @Html.Label("Đơn hàng chưa xác nhận");
+                                                            }
+                                                            else if (item.IsActive == 1)
+                                                            {
+                                                                @Html.Label("Đơn hàng đã duyệt");
+                                                            }
+                                                            else if (item.IsActive == 2)
+                                                            {
+                                                                @Html.Label("Đơn hàng đã hoàn thành");
+                                                            }
+                                                            else if (item.IsActive == 3)
+                                                            {
+                                                                @Html.Label("Đơn hàng bị hủy");
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            @Html.RouteLink(" ", new { controller = "OrderDetails", action = "Index", OrderId = item.Id }, new { @class = "bnviews" })
+                                                            @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "bndelete", @Onclick = "return confirm('Bạn có muốn xóa đơn hàng này ?')" })
+                                                        </td>
+                                                    </tr>
+                                                }
+                                                else if (item.IsActive == 2)
+                                                {
+                                                    <tr class="trOdd black">
+                                                        <td><input type="checkbox" class="CheckboxID" name="ID" value="@item.Id" /></td>
+                                                        <td style="text-align:left">
+                                                            @Html.DisplayFor(modelItem => item.Customers.Name)
+                                                        </td>
+                                                        <td>
+                                                            @Html.Label(@item.DateCreate.Value.ToString("dd/MM/yyyy"))
+                                                        </td>
+                                                        <td>
+                                                            @if (item.TotalPrice != 0)
+                                                            {
+                                                                @String.Format("{0:0,0 VNĐ}", item.TotalPrice)
+                                                            }
+                                                            else
+                                                            {
+                                                                <label style="font-weight:300">0 VNĐ</label>
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            @if (item.IsActive == 0)
+                                                            {
+                                                                @Html.Label("Đơn hàng chưa xác nhận");
+                                                            }
+                                                            else if (item.IsActive == 1)
+                                                            {
+                                                                @Html.Label("Đơn hàng đã duyệt");
+                                                            }
+                                                            else if (item.IsActive == 2)
+                                                            {
+                                                                @Html.Label("Đơn hàng đã hoàn thành");
+                                                            }
+                                                            else if (item.IsActive == 3)
+                                                            {
+                                                                @Html.Label("Đơn hàng bị hủy");
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            @Html.RouteLink(" ", new { controller = "OrderDetails", action = "Index", OrderId = item.Id }, new { @class = "bnviews" })
+                                                            @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "bndelete", @Onclick = "return confirm('Bạn có muốn xóa đơn hàng này ?')" })
+                                                        </td>
+                                                    </tr>
+                                                }
+                                                else if (item.IsActive == 3)
+                                                {
+                                                    <tr class="trOdd red">
+                                                        <td><input type="checkbox" class="CheckboxID" name="ID" value="@item.Id" /></td>
+                                                        <td style="text-align:left">
+                                                            @Html.DisplayFor(modelItem => item.Customers.Name)
+                                                        </td>
+                                                        <td>
+                                                            @Html.Label(@item.DateCreate.Value.ToString("dd/MM/yyyy"))
+                                                        </td>
+                                                        <td>
+                                                            @if (item.TotalPrice != 0)
+                                                            {
+                                                                @String.Format("{0:0,0 VNĐ}", item.TotalPrice)
+                                                            }
+                                                            else
+                                                            {
+                                                                <label style="font-weight:300">0 VNĐ</label>
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            @if (item.IsActive == 0)
+                                                            {
+                                                                @Html.Label("Đơn hàng chưa xác nhận");
+                                                            }
+                                                            else if (item.IsActive == 1)
+                                                            {
+                                                                @Html.Label("Đơn hàng đã duyệt");
+                                                            }
+                                                            else if (item.IsActive == 2)
+                                                            {
+                                                                @Html.Label("Đơn hàng đã hoàn thành");
+                                                            }
+                                                            else if (item.IsActive == 3)
+                                                            {
+                                                                @Html.Label("Đơn hàng bị hủy");
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            @Html.RouteLink(" ", new { controller = "OrderDetails", action = "Index", OrderId = item.Id }, new { @class = "bnviews" })
+                                                            @Html.ActionLink(" ", "Delete", new { id = item.Id }, new { @class = "bndelete", @Onclick = "return confirm('Bạn có muốn xóa đơn hàng này ?')" })
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div style="clear:both"></div>
+                        <div class="page-list">
+                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(".tree-orders").addClass("active");
+    </script>

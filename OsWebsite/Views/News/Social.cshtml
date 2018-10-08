@@ -24,12 +24,12 @@
 <div class="box-product">
     <div class="container hoinghi">
         <div class="row">
-            <div style="padding-left: 0px;" class="col-md-12">
-                <ul style="border-bottom: 0px!important;" class="nav nav-tabs nav-prod">
+            <div style="padding-left: 0px;" class="col-md-9">
+                <ul style="border-bottom: 0px!important; display: flex; flex-wrap: nowrap; overflow-x: scroll; overflow-y: hidden" class="nav nav-tabs nav-prod menuc">
                     @foreach (var item in ViewBag.MenuIdSocial)
                     {
-                        <li class="active">
-                            <a style="border: 0px!important; border-radius: 15px 15px 0 0; font-size: 17px; font-weight: bold; background-color: #EBEBEB; color: #000000 !important; transition: background-color 500ms;" href="@item.Link">@item.Name</a>
+                        <li style="flex: 0 0 auto">
+                            <a ttId="@item.Tag" style="border: 0px!important; float: left; border-radius: 15px 15px 0 0; font-size: 17px; font-weight: bold; background-color: #EBEBEB; color: #000000; transition: background-color 500ms;" href="@item.Link">@item.Name</a>
                         </li>
                     }
                 </ul>
@@ -54,7 +54,7 @@
                                     <a style="text-decoration: none!important" href="/@item.Tag"><p><span style="font-size: 16px; font-weight: bold;">@item.Name</span></p></a>
                                 </div>
                                 <div class="des-module-main">
-                                    <p><span>@Html.Raw(item.Decription)</span></p>
+                                    <p><span>@Html.Raw(item.Decription)</span></p>              
                                 </div>
                             </div>
                         </div>
@@ -68,3 +68,12 @@
         </div>
     </div>
 </div>
+<script>
+     var channel = "@Tag";
+        $('.menuc a').each(function () {
+            var c = $(this).attr('ttId').toLowerCase();
+            if (c.lastIndexOf(channel) == 0) {
+                    $(this).closest('li a').addClass('activemenu');
+                }
+        })
+</script>

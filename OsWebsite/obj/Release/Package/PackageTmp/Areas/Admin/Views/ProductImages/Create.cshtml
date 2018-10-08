@@ -1,0 +1,121 @@
+﻿@model OsWebsite.Models.ProductImages
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<section class="content-header"><h1>Thêm Mới Hình Ảnh Sản Phẩm</h1></section>
+<div class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box adm1">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading adm2">
+                                Thêm Mới Nội Dung
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12"></div>
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        <div class="form-horizontal">
+                                            @Html.ValidationSummary(true)
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2">Tên :</label>
+                                                <div class="col-md-10">
+                                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2">
+                                                    Hình ảnh :
+                                                </label>
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.Images, new { @class = "form-control", @id = "anhbia" })
+                                                    @Html.ValidationMessageFor(model => model.Images)
+                                                    <br />
+                                                    <input id="chonanhbia" class="btn btn-default" type="button" value="Chọn hình ảnh" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2">
+                                                    Thứ tự :
+                                                </label>
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.IsOrder, new { @class = "form-control", Value = @ViewBag.OrderMax })
+                                                    @Html.ValidationMessageFor(model => model.IsOrder, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label col-md-2">
+                                                    Kích hoạt :
+                                                </label>
+                                                <div class="col-md-10">
+                                                    @Html.CheckBoxFor(model => model.IsActive, new { @checked = true })
+                                                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-md-offset-2 col-md-10">
+                                                    <input type="submit" value="Lưu" class="btn btn-default" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+    </div>
+    @Html.RouteLink("Trở lại", new { controller = "ProductImages", action = "Index", ProductId = Session["ProductId"] }, new { @Class = "btn btn-default", @style = "margin-left:15px" })
+</div>
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $("#chonanhbia").click(function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $("#anhbia").val(fileUrl);
+            };
+            finder.popup();
+        });        
+    });
+    $("form").submit(function (e) {
+        if ($("#Name").val() == "") {
+            alert("Tên hình ảnh không được để trống");
+            $("#Name").focus();
+            return false;
+        }
+        if ($("#Images").val() == "") {
+            alert("Bạn chưa chọn hình ảnh");
+            $("#Images").focus();
+            return false;
+        }
+        if ($("#IsOrder").val() == "") {
+            alert("Số thứ tự không được để trống");
+            $("#IsOrder").focus();
+            return false;
+        }
+        var isorder = document.getElementById('IsOrder').value
+        if (isNaN(isorder)) {
+            alert("Số thứ tự phải bằng số");
+            $("#IsOrder").focus();
+            return false;
+        }
+    });
+</script>

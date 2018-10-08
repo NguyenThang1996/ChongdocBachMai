@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using PagedList;
 using PagedList.Mvc;
 using OsWebsite.Models;
+using OsWebsite.Helper;
 
 namespace OsWebsite.Controllers
 {
@@ -25,8 +26,13 @@ namespace OsWebsite.Controllers
             var Newscheck = db.Menu.Where(x => x.Tag == Tag && x.IsActive == true).ToList();
             ViewBag.NameGroupSocial = Newscheck[0].Name;
             var parentid = Newscheck[0].ID;
-            ViewBag.MenuIdSocial = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true).ToList();
+            ViewBag.MenuIdSocial = db.Menu.Where(x => x.IDCha == 317 && x.IDLang == LangWeb && x.IsActive == true).ToList();
+            ViewBag.Tag = Newscheck[0].Tag;
             var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
+            foreach(var item in News)
+            {
+                helper.cut_String(item.Decription, 300);
+            }
             return View(News.ToPagedList(page, pagesize));
         }
         public ActionResult Staff(int page = 1, int pagesize = 6)
@@ -42,9 +48,13 @@ namespace OsWebsite.Controllers
             var Newscheck = db.Menu.Where(x => x.Tag == Tag && x.IsActive == true).ToList();
             ViewBag.NameGroupStaff = Newscheck[0].Name;
             var parentid = Newscheck[0].ID;
-            ViewBag.MenuIdStaff = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true).ToList();
+            ViewBag.MenuIdStaff = db.Menu.Where(x => x.IDCha == 318 && x.IDLang == LangWeb && x.IsActive == true).ToList();
             ViewBag.Tag = Newscheck[0].Tag;
             var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
+            foreach (var item in News)
+            {
+                helper.cut_String(item.Decription, 300);
+            }
             return View(News.ToPagedList(page, pagesize));
         }
         public ActionResult Service(int page = 1, int pagesize = 6)
@@ -58,9 +68,13 @@ namespace OsWebsite.Controllers
             var Newscheck = db.Menu.Where(x => x.Tag == Tag && x.IsActive == true).ToList();
             ViewBag.NameGroupService = Newscheck[0].Name;
             var parentid = Newscheck[0].ID;
-            ViewBag.MenuIdService = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true).ToList();
+            ViewBag.MenuIdService = db.Menu.Where(x => x.IDCha == 319 && x.IDLang == LangWeb && x.IsActive == true).ToList();
             ViewBag.Tag = Newscheck[0].Tag;
             var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
+            foreach (var item in News)
+            {
+                helper.cut_String(item.Decription, 300);
+            }
             return View(News.ToPagedList(page, pagesize));
         }
         public ActionResult NewsDetail()
@@ -75,7 +89,11 @@ namespace OsWebsite.Controllers
         public PartialViewResult NewsOthers(int MenuID, int IdNews)
         {
             int LangWeb = int.Parse(Session["LangWeb"].ToString());
-            var News = db.News_Others(MenuID).Where(x => x.ID != IdNews && x.IsActive == true).OrderByDescending(x => x.ID).Take(3).ToList();
+            var News = db.News_Others(MenuID).Where(x => x.ID != IdNews && x.IsActive == true && x.IDLang == LangWeb).OrderByDescending(x => x.ID).Take(3).ToList();
+            foreach (var item in News)
+            {
+                helper.cut_String(item.Decription, 300);
+            }
             return PartialView(News);
         }
     }

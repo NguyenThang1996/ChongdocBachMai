@@ -23,7 +23,7 @@ namespace OsWebsite.Areas.Admin.Controllers
 
         [HttpPost, ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Index([Bind(Include = "Id,Logo,PlaceHead,PlaceBody,GoogleId,Contact,Copyright,Title,Description,Keyword,HotLine,Email,Password,FacebookId,IDLang,MailFooter")] Config config)
+        public ActionResult Index([Bind(Include = "Id,Logo,PlaceHead,PlaceBody,GoogleId,Contact,Copyright,Title,Description,Keyword,HotLine,Email,Password,FacebookId,IDLang,MailFooter,TitleEvent,AboutEvent,TimelineEvent,GuestEvent")] Config config)
         {
             if (ModelState.IsValid)
             {

@@ -1,0 +1,248 @@
+﻿@model List<OsWebsite.Models.OrderDetail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .table1 {
+    border: 1px solid #ddd;
+    }
+    .table1>tbody>tr>th {
+    border-top: 0px;
+    text-align: center;
+    border: 1px solid #fff;
+    background-color: #e4e4e4;
+    color: #000;
+    }
+    .table1>tbody>tr>td {
+    border-top: 0px;
+    text-align: center;
+    border: 1px solid #fff;
+    background-color: #ececec;
+    }
+    .table2 {
+    background: #EFEFEF;
+    }
+    .table2>tbody>tr>td {
+    text-align: left;
+    }
+    .table3>tbody>tr>td {
+    text-align: left;
+    }
+    .tree-orders {
+        color: #fff;
+        background: #2984ff;
+        border-left-color: white;
+    }
+    .tree-orders a {
+       border-left-color: white !important;
+    }
+    .sidebar-menu .treeview-menu>li.tree-order {
+        border-left: 3px solid white !important;
+    }
+    .tree-orders .tree-order a{
+        color: #fff !important;
+    }
+    #IsActive {
+        width: 250px;
+        display: inline-block;
+        margin-right: 10px;
+    }
+</style>
+<div class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box adm1">
+                @Html.RouteLink("Trở lại", new { controller = "Orders", action = "Index" }, new { @Class = "btn btn-default"})
+                @Html.RouteLink("Làm mới", new { controller = "OrderDetails", action = "Index", OrderId = Session["OrderId"].ToString() }, new { @Class = "btn btn-default", @style = "margin-left:8px" })
+                <div style='clear: both; height: 10px'></div>
+                <div class="row">
+                    
+                    <div class="col-lg-12">                        
+                        <div class="panel panel-default">
+        
+                            <div class="panel-heading adm2">
+                                Thông tin đơn hàng
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        
+
+                                        <!--Phần thông tin khách hàng-->
+
+                                        <table cellpadding="4px" cellspacing="4px" class="table table-responsive table-hover table2">
+                                            <tbody>
+                                                <tr>
+                                                    <th colspan="2">
+                                                        THÔNG TIN KHÁCH HÀNG
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td width="200px">
+                                                        Tên khách hàng:
+                                                    </td>
+                                                    <td>
+                                                        @ViewBag.CustomerName
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="200px">
+                                                        Email:
+                                                    </td>
+                                                    <td>
+                                                        @ViewBag.Email
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="200px">
+                                                        Điện thoại:
+                                                    </td>
+                                                    <td>
+                                                        @ViewBag.Phone
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="200px">
+                                                        Địa chỉ:
+                                                    </td>
+                                                    <td>
+                                                        @ViewBag.Address
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!--end phần thông tin chuyển hàng-->
+                                        <!--phần thông tin Đơn hàng-->
+                                        <table class="table table3 table-hover">
+                                            <tbody>
+                                                <tr>
+                                                    <th>
+                                                        THÔNG TIN ĐƠN HÀNG
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td width="200px">
+                                                        Ngày đặt hàng:
+                                                    </td>
+                                                    <td>
+                                                        @ViewBag.DateCreate
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="200px">
+                                                        Hình thức thanh toán:
+                                                    </td>
+                                                    <td>
+                                                        @ViewBag.PaymentMethods
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="200px">
+                                                        Hình thức vận chuyển:
+                                                    </td>
+                                                    <td>
+                                                        @ViewBag.ModeTransport
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="200px">
+                                                        Ghi chú đơn hàng:
+                                                    </td>
+                                                    <td>
+                                                        @ViewBag.Note
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="200px">
+                                                        <label style="font-weight:300;margin-top:8px">Trạng thái đơn hàng:</label>
+                                                    </td>
+                                                    <td>
+                                                        @Html.DropDownList("IsActive","-- Chọn danh mục --") <a href="#" class="btn btn-default update-orders" data-id="@ViewBag.IdOrders">Cập nhập trạng thái</a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div>
+                                            <table class="table table-striped table-bordered table-hover table1" cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="col">Tên sản phẩm</th>
+                                                        <th scope="col">Số lượng</th>
+                                                        <th scope="col">Đơn giá</th>
+                                                        <th scope="col">Thành tiền</th>
+                                                    </tr>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                <a href="/@item.Product.Tag" target="_blank">@item.Product.Name</a>
+                                                            </td>
+                                                            <td>
+                                                                @item.Quantity
+                                                            </td>
+                                                            <td>
+                                                                @if (item.Product.Price != 0)
+                                                                {
+                                                                    @String.Format("{0:0,0 VNĐ}", item.Product.Price)
+                                                                }
+                                                                else
+                                                                {
+                                                                    <label style="font-weight:300">0 VNĐ</label>
+                                                                }                                                               
+                                                            </td>
+                                                            <td>
+                                                                @if (item.TotalAmount != 0)
+                                                                {
+                                                                    @String.Format("{0:0,0 VNĐ}", item.TotalAmount)
+                                                                }
+                                                                else
+                                                                {
+                                                                    <label style="font-weight:300">0 VNĐ</label>
+                                                                } 
+                                                                
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div style="float:right; font-weight:bold; padding-right:5px;">
+                                            Tổng tiền:
+                                            @ViewBag.TotalPrice
+                                            <div class="clear10"></div>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(function () {        
+        $("#IsActive").addClass("form-control");
+        $(".update-orders").click(function () {
+            Id = $(this).attr("data-id");
+            var IsActive = $("#IsActive").val();
+            $.ajax({
+                url: "/OrderDetails/UpStatus",
+                data: { Id: Id, IsActive: IsActive },
+                success: function (response) {
+                    alert("Cập nhập trạng thái đơn hàng thành công");
+                }
+            });
+        });
+    });
+    </script>
+}

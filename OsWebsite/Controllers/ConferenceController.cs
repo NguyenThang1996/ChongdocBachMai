@@ -31,11 +31,14 @@ namespace OsWebsite.Controllers
             //Replace hết kí tự lạ 
             Tag = Tag.Replace("?" + Tagcheck, "");
             int LangWeb = int.Parse(Session["LangWeb"].ToString());
-            
+            ViewBag.TitleEvent = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).TitleEvent;
+            ViewBag.AboutEvent = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).AboutEvent;
+            ViewBag.TimelineEvent = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).TimelineEvent;
+            ViewBag.GuestEvent = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).GuestEvent;
             var Newscheck = db.Menu.Where(x => x.Tag == Tag && x.IsActive == true).ToList();
             ViewBag.NameGroupService = Newscheck[0].Name;
             var parentid = Newscheck[0].ID;
-            ViewBag.MenuIdService = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true).ToList();
+            ViewBag.MenuIdStaff = db.Menu.Where(x => x.IDCha == 318 && x.IDLang == LangWeb && x.IsActive == true).ToList();
             ViewBag.Tag = Newscheck[0].Tag;
             var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
             return View(News.ToPagedList(page, pagesize));

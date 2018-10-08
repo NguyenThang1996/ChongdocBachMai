@@ -34,6 +34,10 @@ namespace OsWebsite.Models
         public string InstagramID { get; set; }
         public string PhotoID { get; set; }
         public string MailFooter { get; set; }
+        public string TitleEvent { get; set; }
+        public string AboutEvent { get; set; }
+        public string TimelineEvent { get; set; }
+        public string GuestEvent { get; set; }
     
         public virtual Language Language { get; set; }
     }

@@ -1,0 +1,179 @@
+﻿@model  IEnumerable<OsWebsite.Models.News>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+.tree-home {
+    color: #fff;
+    background: #3d6bb5;
+    border-left-color: white;
+}
+.tree-home a{
+    border-left-color: white !important;
+}
+</style>
+<section class="content" style="padding-bottom:0">
+    <!-- Info boxes -->
+    <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i style="margin-top:25px" class="fa fa-book"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text"><b>Chờ duyệt</b></span>
+                    <span class="info-box-number"> @ViewBag.Noactive </span>
+                </div><!-- /.info-box-content -->
+            </div><!-- /.info-box -->
+        </div><!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-red"><i style="margin-top:25px" class="fa fa-check-square-o"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text"><b>Đã duyệt</b></span>
+                    <span class="info-box-number">@ViewBag.Active</span>
+                </div><!-- /.info-box-content -->
+            </div><!-- /.info-box -->
+        </div><!-- /.col -->
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-green"><i style="margin-top:25px" class="fa fa-comments-o"></i></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text"><b>Liên hệ</b></span>
+                    <span class="info-box-number">@ViewBag.CountContact</span>
+                </div><!-- /.info-box-content -->
+            </div><!-- /.info-box -->
+        </div><!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i style="margin-top:25px" class="fa fa-user-plus"></i></span>
+                <div class="info-box-content">
+                    <span class="info-box-text">Thành viên</span>
+                    <span class="info-box-number">@ViewBag.CountUser</span>
+                </div><!-- /.info-box-content -->
+            </div><!-- /.info-box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    <div class="row">
+        <!-- Left col -->
+        <div class="col-md-8">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><i class="fa fa-book"></i> Bài Viết Mới Nhất </h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <tr class="trHeader">
+                                <th style="text-align:left">
+                                    Tên Bài Viết
+                                </th>
+                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="trOdd">
+                                    <td style="text-align:left">@item.Name</td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div><!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <a href="/Admin/News" class="btn btn-sm btn-default btn-flat pull-right">Xem tất cả bài viết</a>
+                </div><!-- /.box-footer -->
+            </div>
+            @*<div class="nav-tabs-custom">
+                <ul class="nav nav-tabs pull-right">
+                    <li class=""><a href="#tab_1-1" data-toggle="tab" aria-expanded="false">OrientSoft.vn</a></li>
+                    <li class="active"><a href="#tab_2-2" data-toggle="tab" aria-expanded="true">Lĩnh vực hoạt động</a></li>
+                    <li class="pull-left header"><i class="fa fa-university"></i> OrientSoft</li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane" id="tab_1-1">
+                        <p>
+                            Thành lập năm 2008, OrientSoft nhanh chóng khẳng định vị thế là một trong những công ty hàng đầu tại Việt Nam về phát triển phần mềm và cung cấp giải pháp trong lĩnh vực Công nghệ thông tin (CNTT). Với kinh nghiệm, kỹ năng và môi trường chuyên nghiệp  chúng tôi đã  và đang chiếm lĩnh thị trường với nhiều sản phẩm, giải pháp tiêu biểu được nhiều khách hàng biết đến.
+                        </p>
+                        <p>
+                            OrientSoft luôn mong muốn giữ vững là một doanh nghiệp hàng đầu trong lĩnh vực phát triển phần mềm ứng dụng, dịch vụ CNTT và luôn đem lại cho khách hàng sự hài lòng cao nhất về dịch vụ, giải pháp và sản phẩm với giá trị cao và đóng góp cho đất nước và cộng đồng.
+                        </p>
+                        </p>
+                        OrientSoft đã và đang mở rộng hợp tác với các đối tác trong và ngoài nước và cam kết là đối tác tin cậy của nhiều nhà đầu tư, là môi trường tốt cho những người có năng lực và lòng nhiệt thành.
+                        </p>
+
+
+                    </div><!-- /.tab-pane -->
+                    <div class="tab-pane active" id="tab_2-2">
+                        <h4>Cung cấp và phát triển các sản phẩm phần mềm cho các lĩnh vực:</h4>
+                        <p>
+                            Chính phủ điện tử, Doanh nghiệp, Tài chính ngân hàng, Bưu chính - Viễn thông, Giáo dục, Y tế, Giao thông vận tải
+                        </p>
+                        <h4>Tích hợp các Hệ thống thông tin:</h4>
+                        <p>Hệ thống mạng, Hệ thống máy chủ, Hệ thống bảo mật, Hệ thống lưu trữ, Hệ thống trung tâm dữ liệu</p>
+                        <h4>Cung cấp các dịch vụ:</h4>
+                        <p> Tư vấn hệ thống thông tin, Bảo hành bảo trì hệ thống thông tin, Tư vấn quản lý dự án công nghệ thông tin, Lưu trữ (Hosting) và quản trị Website, Cổng thông tin, E-mail, Đại lý quảng cáo trực tuyến, Đào tạo về công nghệ thông tin, Gia công phần mềm theo hình thức BPO</p>
+                    </div><!-- /.tab-pane -->
+                </div><!-- /.tab-content -->
+            </div>*@
+        </div><!-- /.col -->
+        <div class="col-md-4">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title"><i class="fa fa-pie-chart"></i> Thống kê truy cập</h3>
+                    <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="progress-group">
+                        <span class="progress-text"> Đang Online: </span>
+                        <span class="progress-number"><b>@ViewBag.Online</b></span>
+                        <div class="progress sm">
+                            <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
+                        </div>
+                    </div><!-- /.progress-group -->
+                    <div class="progress-group">
+                        <span class="progress-text">Hôm Nay:</span>
+                        <span class="progress-number"><b>@ViewBag.HomNay</b></span>
+                        <div class="progress sm">
+                            <div class="progress-bar progress-bar-red" style="width: 80%"></div>
+                        </div>
+                    </div><!-- /.progress-group -->
+                    <div class="progress-group">
+                        <span class="progress-text">Tuần Này:</span>
+                        <span class="progress-number"><b>@ViewBag.TuanNay</b></span>
+                        <div class="progress sm">
+                            <div class="progress-bar progress-bar-green" style="width: 80%"></div>
+                        </div>
+                    </div><!-- /.progress-group -->
+                    <div class="progress-group">
+                        <span class="progress-text">Tháng Này:</span>
+                        <span class="progress-number"><b>@ViewBag.ThangNay</b></span>
+                        <div class="progress sm">
+                            <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
+                        </div>
+                    </div><!-- /.progress-group -->
+                    <div class="progress-group">
+                        <span class="progress-text">Tháng Trước:</span>
+                        <span class="progress-number"><b>@ViewBag.ThangTruoc</b></span>
+                        <div class="progress sm">
+                            <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
+                        </div>
+                    </div><!-- /.progress-group -->
+                    <div class="progress-group">
+                        <span class="progress-text">Tổng Số:</span>
+                        <span class="progress-number"><b>@ViewBag.TatCa</b></span>
+                        <div class="progress sm">
+                            <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
+                        </div>
+                    </div><!-- /.progress-group -->
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+    </div><!-- /.row -->
+</section>

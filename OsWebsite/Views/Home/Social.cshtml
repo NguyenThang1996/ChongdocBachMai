@@ -46,7 +46,7 @@
     <div class="container">
         <div style="background: #f5f5f5" class="row">
             <div class="col-md-9">
-                @foreach (var item in Model.Take(6))
+                @foreach (var item in Model.Where(x => x.MenuID == 321).Take(6))
                 {
                     <div class="col-sm-6 col-lg-4 box-item-pro-main item_product ">
                         <div class="box-item-product-hot" style="height: 300px;">
@@ -58,7 +58,7 @@
                             <h3 class="title-product-main title_sanPham">
                                 <a href="/@item.Tag">@item.Name</a>
                             </h3>
-                            <span class="IdProduct-main">@Html.Raw(item.Decription.Substring(0, 110))...</span>
+                            <span class="IdProduct-main">@Html.Raw(item.Decription)</span>
                         </div>
                     </div>
                 }
@@ -73,7 +73,7 @@
                                 <i class="fa fa-caret-right"></i>
                                 @item.Name
                             </a>
-                            <ul class="dropdown-menu-top-right" style="padding-left: 20px;">
+                            <ul class="" style="padding-left: 20px;">
                                 @foreach (var child_item in ViewBag.Group)
                                 {
                                     if (child_item.IDCha == item.ID && child_item.Position == 2)
@@ -102,7 +102,6 @@
 <script>
     var dropdown = document.getElementsByClassName("dropdown-top-right");
     var i;
-
     for (i = 0; i < dropdown.length; i++) {
         dropdown[i].addEventListener("click", function () {
             this.classList.toggle("active");

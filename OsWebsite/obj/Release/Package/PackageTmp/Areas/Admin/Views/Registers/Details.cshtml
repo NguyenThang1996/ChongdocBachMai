@@ -1,0 +1,107 @@
+﻿@model OsWebsite.Models.Register
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .tree-contact {
+        color: #fff;
+        background: #2984ff;
+        border-left-color: white;
+    }
+
+        .tree-contact a {
+            border-left-color: white !important;
+        }
+</style>
+<section class="content-header"><h1>Liên Hệ </h1></section>
+<div class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box adm1">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading adm2">
+                                thông tin người đăng ký
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12"></div>
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                    <div class="form-horizontal">
+                                        <div class="form-group">
+                                            @Html.Label("Tên người đăng ký", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.Label("Học vị", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.DropDownList("Job", "-- Chọn học vị --")
+                                                @Html.ValidationMessageFor(model => model.Job)
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.Label("Bệnh viện", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.TextBoxFor(model => model.Hospital, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.Label("Khoa", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.TextBoxFor(model => model.Room, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.Label("Địa chỉ", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.Label("Số điện thoại", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.Label("Email", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.Label("Ngày đăng ký", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.TextBoxFor(model => model.DateCreate, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.Label("Nội dung", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-8">
+                                                @Html.TextAreaFor(model => model.Content, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+    </div>
+    @Html.ActionLink("Trở về", "Index", "", new { @class = "btn btn-default" })
+</div>

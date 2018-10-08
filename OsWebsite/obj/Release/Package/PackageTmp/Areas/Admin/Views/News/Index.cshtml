@@ -1,0 +1,134 @@
+﻿@model PagedList.IPagedList<OsWebsite.Models.News>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .tree-content {
+        color: #fff;
+        background: #2984ff;
+        border-left-color: white;
+    }
+    .tree-content a {
+            border-left-color: white !important;
+    }
+    .ddl-filter{
+            float:left;
+            width:200px;
+            margin-right:10px
+     }
+    .w250px{
+            width:250px;
+            float:left;
+            margin-right:10px
+    }
+</style>
+<section class="content-header"><h1>Quản lý tin tức</h1></section>
+<section class="content">
+
+    @using (Html.BeginForm("Index", "News", FormMethod.Get))
+    {
+        <input type="text" name="Keyword" class="form-control w250px" />
+        @Html.DropDownList("MenuId", ViewData["ddltopics"] as List<SelectListItem>, new { @class = "form-control w250px" })
+        <select class="form-control ddl-filter w150px" id="ddlIsActive" name="IsActive">
+            <option value="0">--- Chọn trạng thái ---</option>
+            <option value="1">Hiển thị</option>
+            <option value="2">Ẩn</option>
+        </select>
+        <button type="submit" class="btn btn-default">Tìm kiếm</button>
+    }
+    <div style='clear: both; height: 10px'></div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box adm1">
+                <div class="row">
+                    <div class="col-lg-12">
+                        @using (Html.BeginForm("DeleteMuti", "News", FormMethod.Post))
+                        {
+                            @Html.ActionLink("Thêm tin tức", "Create", "", new { @class = "btn btn-default" })
+                            <input type="submit" value="Xóa" class="btn btn-default" onclick="return confirm('Bạn có muốn xóa tin tức đã chọn ?')" />
+                            <div style='clear: both; height: 10px'></div>
+                            <div class="panel panel-default">
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">
+                                    <div class="dataTable_wrapper">
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <tr class="trHeader">
+                                                <th><input type="checkbox" id="CheckAll" /></th>
+                                                <th style="text-align:left">
+                                                    Tiêu đề
+                                                </th>
+                                                <th>
+                                                    Nhóm tin
+                                                </th>
+                                                <th>
+                                                    Ngày tạo
+                                                </th>
+                                                <th>
+                                                    Hình ảnh
+                                                </th>
+                                                <th>
+                                                    Thư viện ảnh bài viết
+                                                </th>
+                                                <th>
+                                                    Tình trạng
+                                                </th>
+                                                <th>
+                                                    chức năng
+                                                </th>
+                                            </tr>
+
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr class="trOdd">
+                                                    <td><input type="checkbox" class="CheckboxID" name="ID" value="@item.ID" /></td>
+                                                    <td style="text-align:left">
+                                                        @Html.DisplayFor(modelItem => item.Name)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Menu.Name)
+                                                    </td>
+                                                    <td>
+                                                        @Html.Label(@item.DateCreate.Value.ToString("dd/MM/yyyy"))
+                                                    </td>
+                                                    <td>
+                                                        @if (item.Img != "" || item.Img != null)
+                                                        {
+                                                            <img src="@item.Img" width="90" height="90" />
+                                                        }                                                        
+                                                    </td>
+                                                    <th style="text-align:center">
+                                                        @Html.RouteLink("Quản trị thư viện", new { controller = "NewsImages", action = "Index", NewsID = item.ID })
+                                                    </th>
+                                                    <td>
+                                                        @if (item.IsActive == true)
+                                                        {
+                                                            @Html.Label("Hiển thị");
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.Label("Ẩn");
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @Html.ActionLink(" ", "Edit", new { id = item.ID }, new { @class = "bnedit" })
+                                                        @Html.ActionLink(" ", "Delete", new { id = item.ID }, new { @class = "bndelete", @Onclick = "return confirm('Bạn có muốn xóa tin tức này ?')" })
+                                                        @Html.ActionLink(" ", "Status", new { id = item.ID }, new { @class = "bnstatus" })
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div style="clear:both"></div>
+                        <div class="page-list">
+                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, MenuId = ViewBag.MenuId }))
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,187 @@
+﻿@model OsWebsite.Models.News
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .tree-content {
+        color: #fff;
+        background: #2984ff;
+        border-left-color: white;
+    }
+
+        .tree-content a {
+            border-left-color: white !important;
+        }
+</style>
+<section class="content-header"><h1>Thêm mới nội dung </h1></section>
+<div class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box adm1">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading adm2">
+                                Cập nhật thông tin
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12"></div>
+                                    @using (Html.BeginForm())
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        <div class="form-horizontal">
+                                            @Html.ValidationSummary(true)
+                                            <div class="form-group">
+                                                @Html.Label("Tên bài viết", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Name)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Nhóm bài viết", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.DropDownList("MenuID", "-- Chọn nhóm tin --")
+                                                    @Html.ValidationMessageFor(model => model.MenuID)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Định dạng", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.DropDownList("Position", "-- Chọn định dạng --")
+                                                    @Html.ValidationMessageFor(model => model.Position)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Mô tả", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">   
+                                                    @Html.TextArea("Decription", new { @class = "ckeditor" })
+                                                    @Html.ValidationMessageFor(model => model.Decription)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Nội dung", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextArea("ContentNew", new { @class = "ckeditor" })
+                                                    @Html.ValidationMessageFor(model => model.ContentNew)
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.Label("Hình ảnh", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.Img, new { @class = "form-control" , @id = "anhbia" })                                                    
+                                                    @Html.ValidationMessageFor(model => model.Img)
+                                                    <br />
+                                                    <input id="chonanhbia" class="btn btn-default" type="button" value="Chọn hình ảnh" />
+                                                </div>
+                                            </div>
+          
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Title)
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Keyword, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextAreaFor(model => model.Keyword, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Keyword)
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Description)
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.Label("Thứ tự", htmlAttributes: new { @class = "control-label col-md-2" })
+                                                <div class="col-md-10">
+                                                    @Html.TextBoxFor(model => model.IsOder, new { @class = "form-control", Value = @ViewBag.OrderMax })
+                                                    @Html.ValidationMessageFor(model => model.IsOder)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Hiển thị trang chủ", htmlAttributes: new { @class = "col-md-2 text-right" })
+                                                <div class="col-md-10">
+                                                    @Html.CheckBoxFor(model => model.ActiveTop)
+                                                    @Html.ValidationMessageFor(model => model.ActiveTop)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.Label("Kích hoạt", htmlAttributes: new { @class = "col-md-2 text-right" })
+                                                <div class="col-md-10">
+                                                    @Html.CheckBoxFor(model => model.IsActive ,new { @checked = true })
+                                                    @Html.ValidationMessageFor(model => model)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-offset-2 col-md-10">
+                                                    <input type="submit" value="Lưu" class="btn btn-default" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+   <div>
+</div>
+    @Html.ActionLink("Trở lại", "Index", "", new { @class = "btn btn-default" })
+</div>
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $("#chonanhbia").click(function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $("#anhbia").val(fileUrl);
+            };
+            finder.popup();
+        });
+        $("#MenuID").addClass("form-control");
+        $("#Position").addClass("form-control");
+        $('select[id="Position"]').first().val(1);
+    });
+
+    $("form").submit(function (e) {
+        if ($("#Name").val() == "") {
+            alert("Tên bài viết không được để trống");
+            $("#Name").focus();
+            return false;
+        }
+        if ($("#MenuID").val() == "") {
+            alert("Bạn chưa chọn nhóm tin tức");
+            $("#MenuID").focus();
+            return false;
+        }
+        if ($("#IsOder").val() == "") {
+            alert("Số thứ tự không được để trống");
+            $("#IsOder").focus();
+            return false;
+        }
+        var isorder = document.getElementById('IsOder').value
+        if (isNaN(isorder)) {
+            alert("Số thứ tự phải bằng số");
+            $("#IsOder").focus();
+            return false;
+        }
+    });
+</script>

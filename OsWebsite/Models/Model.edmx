@@ -78,6 +78,10 @@
           <Property Name="InstagramID" Type="ntext" />
           <Property Name="PhotoID" Type="ntext" />
           <Property Name="MailFooter" Type="nvarchar" MaxLength="500" />
+          <Property Name="TitleEvent" Type="nvarchar" MaxLength="256" />
+          <Property Name="AboutEvent" Type="nvarchar(max)" />
+          <Property Name="TimelineEvent" Type="nvarchar(max)" />
+          <Property Name="GuestEvent" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -810,6 +814,10 @@
           <Property Name="PhotoID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="MailFooter" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Language" Relationship="Self.FK_Config_Language" FromRole="Config" ToRole="Language" />
+          <Property Name="TitleEvent" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="AboutEvent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TimelineEvent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GuestEvent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -1652,6 +1660,10 @@
           <EntitySetMapping Name="Config">
             <EntityTypeMapping TypeName="Model.Config">
               <MappingFragment StoreEntitySet="Config">
+                <ScalarProperty Name="GuestEvent" ColumnName="GuestEvent" />
+                <ScalarProperty Name="TimelineEvent" ColumnName="TimelineEvent" />
+                <ScalarProperty Name="AboutEvent" ColumnName="AboutEvent" />
+                <ScalarProperty Name="TitleEvent" ColumnName="TitleEvent" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Logo" ColumnName="Logo" />
                 <ScalarProperty Name="PlaceHead" ColumnName="PlaceHead" />

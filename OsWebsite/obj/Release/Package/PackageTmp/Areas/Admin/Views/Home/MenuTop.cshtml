@@ -1,0 +1,74 @@
+﻿ @model IEnumerable<OsWebsite.Models.Language>
+<div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <label style="font-weight:bold">Ngôn ngữ đang dùng: @ViewBag.Langs</label>                        
+                    </a>
+                </li>
+                <li style="padding:0 8px" class="dropdown notifications-menu">
+                    <a href="/" class="dropdown-toggle" target="_blank">
+                        <i style="font-size:21px" class="fa fa-globe"></i>
+                        <span class="label label-warning">Website</span>
+                    </a>
+
+                </li>
+                <li style="padding:0 8px" class="dropdown notifications-menu">
+                    <a href="/Admin/Contact/Index" class="dropdown-toggle">
+                        <i style="font-size:21px" class="fa fa-weixin"></i>
+                        <span class="label label-warning" style="right:10px">@ViewBag.CountContact</span>
+                    </a>
+                </li>
+                <li style="padding:0 8px" class="dropdown notifications-menu">
+                    <a href="/Admin/Orders/Index" class="dropdown-toggle">
+                        <i style="font-size:21px" class="fa fa-credit-card"></i>
+                        <span class="label label-warning" style="right:10px">@ViewBag.CountOrder</span>
+                    </a>
+                </li>
+                <li style="padding:0 8px" class="dropdown notifications-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i style="font-size:21px" class="fa fa-flag"></i>
+                        <span class="label label-warning">
+                            Ngôn ngữ
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <ul class="menu menulang">
+                                        @foreach (var item in Model)
+                                        {
+                                            <li><img src="@item.IconLang" /> @Html.RouteLink(item.NameLang, new { controller = "Home", action = "ChangeLang", IDLang = item.IDLang })</li>
+                                        }
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="~/Areas/Admin/Content/css/images//user.png" class="user-image" alt="User Image" />
+                        <span class="hidden-xs">ADMIN</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- User image -->
+                        <li class="user-header">
+                            <img src="~/Areas/Admin/Content/css/images//user.png" class="img-circle" alt="User Image" />
+                            <p>                
+                                @*@Session["Nameadmin"].ToString()*@                
+                                <small>Thành viên quản trị website</small>
+                            </p>
+                        </li>
+
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                            </div>
+                            <div class="pull-right">
+                                @Html.RouteLink("Đăng xuất", new { controller = "Login", action = "Logout"},new { @Class= "btn btn-default btn-flat" })
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
