@@ -1,4 +1,14 @@
 ﻿@model List<OsWebsite.Models.News_Others_Result>
+@functions
+{
+    public static string SubString(string textToTruncate, int length)
+    {
+        if (textToTruncate == null || textToTruncate.Length < length)
+            return textToTruncate;
+        int iNextSpace = textToTruncate.LastIndexOf(" ", length);
+        return string.Format("{0}...", textToTruncate.Substring(0, (iNextSpace > 0) ? iNextSpace : length).Trim());
+    }
+}
 <h4>
     <a style="text-decoration: none; color: #000; font-weight: bold;" href="#">
         Cùng chuyên mục
@@ -16,7 +26,7 @@
             <h3 style="line-height: 16px!important" class="title-product-main title_sanPham">
                 <a style="font-size: 16px; font-family: Arial; color: #4c5054; text-decoration: none" href="/@item.Tag">@item.Name</a>
             </h3>
-            <span class="IdProduct-main">@Html.Raw(item.Decription)</span>
+            <span class="IdProduct-main">@Html.Raw(SubString(item.Decription.ToString(), 110))</span>
         </div>
     </div>
 
