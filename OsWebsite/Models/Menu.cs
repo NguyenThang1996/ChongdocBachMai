@@ -25,7 +25,7 @@ namespace OsWebsite.Models
         public int ID { get; set; }
         public string Name { get; set; }
         public string Tag { get; set; }
-        public int IDCha { get; set; }
+        public Nullable<int> IDCha { get; set; }
         public string Link { get; set; }
         public string Target { get; set; }
         public Nullable<int> ModID { get; set; }

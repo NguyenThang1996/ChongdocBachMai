@@ -75,11 +75,11 @@
     <Property Name="InstagramID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="PhotoID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="MailFooter" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Language" Relationship="Self.FK_Config_Language" FromRole="Config" ToRole="Language" />
-    <Property Name="TitleEvent" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="TitleEvent" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="AboutEvent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="TimelineEvent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="GuestEvent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Language" Relationship="Self.FK_Config_Language" FromRole="Config" ToRole="Language" />
   </EntityType>
   <EntityType Name="Contact">
     <Key>

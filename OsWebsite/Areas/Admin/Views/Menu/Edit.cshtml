@@ -44,10 +44,10 @@
                                                     @Html.ValidationMessageFor(model => model.Name)
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+                                           <div class="form-group">
                                                 @Html.Label("Nhóm Danh Mục", htmlAttributes: new { @class = "control-label col-md-2" })
                                                 <div class="col-md-10">
-                                                    @Html.DropDownList("IDCha", "-- Chọn danh mục --")
+                                                    @Html.DropDownList("IDCha", ViewBag.IDCha as List<SelectListItem>, "-- Chọn danh mục --")
                                                     @Html.ValidationMessageFor(model => model.IDCha)
                                                 </div>
                                             </div>

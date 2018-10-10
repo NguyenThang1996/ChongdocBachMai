@@ -17,7 +17,7 @@ namespace OsWebsite.Areas.Admin.Controllers
     {
         OsWebEntities db = new OsWebEntities();
         // GET: Admin/Menu
-        public ActionResult Index(int page = 1,int pagesize = 20, string error = "")
+        public ActionResult Index(int page = 1, int pagesize = 20, string error = "")
         {
             if (error == "error")
             {
@@ -100,8 +100,7 @@ namespace OsWebsite.Areas.Admin.Controllers
 
 
         // GET: Admin/Menu/Create
-        public ActionResult Create(int ID, string error = "")
-
+        public ActionResult Create(int? ID, string error = "")
         {
             if (error == "tontai")
             {
@@ -109,79 +108,63 @@ namespace OsWebsite.Areas.Admin.Controllers
             }
             int IDLang = int.Parse(Session["LangWeb"].ToString());
             Menu mm = new Menu();
-
-            var menu = db.Menu.Where(x => x.ID == ID).FirstOrDefault();
-            ViewBag.IDCha = new SelectList(db.DacapMenu(IDLang), "ID", "Name",menu.ID);
-            mm.IDCha = ID;
-            mm.IsActive = true;
-            var items = new SelectList(db.Module.Where(x => x.IsActive == true).OrderBy(x=>x.Position), "ID", "Name").ToList();
-            items.Insert(0, (new SelectListItem { Text = "Tùy chỉnh liên kết", Value = "0" }));
-            ViewBag.ModID = new SelectList(items,"Value", "Text",menu.ModID);
-
-            ViewBag.Position = new SelectList(new List<SelectListItem>
+            if (ID != null)
             {
-                new SelectListItem { Text = "Menu", Value = "1"},
-                new SelectListItem { Text = "Box bên phải", Value = "2"},
-                //new SelectListItem { Text = "Dự án", Value = "3"},
-                //new SelectListItem { Text = "Sản Phẩm", Value = "4"}
-            }, "Value", "Text",menu.Position);
+                var menu = db.Menu.Where(x => x.ID == ID).FirstOrDefault();
+                ViewBag.IDCha = new SelectList(db.DacapMenu(IDLang), "ID", "Name", menu.ID);
+                mm.IDCha = ID;
+                mm.IsActive = true;
+                var items = new SelectList(db.Module.Where(x => x.IsActive == true).OrderBy(x => x.Position), "ID", "Name").ToList();
+                items.Insert(0, (new SelectListItem { Text = "Tùy chỉnh liên kết", Value = "0" }));
+                ViewBag.ModID = new SelectList(items, "Value", "Text", menu.ModID);
 
-            //ViewBag.Style = new SelectList(new List<SelectListItem>
-            //{
-            //    new SelectListItem { Text = "Menu dọc", Value = "1"},
-            //    new SelectListItem { Text = "Menu ngang", Value = "2"}
+                ViewBag.Position = new SelectList(new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Menu", Value = "1"},
+                    new SelectListItem { Text = "Box bên phải", Value = "2"},
+                }, "Value", "Text", menu.Position);
 
-            //}, "Value", "Text", menu.Style);
-
-            int countmax = db.Menu.Where(x => x.IDCha == ID).Count();
-            int ordermax = 0;
-            if (countmax == 0)
-            {
-                ordermax = 1;
+                int countmax = db.Menu.Where(x => x.IDCha == ID).Count();
+                int ordermax = 0;
+                if (countmax == 0)
+                {
+                    ordermax = 1;
+                }
+                else
+                {
+                    ordermax = db.Menu.Where(x => x.IDCha == ID).Max(e => e.IsOrder) + 1;
+                }
+                ViewBag.OrderMax = ordermax;
+                ViewBag.enable = "enable";
             }
             else
             {
-                ordermax = db.Menu.Where(x => x.IDCha == ID).Max(e => e.IsOrder) + 1;
+                ViewBag.IDCha = new SelectList(db.DacapMenu(IDLang), "ID", "Name");
+
+                List<SelectListItem> items = new SelectList(db.Module.Where(x => x.IsActive == true).OrderBy(x => x.Position), "ID", "Name").ToList();
+                items.Insert(0, (new SelectListItem { Text = "Tùy chỉnh liên kết", Value = "0" }));
+                ViewBag.ModID = items;
+
+                ViewBag.Position = new SelectList(new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Menu", Value = "1"},
+                    new SelectListItem { Text = "Box bên phải", Value = "2"},
+                }, "Value", "Text");
+
+
+                int countmax = db.Menu.Where(x => x.IsActive == true).Count();
+                int ordermax = 0;
+                if (countmax == 0)
+                {
+                    ordermax = 1;
+                }
+                else
+                {
+                    ordermax = db.Menu.Max(e => e.IsOrder) + 1;
+                }
+                ViewBag.OrderMax = ordermax;
+                mm.IsActive = true;
             }
-            ViewBag.OrderMax = ordermax;
-            ViewBag.enable = "enable";
-
-            //else
-            //{
-            //    ViewBag.IDCha = new SelectList(db.DacapMenu(IDLang), "ID", "Name");
-
-            //    List<SelectListItem> items = new SelectList(db.Module.Where(x => x.IsActive == true).OrderBy(x => x.Position), "ID", "Name").ToList();
-            //    items.Insert(0, (new SelectListItem { Text = "Tùy chỉnh liên kết", Value = "0" }));
-            //    ViewBag.ModID = items;
-
-            //    ViewBag.Position = new SelectList(new List<SelectListItem>
-            //    {
-            //        new SelectListItem { Text = "Menu", Value = "1"},
-            //        new SelectListItem { Text = "Box bên phải", Value = "2"},
-            //        //new SelectListItem { Text = "Dự án", Value = "3"},
-            //        //new SelectListItem { Text = "Sản Phẩm", Value = "4"}
-            //    }, "Value", "Text");
-
-            //    //ViewBag.Style = new SelectList(new List<SelectListItem>
-            //    //{
-            //    //    new SelectListItem { Text = "Menu dọc", Value = "1"},
-            //    //    new SelectListItem { Text = "Menu ngang", Value = "2"}
-
-            //    //}, "Value", "Text");
-
-            //    int countmax = db.Menu.Where(x => x.IsActive == true).Count();
-            //    int ordermax = 0;
-            //    if (countmax == 0)
-            //    {
-            //        ordermax = 1;
-            //    }
-            //    else
-            //    {
-            //        ordermax = db.Menu.Max(e => e.IsOrder) + 1;
-            //    }
-            //    ViewBag.OrderMax = ordermax;
-            //    mm.IsActive = true;
-            //}
             return View(mm);
         }
 
@@ -192,22 +175,22 @@ namespace OsWebsite.Areas.Admin.Controllers
             int IDLang = int.Parse(Session["LangWeb"].ToString());
             if (ModelState.IsValid)
             {
-                int check = db.Menu.Where(x => x.ID == menu.ID).Count();
-                //if (check != 0)
-                //{
-                //    return Create(menu.IDCha,"tontai");
-                //}
-                //if (menu.IDCha == null)
-                //{
-                //    menu.IDCha = 0;
-                //}              
+                int check = db.Menu.Where(x => x.Name == menu.Name && x.IDLang == IDLang).Count();
+                if (check != 0)
+                {
+                    return Create(menu.IDCha, "tontai");
+                }
+                if (menu.IDCha == null)
+                {
+                    menu.IDCha = 0;
+                }
                 if (menu.ModID == 0)
                 {
                     menu.Link = menu.Link;
                 }
                 else
                 {
-                    menu.Link = "/"+StringClass.NameToTag(menu.Name);
+                    menu.Link = "/" + StringClass.NameToTag(menu.Name);
                 }
                 if (menu.Position == null)
                 {
@@ -215,7 +198,7 @@ namespace OsWebsite.Areas.Admin.Controllers
                 }
                 menu.IDLang = IDLang;
                 menu.Tag = StringClass.NameToTag(menu.Name);
-                //menu.Style = menu.Style;
+                menu.Style = menu.Style;
                 menu.Summary = "";
                 menu.Content = "";
                 menu.Target = "";
@@ -233,8 +216,6 @@ namespace OsWebsite.Areas.Admin.Controllers
             {
                     new SelectListItem { Text = "Menu", Value = "1"},
                     new SelectListItem { Text = "Box bên phải", Value = "2"},
-                    //new SelectListItem { Text = "Dự án", Value = "3"},
-                    //new SelectListItem { Text = "Sản Phẩm", Value = "4"}
             }, "Value", "Text");
             return View(menu);
         }
@@ -262,20 +243,12 @@ namespace OsWebsite.Areas.Admin.Controllers
             items.Insert(0, (new SelectListItem { Text = "Tùy chỉnh liên kết", Value = "0" }));
             ViewBag.ModID = new SelectList(items, "Value", "Text", menu.ModID);
 
-
             ViewBag.Position = new SelectList(new List<SelectListItem>
             {
                     new SelectListItem { Text = "Menu", Value = "1"},
                     new SelectListItem { Text = "Box bên phải", Value = "2"},
-                    //new SelectListItem { Text = "Dự án", Value = "3"},
-                    //new SelectListItem { Text = "Sản Phẩm", Value = "4"}
             }, "Value", "Text", menu.Position);
-            //ViewBag.Style = new SelectList(new List<SelectListItem>
-            //    {
-            //        new SelectListItem { Text = "Menu dọc", Value = "1"},
-            //        new SelectListItem { Text = "Menu ngang", Value = "2"}
 
-            //    }, "Value", "Text", menu.Style);
             return View(menu);
         }
 
@@ -286,15 +259,15 @@ namespace OsWebsite.Areas.Admin.Controllers
             int IDLang = int.Parse(Session["LangWeb"].ToString());
             if (ModelState.IsValid)
             {
-                int check = db.Menu.Where(x => x.ID == menu.ID).Count();
-                if (check == 0)
+                int check = db.Menu.Where(x => x.ID != menu.ID && x.Name == menu.Name && x.IDLang == IDLang).Count();
+                if (check != 0)
                 {
                     return Edit(menu.ID, "error");
                 }
-                //if (menu.IDCha ==null)
-                //{
-                //    menu.IDCha = 0;
-                //}
+                if (menu.IDCha == null)
+                {
+                    menu.IDCha = 0;
+                }
 
                 if (menu.ModID == 0)
                 {
@@ -308,13 +281,6 @@ namespace OsWebsite.Areas.Admin.Controllers
                 {
                     menu.Position = 0;
                 }
-                ViewBag.Position = new SelectList(new List<SelectListItem>
-                {
-                        new SelectListItem { Text = "Menu", Value = "1"},
-                        new SelectListItem { Text = "Box bên phải", Value = "2"},
-                        //new SelectListItem { Text = "Dự án", Value = "3"},
-                        //new SelectListItem { Text = "Sản Phẩm", Value = "4"}
-                }, "Value", "Text", menu.Position);
                 menu.Summary = "";
                 menu.Content = "";
                 menu.Tag = StringClass.NameToTag(menu.Name);
@@ -324,25 +290,22 @@ namespace OsWebsite.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            //ViewBag.Style = new SelectList(new List<SelectListItem>
-            //{
-            //    new SelectListItem { Text = "Menu Đầu Trang", Value = "0"},
-            //    new SelectListItem { Text = "Menu Cuối Trang", Value = "1"},
-            //}, "Value", "Text", menu.Style);
+            ViewBag.Style = new SelectList(new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Menu Đầu Trang", Value = "0"},
+                new SelectListItem { Text = "Menu Cuối Trang", Value = "1"},
+            }, "Value", "Text", menu.Style);
             ViewBag.IDCha = new SelectList(db.DacapMenu(IDLang), "ID", "Name", menu.IDCha);
 
             var items = new SelectList(db.Module.Where(x => x.IsActive == true), "ID", "Name").ToList();
             items.Insert(0, (new SelectListItem { Text = "Tùy chỉnh liên kết", Value = "0" }));
             ViewBag.ModID = new SelectList(items, "Value", "Text", menu.ModID);
 
-
             ViewBag.Position = new SelectList(new List<SelectListItem>
             {
-                    new SelectListItem { Text = "Menu", Value = "1"},
-                    new SelectListItem { Text = "Box bên phải", Value = "2"},
-                    //new SelectListItem { Text = "Dự án", Value = "3"},
-                    //new SelectListItem { Text = "Sản Phẩm", Value = "4"}
-            }, "Value", "Text");
+                new SelectListItem { Text = "Menu", Value = "1"},
+                new SelectListItem { Text = "Box bên phải", Value = "2"},
+            }, "Value", "Text", menu.Position);
             return View(menu);
         }
 
@@ -375,71 +338,7 @@ namespace OsWebsite.Areas.Admin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        public JsonResult GetNews(int? MenuId, string keyword, int IsActive = 0)
-        {
-            bool active = false;
-            ViewBag.MenuId = MenuId;
-            if (keyword == "")
-            {
-                keyword = null;
-            }
-            else if (keyword != null && keyword != "")
-            {
-                keyword = StringClass.NameToTag(keyword);
-            }
-            if (IsActive == 1)
-            {
-                active = true;
-            }
-            else if (IsActive == 2)
-            {
-                active = false;
-            }
-            int Lang = int.Parse(Session["LangWeb"].ToString());
-            var news = new List<News>();
-            news = db.News.Where(x => x.IDLang == Lang).OrderBy(e => e.IsOder).ToList();
-            if (keyword == null && MenuId != null && IsActive == 0)
-            {
-                news = db.News.Where(x => x.MenuID == MenuId && x.IDLang == Lang).OrderBy(e => e.IsOder).ToList();
-            }
-            else if (keyword != null && MenuId == null && IsActive == 0)
-            {
-                news = db.News.Where(x => x.Tag.Contains(keyword) && x.IDLang == Lang).OrderBy(e => e.IsOder).ToList();
-            }
-            else if (keyword == null && MenuId == null && IsActive != 0)
-            {
-                news = db.News.Where(x => x.IsActive == active && x.IDLang == Lang).OrderBy(e => e.IsOder).ToList();
-            }
-            else if (keyword == null && MenuId != null && IsActive != 0)
-            {
-                news = db.News.Where(x => x.IsActive == active && x.MenuID == MenuId && x.IDLang == Lang).OrderBy(e => e.IsOder).ToList();
-            }
-            else if (keyword != null && MenuId == null && IsActive != 0)
-            {
-                news = db.News.Where(x => x.IsActive == active && x.IDLang == Lang && x.Tag.Contains(keyword)).OrderBy(e => e.IsOder).ToList();
-            }
-            else if (MenuId != null && keyword != null && IsActive == 0)
-            {
-                news = db.News.Where(x => x.Tag.Contains(keyword) && x.MenuID == MenuId && x.IDLang == Lang).OrderBy(e => e.IsOder).ToList();
-            }
-            else if (MenuId != null && keyword != null && IsActive != 0)
-            {
-                news = db.News.Where(x => x.MenuID == MenuId && x.Tag.Contains(keyword) && x.IsActive == active && x.IDLang == Lang).OrderBy(e => e.IsOder).ToList();
-            }
-            else if (MenuId == null && keyword == "" || keyword == null && IsActive == 0)
-            {
-                news = db.News.Where(e => e.IDLang == Lang).OrderBy(e => e.IsOder).ToList();
-            }
-            var listtopics = db.DacapMenu(Lang).ToList();
-            List<SelectListItem> li = new List<SelectListItem>();
-            li.Add(new SelectListItem { Text = "--- Chọn nhóm tin ---", Value = null });
-            foreach (var item in listtopics)
-            {
-                li.Add(new SelectListItem { Text = item.Name, Value = item.ID.ToString() });
-            }
-            ViewData["ddltopics"] = li;
-            return Json(news.OrderByDescending(x => x.ID).Take(10), JsonRequestBehavior.AllowGet);
-        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

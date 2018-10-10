@@ -20,7 +20,6 @@ namespace OsWebsite.Models
         public OsWebEntities()
             : base("name=OsWebEntities")
         {
-            this.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

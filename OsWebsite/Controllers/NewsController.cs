@@ -73,7 +73,8 @@ namespace OsWebsite.Controllers
             Tag = Tag.Replace("?utm_source=zalo&utm_medium=zalo&utm_campaign=zalo&zarsrc=31", "");
             var News = db.News.Where(x => x.Tag == Tag && x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
             int id = GetParentId(News[0].MenuID);
-            int idhover = News[0].MenuID;
+            ViewBag.Id = GetParentId(News[0].MenuID);
+            int? idhover = News[0].MenuID;
             ViewBag.MenuIdDetail = db.Menu.Where(x => x.IDCha == id && x.IDLang == LangWeb && x.IsActive == true).ToList();
             ViewBag.Url = db.Menu.Where(x => x.ID == idhover && x.IDLang == LangWeb && x.IsActive == true).FirstOrDefault().Tag;
             return View(News);
@@ -84,11 +85,12 @@ namespace OsWebsite.Controllers
             var News = db.News_Others(MenuID).Where(x => x.ID != IdNews && x.IsActive == true && x.IDLang == LangWeb).OrderByDescending(x => x.ID).Take(3).ToList();
             return PartialView(News);
         }
-        public int GetParentId(int id)
+        public int GetParentId(int? id)
         {
             Menu record = db.Menu.Find(id);
-            if (record.IDCha == 0) return id;
+            if (record.IDCha == 0) return id.GetValueOrDefault();
             return GetParentId(record.IDCha);
         }
+
     }
 }

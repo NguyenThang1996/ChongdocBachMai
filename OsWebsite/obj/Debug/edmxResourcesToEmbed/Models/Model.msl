@@ -56,10 +56,6 @@
     <EntitySetMapping Name="Config">
       <EntityTypeMapping TypeName="Model.Config">
         <MappingFragment StoreEntitySet="Config">
-          <ScalarProperty Name="GuestEvent" ColumnName="GuestEvent" />
-          <ScalarProperty Name="TimelineEvent" ColumnName="TimelineEvent" />
-          <ScalarProperty Name="AboutEvent" ColumnName="AboutEvent" />
-          <ScalarProperty Name="TitleEvent" ColumnName="TitleEvent" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Logo" ColumnName="Logo" />
           <ScalarProperty Name="PlaceHead" ColumnName="PlaceHead" />
@@ -80,6 +76,10 @@
           <ScalarProperty Name="InstagramID" ColumnName="InstagramID" />
           <ScalarProperty Name="PhotoID" ColumnName="PhotoID" />
           <ScalarProperty Name="MailFooter" ColumnName="MailFooter" />
+          <ScalarProperty Name="TitleEvent" ColumnName="TitleEvent" />
+          <ScalarProperty Name="AboutEvent" ColumnName="AboutEvent" />
+          <ScalarProperty Name="TimelineEvent" ColumnName="TimelineEvent" />
+          <ScalarProperty Name="GuestEvent" ColumnName="GuestEvent" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
