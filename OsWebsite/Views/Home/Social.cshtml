@@ -48,7 +48,7 @@
             <div style="padding-left: 0px; border-bottom: solid 1.2px #9a0000" class="col-md-9">
                 <ul style="border-bottom: 0px!important; padding-bottom: 2.1px" class="nav nav-tabs nav-prod">
                     <li class="active">
-                        <a style="padding: 10px 6px!important; letter-spacing: -1.1px; border: 0px!important; border-radius: 15px 15px 0 0; font-size: 17px; font-weight: bold; background-color: #9a0000; color: #fff !important; transition: background-color 500ms;" href="/danh-cho-cong-dong">@ViewBag.NameGroupSocial</a>
+                        <a style="padding: 10px 6px!important; border: 0px!important; border-radius: 15px 15px 0 0; font-size: 17px; font-weight: bold; background-color: #9a0000; color: #fff !important; transition: background-color 500ms;" href="/danh-cho-cong-dong">@ViewBag.NameGroupSocial</a>
                     </li>
                 </ul>
             </div>
@@ -56,7 +56,7 @@
     </div>
     <div class="container">
         <div style="background: #f5f5f5" class="row">
-            <div class="col-md-9">
+            <div style="padding: 0 0" class="col-md-9">
                 @foreach (var item in Model.Where(x => x.MenuID == 321).Take(6))
                 {
                     <div class="col-sm-6 col-lg-4 box-item-pro-main item_product ">
