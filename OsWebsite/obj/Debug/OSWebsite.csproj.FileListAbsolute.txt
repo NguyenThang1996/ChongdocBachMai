@@ -254,7 +254,6 @@ D:\GitHub\ChongdocBachMai\OsWebsite\bin\System.Web.Webpages.Razor.xml
 D:\GitHub\ChongdocBachMai\OsWebsite\bin\System.Web.Helpers.xml
 D:\GitHub\ChongdocBachMai\OsWebsite\bin\System.Web.Mvc.xml
 D:\GitHub\ChongdocBachMai\OsWebsite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\GitHub\ChongdocBachMai\OsWebsite\obj\Debug\OsWebsite.csprojAssemblyReference.cache
 D:\GitHub\ChongdocBachMai\OsWebsite\obj\Debug\OsWebsite.csproj.CoreCompileInputs.cache
 D:\GitHub\ChongdocBachMai\OsWebsite\obj\Debug\OsWebsite.csproj.CopyComplete
 D:\GitHub\ChongdocBachMai\OsWebsite\obj\Debug\OsWebsite.dll

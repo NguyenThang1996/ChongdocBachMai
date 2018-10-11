@@ -73,7 +73,7 @@ namespace OsWebsite.Areas.Admin.Controllers
                     Session["partner"] = db.Setting.Find("partner").EN;
                     Session["Service"] = db.Setting.Find("Service").EN;
                     Session["Cost"] = db.Setting.Find("Cost").EN;
-                    Session["ContactUs"] = db.Setting.Find("ContactUs").EN;
+                    Session["Contact"] = db.Setting.Find("Contact").EN;
                     Session["Status"] = db.Setting.Find("Status").EN;
                     Session["Stocking"] = db.Setting.Find("Stocking").EN;
                     Session["Outofstock"] = db.Setting.Find("Outofstock").EN;
@@ -113,7 +113,7 @@ namespace OsWebsite.Areas.Admin.Controllers
                     Session["partner"] = db.Setting.Find("partner").VN;
                     Session["Service"] = db.Setting.Find("Service").VN;
                     Session["Cost"] = db.Setting.Find("Cost").VN;
-                    Session["ContactUs"] = db.Setting.Find("ContactUs").VN;
+                    Session["Contact"] = db.Setting.Find("Contact").VN;
                     Session["Status"] = db.Setting.Find("Status").VN;
                     Session["Stocking"] = db.Setting.Find("Stocking").VN;
                     Session["Outofstock"] = db.Setting.Find("Outofstock").VN;

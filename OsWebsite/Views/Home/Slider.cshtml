@@ -70,12 +70,11 @@
                 </div>
             }
         </div>
-
-        <div class="banner-kyniem">
-            <div class="container">
-                <div class="row" style="padding-top:10px; padding-bottom:10px;">
-                    @if (int.Parse(Session["LangWeb"].ToString()) == 3)
-                    {
+        @if (int.Parse(Session["LangWeb"].ToString()) == 3)
+        {
+            <div class="banner-kyniem">
+                <div class="container">
+                    <div class="row" style="padding-top:10px; padding-bottom:10px;">
                         <div class="col-md-3 time-kyniem" style="padding-left:0px; padding-right:0px;">
                             <div id="clockdiv">
                                 <div class="time-kn">
@@ -116,9 +115,15 @@
                                 </div>
                             </div>
                         </div>
-                    }
-                    else
-                    {
+                    </div>
+                </div>
+            </div>
+        }
+        @*else
+        {
+            <div class="banner-kyniem">
+                <div class="container">
+                    <div class="row" style="padding-top:10px; padding-bottom:10px;">
                         <div class="col-md-3 time-kyniem" style="padding-left:0px; padding-right:0px;">
                             <div id="clockdiv">
                                 <div class="time-kn">
@@ -159,11 +164,10 @@
                                 </div>
                             </div>
                         </div>
-                    }
-
+                    </div>
                 </div>
             </div>
-        </div>
+        }*@
     </div>
 }
 <script>

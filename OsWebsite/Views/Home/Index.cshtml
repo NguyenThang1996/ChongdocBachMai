@@ -1,5 +1,13 @@
-﻿@Html.Action("Slider", "Home")
-@Html.Action("Social", "Home")
-@Html.Action("Staff", "Home")
-
+﻿@if (int.Parse(Session["LangWeb"].ToString()) == 3)
+{
+    @Html.Action("Slider", "Home")
+    @Html.Action("Social", "Home")
+    @Html.Action("Staff", "Home")
+}
+else
+{
+    @Html.Action("Slider", "Home")
+    @Html.Action("TrainingAndEducation", "Home")
+    @Html.Action("PublicEducation", "Home")
+}
 

@@ -34,7 +34,7 @@ namespace OsWebsite.Controllers
             ViewBag.Mail = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).Email;
             ViewBag.FacebookId = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).FacebookId;
             ViewBag.Countcart = ShoppingCart.Cart.Items.Count();
-            var menu = db.Menu.Where(x => x.IDLang == LangWeb && x.IsActive == true && x.MenuType.Count(m => m.MenuPage.CodeMenu == "Main" && m.IDLang == LangWeb) > 0 && x.Position == 1).OrderBy(x => x.IsOrder).ToList();
+            var menu = db.Menu.Where(x => x.IDLang == LangWeb && x.IsActive == true && x.MenuType.Count(m => m.MenuPage.CodeMenu == "Main" && m.IDLang == LangWeb) > 0 && x.Position == 1 || x.Position == 3).OrderBy(x => x.IsOrder).ToList();
             var IconShare = db.Advertise.Where(x => x.Position == 3 && x.IDLang == LangWeb).OrderBy(x => x.IsOrder).Take(2).ToList();
             var Language = db.Language.Where(x => x.IsActive == true).OrderBy(x => x.IsOrder).Take(2).ToList();
             ViewBag.Language = Language;
@@ -60,7 +60,7 @@ namespace OsWebsite.Controllers
         {
             int LangWeb = int.Parse(Session["LangWeb"].ToString());
             var Newscheck = db.Menu.Where(x => x.Tag == "danh-cho-cong-dong" && x.IsActive == true).ToList();
-            ViewBag.Group = db.Menu.Where(x => x.IsActive == true).ToList();
+            ViewBag.Group = db.Menu.Where(x => x.IsActive == true && x.IDLang == LangWeb).ToList();
             ViewBag.NameGroupSocial = Newscheck[0].Name.ToUpper();
             var parentid = Newscheck[0].ID;
             ViewBag.MenuIdSocial = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true && x.Position == 1).OrderBy(x => x.IsOrder).Skip(1).ToList();
@@ -71,7 +71,7 @@ namespace OsWebsite.Controllers
         {
             int LangWeb = int.Parse(Session["LangWeb"].ToString());
             var Newscheck = db.Menu.Where(x => x.Tag == "danh-cho-nhan-vien-y-duoc" && x.IsActive == true).ToList();
-            ViewBag.Group = db.Menu.Where(x => x.IsActive == true).ToList();
+            ViewBag.Group = db.Menu.Where(x => x.IsActive == true && x.IDLang == LangWeb).ToList();
             ViewBag.NameGroupStaff = Newscheck[0].Name.ToUpper();
             var parentid = Newscheck[0].ID;
             ViewBag.MenuIdStaff = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true && x.Position == 1).OrderBy(x => x.IsOrder).Skip(1).ToList();
@@ -81,25 +81,25 @@ namespace OsWebsite.Controllers
         public PartialViewResult PublicEducation()
         {
             int LangWeb = int.Parse(Session["LangWeb"].ToString());
-            var Newscheck = db.Menu.Where(x => x.Tag == "danh-cho-nhan-vien-y-duoc" && x.IsActive == true).ToList();
+            var Newscheck = db.Menu.Where(x => x.Tag == "public-education" && x.IsActive == true).ToList();
             ViewBag.Group = db.Menu.Where(x => x.IsActive == true).ToList();
             ViewBag.NameGroupPublicEducation = Newscheck[0].Name.ToUpper();
             var parentid = Newscheck[0].ID;
-            ViewBag.MenuIdPublicEducation = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true && x.Position == 1).OrderBy(x => x.IsOrder).Skip(1).ToList();
+            ViewBag.MenuIdPublicEducation = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true && x.Position == 1).OrderBy(x => x.IsOrder).ToList();
             var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
             return PartialView(News);
         }
         public PartialViewResult TrainingAndEducation()
         {
             int LangWeb = int.Parse(Session["LangWeb"].ToString());
-            var Newscheck = db.Menu.Where(x => x.Tag == "danh-cho-nhan-vien-y-duoc" && x.IsActive == true).ToList();
-            ViewBag.Group = db.Menu.Where(x => x.IsActive == true).ToList();
+            var Newscheck = db.Menu.Where(x => x.Tag == "training-and-education" && x.IsActive == true).ToList();
+            ViewBag.Group = db.Menu.Where(x => x.IsActive == true && x.IDLang == LangWeb).OrderBy(x => x.IsOrder).ToList();
             ViewBag.NameGroupTrainingAndEducation = Newscheck[0].Name.ToUpper();
             var parentid = Newscheck[0].ID;
-            ViewBag.MenuIdTrainingAndEducation = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true && x.Position == 1).OrderBy(x => x.IsOrder).Skip(1).ToList();
+            ViewBag.MenuIdTrainingAndEducation = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true && x.Position == 1).OrderBy(x => x.IsOrder).ToList();
             var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
             return PartialView(News);
-        }
+        }        
         public PartialViewResult Social_Banner()
         {
             int LangWeb = int.Parse(Session["LangWeb"].ToString());
@@ -153,7 +153,7 @@ namespace OsWebsite.Controllers
                     Session["partner"] = db.Setting.Find("partner").EN;
                     Session["Service"] = db.Setting.Find("Service").EN;
                     Session["Cost"] = db.Setting.Find("Cost").EN;
-                    Session["ContactUs"] = db.Setting.Find("ContactUs").EN;
+                    Session["Contact"] = db.Setting.Find("Contact").EN;
                     Session["Status"] = db.Setting.Find("Status").EN;
                     Session["Stocking"] = db.Setting.Find("Stocking").EN;
                     Session["Outofstock"] = db.Setting.Find("Outofstock").EN;
@@ -193,7 +193,7 @@ namespace OsWebsite.Controllers
                     Session["partner"] = db.Setting.Find("partner").VN;
                     Session["Service"] = db.Setting.Find("Service").VN;
                     Session["Cost"] = db.Setting.Find("Cost").VN;
-                    Session["ContactUs"] = db.Setting.Find("ContactUs").VN;
+                    Session["Contact"] = db.Setting.Find("Contact").VN;
                     Session["Status"] = db.Setting.Find("Status").VN;
                     Session["Stocking"] = db.Setting.Find("Stocking").VN;
                     Session["Outofstock"] = db.Setting.Find("Outofstock").VN;

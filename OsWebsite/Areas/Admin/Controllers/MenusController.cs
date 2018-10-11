@@ -149,6 +149,7 @@ namespace OsWebsite.Areas.Admin.Controllers
                 {
                     new SelectListItem { Text = "Menu", Value = "1"},
                     new SelectListItem { Text = "Box bên phải", Value = "2"},
+                    new SelectListItem { Text = "Cả hai", Value = "3"},
                 }, "Value", "Text");
 
 
@@ -216,6 +217,7 @@ namespace OsWebsite.Areas.Admin.Controllers
             {
                     new SelectListItem { Text = "Menu", Value = "1"},
                     new SelectListItem { Text = "Box bên phải", Value = "2"},
+                        new SelectListItem { Text = "Cả hai", Value = "3"},
             }, "Value", "Text");
             return View(menu);
         }
@@ -247,6 +249,7 @@ namespace OsWebsite.Areas.Admin.Controllers
             {
                     new SelectListItem { Text = "Menu", Value = "1"},
                     new SelectListItem { Text = "Box bên phải", Value = "2"},
+                        new SelectListItem { Text = "Cả hai", Value = "3"},
             }, "Value", "Text", menu.Position);
 
             return View(menu);
@@ -305,6 +308,7 @@ namespace OsWebsite.Areas.Admin.Controllers
             {
                 new SelectListItem { Text = "Menu", Value = "1"},
                 new SelectListItem { Text = "Box bên phải", Value = "2"},
+                    new SelectListItem { Text = "Cả hai", Value = "3"},
             }, "Value", "Text", menu.Position);
             return View(menu);
         }

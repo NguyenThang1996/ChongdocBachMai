@@ -1206,6 +1206,14 @@
     <Content Include="Icon\Slide\Slide-1.jpg" />
     <Content Include="Icon\Slide\Slide-2.jpg" />
     <Content Include="Icon\Slide\Slide-3.jpg" />
+    <Content Include="Icon\Eng\1.png" />
+    <Content Include="Icon\Eng\2.png" />
+    <Content Include="Icon\Eng\3.png" />
+    <Content Include="Icon\Eng\4.png" />
+    <Content Include="Icon\Eng\5.png" />
+    <Content Include="Icon\Eng\6.png" />
+    <Content Include="Icon\Eng\7.png" />
+    <Content Include="Icon\Eng\8.png" />
     <Content Include="Icon\Tin chi tiet\Face.png" />
     <Content Include="Icon\Tin chi tiet\Viber.png" />
     <Content Include="Icon\Tin chi tiet\Zalo.png" />

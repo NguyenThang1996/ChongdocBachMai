@@ -76,35 +76,35 @@
                 </div>
             </div>
             <div style="background: #525252; height: 715px" class="col-md-3 kienthucchung">
-                    <ul>
-                        @foreach (var item in ViewBag.MenuIdSocial)
-                        {
-                            <li class="congdong">
-                                <a class="dropdown-top-right" style="font-size: 18px; font-weight: bold">
-                                    <i class="fa fa-caret-right"></i>
-                                    @item.Name
-                                </a>
-                                <ul class="" style="padding-left: 20px;">
-                                    @foreach (var child_item in ViewBag.Group)
+                <ul>
+                    @foreach (var item in ViewBag.MenuIdSocial)
+                    {
+                        <li class="congdong">
+                            <a class="dropdown-top-right" style="font-size: 18px; font-weight: bold">
+                                <i class="fa fa-caret-right"></i>
+                                @item.Name
+                            </a>
+                            <ul class="" style="padding-left: 20px;">
+                                @foreach (var child_item in ViewBag.Group)
+                                {
+                                    if (child_item.IDCha == item.ID && child_item.Position == 2)
                                     {
-                                        if (child_item.IDCha == item.ID && child_item.Position == 2)
-                                        {
-                                            <li class="sub-congdong">
-                                                <img src="@child_item.Images" />
-                                                <a href="@child_item.Link">
-                                                    @child_item.Name
-                                                </a>
-                                            </li>
-                                        }
-
+                                        <li class="sub-congdong">
+                                            <img src="@child_item.Images" />
+                                            <a href="@child_item.Link">
+                                                @child_item.Name
+                                            </a>
+                                        </li>
                                     }
 
-                                </ul>
-                            </li>
-                        }
+                                }
 
-                    </ul>
-                </div>
+                            </ul>
+                        </li>
+                    }
+
+                </ul>
+            </div>
         </div>
     </div>
 </div>
