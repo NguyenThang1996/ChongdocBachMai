@@ -1,4 +1,11 @@
-﻿
+﻿@{
+                /**/
+
+                if (Session["LangWeb"] == null || Session["LangWeb"] == "")
+                {
+                    Response.Redirect("~/Home/SetLang");
+                }
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -233,7 +240,7 @@
 </head>
 <body>
     <div id="mm-0" class="mm-page mm-slideout">
-        <div class="wapper">            
+        <div class="wapper">
             @Html.Action("Header", "Home")
             @Html.Action("Menu", "Home")
             @RenderBody()

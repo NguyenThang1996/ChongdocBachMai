@@ -338,7 +338,71 @@ namespace OsWebsite.Areas.Admin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        public JsonResult GetNews(int? MenuId, string keyword, int IsActive = 0, int page = 1, int pagesize = 10)
+        {
+            bool active = false;
+            ViewBag.MenuId = MenuId;
+            if (keyword == "")
+            {
+                keyword = null;
+            }
+            else if (keyword != null && keyword != "")
+            {
+                keyword = StringClass.NameToTag(keyword);
+            }
+            if (IsActive == 1)
+            {
+                active = true;
+            }
+            else if (IsActive == 2)
+            {
+                active = false;
+            }
+            int Lang = int.Parse(Session["LangWeb"].ToString());
+            var news = new List<News>();
+            news = db.News.Where(x => x.IDLang == Lang).OrderBy(e => e.IsOder).ToList();
+            if (keyword == null && MenuId != null && IsActive == 0)
+            {
+                news = db.News.Where(x => x.MenuID == MenuId && x.IDLang == Lang).OrderBy(e => e.IsOder).ToList();
+            }
+            else if (keyword != null && MenuId == null && IsActive == 0)
+            {
+                news = db.News.Where(x => x.Tag.Contains(keyword) && x.IDLang == Lang).OrderBy(e => e.IsOder).ToList();
+            }
+            else if (keyword == null && MenuId == null && IsActive != 0)
+            {
+                news = db.News.Where(x => x.IsActive == active && x.IDLang == Lang).OrderBy(e => e.IsOder).ToList();
+            }
+            else if (keyword == null && MenuId != null && IsActive != 0)
+            {
+                news = db.News.Where(x => x.IsActive == active && x.MenuID == MenuId && x.IDLang == Lang).OrderBy(e => e.IsOder).ToList();
+            }
+            else if (keyword != null && MenuId == null && IsActive != 0)
+            {
+                news = db.News.Where(x => x.IsActive == active && x.IDLang == Lang && x.Tag.Contains(keyword)).OrderBy(e => e.IsOder).ToList();
+            }
+            else if (MenuId != null && keyword != null && IsActive == 0)
+            {
+                news = db.News.Where(x => x.Tag.Contains(keyword) && x.MenuID == MenuId && x.IDLang == Lang).OrderBy(e => e.IsOder).ToList();
+            }
+            else if (MenuId != null && keyword != null && IsActive != 0)
+            {
+                news = db.News.Where(x => x.MenuID == MenuId && x.Tag.Contains(keyword) && x.IsActive == active && x.IDLang == Lang).OrderBy(e => e.IsOder).ToList();
+            }
+            else if (MenuId == null && keyword == "" || keyword == null && IsActive == 0)
+            {
+                news = db.News.Where(e => e.IDLang == Lang).OrderBy(e => e.IsOder).ToList();
+            }
+            var listtopics = db.DacapMenu(Lang).ToList();
+            List<SelectListItem> li = new List<SelectListItem>();
+            li.Add(new SelectListItem { Text = "--- Chọn nhóm tin ---", Value = null });
+            foreach (var item in listtopics)
+            {
+                li.Add(new SelectListItem { Text = item.Name, Value = item.ID.ToString() });
+            }
+            ViewData["ddltopics"] = li;
+            return Json(news.OrderByDescending(x => x.ID).Take(pagesize), JsonRequestBehavior.AllowGet);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

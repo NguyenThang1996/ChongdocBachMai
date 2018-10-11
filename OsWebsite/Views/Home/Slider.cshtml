@@ -74,46 +74,93 @@
         <div class="banner-kyniem">
             <div class="container">
                 <div class="row" style="padding-top:10px; padding-bottom:10px;">
-                    <div class="col-md-3 time-kyniem" style="padding-left:0px; padding-right:0px;">
-                        <div id="clockdiv">
-                            <div class="time-kn">
-                                <span class="days"></span>
-                                <div class="smalltext">Ngày</div>
-                            </div>
-                            <div class="time-kn">
-                                <span class="hours"></span>
-                                <div class="smalltext">Giờ</div>
-                            </div>
-                            <div class="time-kn">
-                                <span class="minutes"></span>
-                                <div class="smalltext">Phút</div>
-                            </div>
-                            <div class="time-kn second-time">
-                                <span class="seconds"></span>
-                                <div class="smalltext">Giây</div>
+                    @if (int.Parse(Session["LangWeb"].ToString()) == 3)
+                    {
+                        <div class="col-md-3 time-kyniem" style="padding-left:0px; padding-right:0px;">
+                            <div id="clockdiv">
+                                <div class="time-kn">
+                                    <span class="days"></span>
+                                    <div class="smalltext">Ngày</div>
+                                </div>
+                                <div class="time-kn">
+                                    <span class="hours"></span>
+                                    <div class="smalltext">Giờ</div>
+                                </div>
+                                <div class="time-kn">
+                                    <span class="minutes"></span>
+                                    <div class="smalltext">Phút</div>
+                                </div>
+                                <div class="time-kn second-time">
+                                    <span class="seconds"></span>
+                                    <div class="smalltext">Giây</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="~/Icon/Le-ky-niem-20-nam/20.png" alt="img_kyniem" style="height:100%; float:right;" />
-                            </div>
-                            <div class="col-md-9">
-                                <h4 style="color:#fff;">LỄ KỶ NIỆM 20 NĂM THÀNH LẬP TRUNG TÂM CHỐNG ĐỘC BẠCH MAI</h4>
-                                <h4 style="color:#fff;">HỘI NGHỊ QUỐC TẾ CHUYÊN NGÀNH CHỐNG ĐỘC 2018</h4>
-                                <p style="color:#fff;">Hà Nội, 5/11/2018</p>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <a href="/hoi-nghi--hoi-thao#formgioithieu"><input class="button-choise" type="button" value="Giới thiệu" style="background-image: url(/Icon/Le-ky-niem-20-nam/DangKy.png);" /></a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="/hoi-nghi--hoi-thao#formdangky"><input class="button-choise" type="button" value="Đăng ký" style="background-image: url(/Icon/Le-ky-niem-20-nam/GioiThieu.png);" /></a>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img src="~/Icon/Le-ky-niem-20-nam/20.png" alt="img_kyniem" style="height:100%; float:right;" />
+                                </div>
+                                <div class="col-md-9">
+                                    <h4 style="color:#fff;">LỄ KỶ NIỆM 20 NĂM THÀNH LẬP TRUNG TÂM CHỐNG ĐỘC BẠCH MAI</h4>
+                                    <h4 style="color:#fff;">HỘI NGHỊ QUỐC TẾ CHUYÊN NGÀNH CHỐNG ĐỘC 2018</h4>
+                                    <p style="color:#fff;">Hà Nội, 05/11/2018</p>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <a href="/hoi-nghi--hoi-thao#formgioithieu"><input class="button-choise" type="button" value="Giới thiệu" style="background-image: url(/Icon/Le-ky-niem-20-nam/DangKy.png);" /></a>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <a href="/hoi-nghi--hoi-thao#formdangky"><input class="button-choise" type="button" value="Đăng ký" style="background-image: url(/Icon/Le-ky-niem-20-nam/GioiThieu.png);" /></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
+                    else
+                    {
+                        <div class="col-md-3 time-kyniem" style="padding-left:0px; padding-right:0px;">
+                            <div id="clockdiv">
+                                <div class="time-kn">
+                                    <span class="days"></span>
+                                    <div class="smalltext">Days</div>
+                                </div>
+                                <div class="time-kn">
+                                    <span class="hours"></span>
+                                    <div class="smalltext">Hours</div>
+                                </div>
+                                <div class="time-kn">
+                                    <span class="minutes"></span>
+                                    <div class="smalltext">Minutes</div>
+                                </div>
+                                <div class="time-kn second-time">
+                                    <span class="seconds"></span>
+                                    <div class="smalltext">Seconds</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img src="~/Icon/Le-ky-niem-20-nam/20.png" alt="img_kyniem" style="height:100%; float:right;" />
+                                </div>
+                                <div class="col-md-9">
+                                    <h4 style="color:#fff;">THE 20TH ANNIVERSARY OF ESTABLISHMENT OF BACH MAI POISON</h4>
+                                    <h4 style="color:#fff;">CONTROL CENTER</h4>
+                                    <p style="color:#fff;">Ha Noi, 05/11/2018</p>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <a href="/hoi-nghi--hoi-thao#formgioithieu"><input class="button-choise" type="button" value="Introduce" style="background-image: url(/Icon/Le-ky-niem-20-nam/DangKy.png);" /></a>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <a href="/hoi-nghi--hoi-thao#formdangky"><input class="button-choise" type="button" value="Register" style="background-image: url(/Icon/Le-ky-niem-20-nam/GioiThieu.png);" /></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
                 </div>
             </div>
         </div>

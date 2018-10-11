@@ -65,6 +65,86 @@ namespace OsWebsite.Controllers
             var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
             return View(News.ToPagedList(page, pagesize));
         }
+        public ActionResult TrainingAndEducation(int page = 1, int pagesize = 6)
+        {
+            string Tag = System.IO.Path.GetFileNameWithoutExtension(Request.RawUrl);
+            Tag = Tag.Replace("?utm_source=zalo&utm_medium=zalo&utm_campaign=zalo&zarsrc=30", "");
+            Tag = Tag.Replace("?utm_source=zalo&utm_medium=zalo&utm_campaign=zalo&zarsrc=31", "");
+            string Tagcheck = Tag.Substring(Tag.LastIndexOf("?") + 1);
+            Tag = Tag.Replace("?" + Tagcheck, "");
+            int LangWeb = int.Parse(Session["LangWeb"].ToString());
+            var Newscheck = db.Menu.Where(x => x.Tag == Tag && x.IsActive == true).ToList();
+            ViewBag.NameGroupTrainingAndEducation = Newscheck[0].Name;
+            int id = GetParentId(Newscheck[0].ID);
+            ViewBag.MenuIdTrainingAndEducation = db.Menu.Where(x => x.IDCha == id && x.IDLang == LangWeb && x.IsActive == true).ToList();
+            ViewBag.Tag = Newscheck[0].Tag;
+            var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
+            return View(News.ToPagedList(page, pagesize));
+        }
+        public ActionResult PublicEducation(int page = 1, int pagesize = 6)
+        {
+            string Tag = System.IO.Path.GetFileNameWithoutExtension(Request.RawUrl);
+            Tag = Tag.Replace("?utm_source=zalo&utm_medium=zalo&utm_campaign=zalo&zarsrc=30", "");
+            Tag = Tag.Replace("?utm_source=zalo&utm_medium=zalo&utm_campaign=zalo&zarsrc=31", "");
+            string Tagcheck = Tag.Substring(Tag.LastIndexOf("?") + 1);
+            Tag = Tag.Replace("?" + Tagcheck, "");
+            int LangWeb = int.Parse(Session["LangWeb"].ToString());
+            var Newscheck = db.Menu.Where(x => x.Tag == Tag && x.IsActive == true).ToList();
+            ViewBag.NameGroupPublicEducation = Newscheck[0].Name;
+            int id = GetParentId(Newscheck[0].ID);
+            ViewBag.MenuIdPublicEducation = db.Menu.Where(x => x.IDCha == id && x.IDLang == LangWeb && x.IsActive == true).ToList();
+            ViewBag.Tag = Newscheck[0].Tag;
+            var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
+            return View(News.ToPagedList(page, pagesize));
+        }
+        public ActionResult Forum(int page = 1, int pagesize = 6)
+        {
+            string Tag = System.IO.Path.GetFileNameWithoutExtension(Request.RawUrl);
+            Tag = Tag.Replace("?utm_source=zalo&utm_medium=zalo&utm_campaign=zalo&zarsrc=30", "");
+            Tag = Tag.Replace("?utm_source=zalo&utm_medium=zalo&utm_campaign=zalo&zarsrc=31", "");
+            string Tagcheck = Tag.Substring(Tag.LastIndexOf("?") + 1);
+            Tag = Tag.Replace("?" + Tagcheck, "");
+            int LangWeb = int.Parse(Session["LangWeb"].ToString());
+            var Newscheck = db.Menu.Where(x => x.Tag == Tag && x.IsActive == true).ToList();
+            ViewBag.NameGroupForum = Newscheck[0].Name;
+            int id = GetParentId(Newscheck[0].ID);
+            ViewBag.MenuIdForum = db.Menu.Where(x => x.IDCha == id && x.IDLang == LangWeb && x.IsActive == true).ToList();
+            ViewBag.Tag = Newscheck[0].Tag;
+            var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
+            return View(News.ToPagedList(page, pagesize));
+        }
+        public ActionResult Research(int page = 1, int pagesize = 6)
+        {
+            string Tag = System.IO.Path.GetFileNameWithoutExtension(Request.RawUrl);
+            Tag = Tag.Replace("?utm_source=zalo&utm_medium=zalo&utm_campaign=zalo&zarsrc=30", "");
+            Tag = Tag.Replace("?utm_source=zalo&utm_medium=zalo&utm_campaign=zalo&zarsrc=31", "");
+            string Tagcheck = Tag.Substring(Tag.LastIndexOf("?") + 1);
+            Tag = Tag.Replace("?" + Tagcheck, "");
+            int LangWeb = int.Parse(Session["LangWeb"].ToString());
+            var Newscheck = db.Menu.Where(x => x.Tag == Tag && x.IsActive == true).ToList();
+            ViewBag.NameGroupResearch = Newscheck[0].Name;
+            int id = GetParentId(Newscheck[0].ID);
+            ViewBag.MenuIdResearch = db.Menu.Where(x => x.IDCha == id && x.IDLang == LangWeb && x.IsActive == true).ToList();
+            ViewBag.Tag = Newscheck[0].Tag;
+            var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
+            return View(News.ToPagedList(page, pagesize));
+        }
+        public ActionResult Dcoafd(int page = 1, int pagesize = 6)
+        {
+            string Tag = System.IO.Path.GetFileNameWithoutExtension(Request.RawUrl);
+            Tag = Tag.Replace("?utm_source=zalo&utm_medium=zalo&utm_campaign=zalo&zarsrc=30", "");
+            Tag = Tag.Replace("?utm_source=zalo&utm_medium=zalo&utm_campaign=zalo&zarsrc=31", "");
+            string Tagcheck = Tag.Substring(Tag.LastIndexOf("?") + 1);
+            Tag = Tag.Replace("?" + Tagcheck, "");
+            int LangWeb = int.Parse(Session["LangWeb"].ToString());
+            var Newscheck = db.Menu.Where(x => x.Tag == Tag && x.IsActive == true).ToList();
+            ViewBag.NameGroupDcoafd = Newscheck[0].Name;
+            int id = GetParentId(Newscheck[0].ID);
+            ViewBag.MenuIdDcoafd = db.Menu.Where(x => x.IDCha == id && x.IDLang == LangWeb && x.IsActive == true).ToList();
+            ViewBag.Tag = Newscheck[0].Tag;
+            var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
+            return View(News.ToPagedList(page, pagesize));
+        }
         public ActionResult NewsDetail()
         {
             int LangWeb = int.Parse(Session["LangWeb"].ToString());

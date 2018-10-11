@@ -1,0 +1,126 @@
+﻿@using OsWebsite.Models;
+@model List<OsWebsite.Models.News_Get4Cap_Result>
+@functions
+{
+    public static string SubString(string textToTruncate, int length)
+    {
+        if (textToTruncate == null || textToTruncate.Length < length)
+            return textToTruncate;
+        int iNextSpace = textToTruncate.LastIndexOf(" ", length);
+        return string.Format("{0}...", textToTruncate.Substring(0, (iNextSpace > 0) ? iNextSpace : length).Trim());
+    }
+}
+<style>
+    .dropdown-top-right {
+        display: block;
+        padding-left: 0px !important;
+        padding-bottom: 15px;
+    }
+
+        .dropdown-top-right:hover {
+            cursor: pointer;
+        }
+
+    .dropdown-menu-top-right {
+        display: none;
+    }
+</style>
+
+@{
+    <title>@ViewBag.MetaTitle</title>
+    if (ViewBag.MetaDescription != null)
+    {
+        <meta name="description" content="@ViewBag.MetaDescription" />
+    }
+    if (ViewBag.MetaKeywords != null)
+    {
+        <meta name="keywords" content="@ViewBag.MetaKeywords" />
+    }
+    string Tag = System.IO.Path.GetFileNameWithoutExtension(Request.RawUrl);
+    //kiểm tra tag xem có kèm gì khác ngoài tag
+    string Tagcheck = Tag.Substring(Tag.LastIndexOf("?") + 1);
+    //Replace hết kí tự lạ
+    Tag = Tag.Replace("?" + Tagcheck, "");
+}
+<div class="box-product-hot">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div style="padding-left: 0px; border-bottom: solid 1.2px #9a0000">
+                    <ul style="border-bottom: 0px!important; padding-bottom: 1.1px" class="nav nav-tabs nav-prod">
+                        <li class="active">
+                            <a style="padding: 10px 6px!important; border: 0px!important; border-radius: 15px 15px 0 0; font-size: 17px; font-weight: bold; background-color: #9a0000; color: #fff !important; transition: background-color 500ms;">@ViewBag.NameGroupSocial</a>
+                        </li>
+                    </ul>
+                </div>
+                <div style="padding: 0 0; background: #f5f5f5; height:670px" class="col-md-12">
+                    @foreach (var item in Model.Where(x => x.MenuID == 321).Take(6))
+                    {
+                        <div class="col-sm-6 col-lg-4 box-item-pro-main item_product ">
+                            <div class="box-item-product-hot" style="height: 300px;">
+                                <div class="box-img-product">
+                                    <a href="/@item.Tag">
+                                        <img src="@item.Img" alt="@item.Name">
+                                    </a>
+                                </div>
+                                <h3 class="title-product-main title_sanPham">
+                                    <a href="/@item.Tag">@item.Name</a>
+                                </h3>
+                                <span class="IdProduct-main">@Html.Raw(SubString(item.Decription.ToString(), 110))</span>
+                            </div>
+                        </div>
+                    }
+                    <div class="col-md-12">
+                        <a style="float: right; text-decoration: none; font-size: 16px" href="/tin-tuc-cong-dong">Xem thêm>></a>
+                    </div>
+                </div>
+            </div>
+            <div style="background: #525252; height: 715px" class="col-md-3 kienthucchung">
+                <ul>
+                    @foreach (var item in ViewBag.MenuIdSocial)
+                    {
+                        <li class="congdong">
+                            <a class="dropdown-top-right" style="font-size: 18px; font-weight: bold">
+                                <i class="fa fa-caret-right"></i>
+                                @item.Name
+                            </a>
+                            <ul class="" style="padding-left: 20px;">
+                                @foreach (var child_item in ViewBag.Group)
+                                {
+                                    if (child_item.IDCha == item.ID && child_item.Position == 2)
+                                    {
+                                        <li class="sub-congdong">
+                                            <img src="@child_item.Images" />
+                                            <a href="@child_item.Link">
+                                                @child_item.Name
+                                            </a>
+                                        </li>
+                                    }
+
+                                }
+
+                            </ul>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var dropdown = document.getElementsByClassName("dropdown-top-right");
+    var i;
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+</script>

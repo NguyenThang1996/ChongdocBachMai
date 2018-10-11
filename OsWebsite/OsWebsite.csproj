@@ -1557,6 +1557,7 @@
     <Compile Include="Controllers\ConferenceController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IntroductionController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1738,6 +1739,14 @@
     <Content Include="Views\Home\Social_Banner.cshtml" />
     <Content Include="Views\Home\Header.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Introduction\Index.cshtml" />
+    <Content Include="Views\News\TrainingAndEducation.cshtml" />
+    <Content Include="Views\News\PublicEducation.cshtml" />
+    <Content Include="Views\News\Forum.cshtml" />
+    <Content Include="Views\News\Research.cshtml" />
+    <Content Include="Views\News\Dcoafd.cshtml" />
+    <Content Include="Views\Home\PublicEducation.cshtml" />
+    <Content Include="Views\Home\TrainingAndEducation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

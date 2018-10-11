@@ -45,8 +45,14 @@
                     </h4>
                     <div style="padding-top: 10px; padding-bottom: 10px" class="col-md-1">
                         <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=@Model[0].Tag"><img style="padding-bottom: 10px" class="img img-responsive" src="~/Icon/Tin chi tiet/Face.png" /></a>
-                        <a target="_blank" href="https://plus.google.com/share?url=@Model[0].Tag"><img style="padding-bottom: 10px" class="img img-responsive" src="~/Icon/Tin chi tiet/Viber.png" /></a>
-                        <a target="_blank" href="https://plus.google.com/share?url=@Model[0].Tag"><img style="padding-bottom: 10px" class="img img-responsive" src="~/Icon/Tin chi tiet/Zalo.png" /></a>
+                        <a id="viber_share" target="_blank" href="https://plus.google.com/share?url=@Model[0].Tag"><img style="padding-bottom: 10px" class="img img-responsive" src="~/Icon/Tin chi tiet/Viber.png" /></a>
+                        <a target="_blank" href="http://developers.zalo.me"><img style="padding-bottom: 10px" class="img img-responsive" src="~/Icon/Tin chi tiet/Zalo.png" /></a>
+                        <script>
+                            var buttonID = "viber_share";
+                            var text = "Check this out: ";
+                            document.getElementById(buttonID)
+                                .setAttribute('href', "https://3p3x.adj.st/?adjust_t=u783g1_kw9yml&adjust_fallback=https%3A%2F%2Fwww.viber.com%2F%3Futm_source%3DPartner%26utm_medium%3DSharebutton%26utm_campaign%3DDefualt&adjust_campaign=Sharebutton&adjust_deeplink=" + encodeURIComponent("viber://forward?text=" + encodeURIComponent(text + " " + window.location.href)));
+                        </script>
                     </div>
                     <div style="padding-top: 10px;  padding-bottom: 10px" class="col-md-11">
                         @Html.Raw(@Model[0].ContentNew)

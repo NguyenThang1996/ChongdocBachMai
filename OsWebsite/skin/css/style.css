@@ -33,9 +33,9 @@
     src: url('../fonts/UTM DaxBold_1.TTF');
 }*/
 
-a {
+/*a {
     color: #01941d;
-}
+}*/
 
 body {
     line-height: 18px;
@@ -482,7 +482,7 @@ body {
 .box-product-hot {
     display: block;
     position: relative;
-    padding: 30px 0px 0px;
+    padding: 20px 0px 0px;
     /*background: #5fc773*/
 }
 
@@ -988,7 +988,7 @@ h3.sothutu {
 .banner-page {
     display: block;
     position: relative;
-    padding-top: 190px;
+    padding-top: 170px;
 }
 
     .banner-page img {
@@ -1029,7 +1029,7 @@ h3.sothutu {
 .box-product {
     display: block;
     position: relative;
-    margin-bottom: 50px;
+    /*margin-bottom: 50px;*/
     min-height: 560px
 }
 
