@@ -258,3 +258,4 @@ D:\GitHub\ChongdocBachMai\OsWebsite\obj\Debug\OsWebsite.csproj.CoreCompileInputs
 D:\GitHub\ChongdocBachMai\OsWebsite\obj\Debug\OsWebsite.csproj.CopyComplete
 D:\GitHub\ChongdocBachMai\OsWebsite\obj\Debug\OsWebsite.dll
 D:\GitHub\ChongdocBachMai\OsWebsite\obj\Debug\OsWebsite.pdb
+D:\GitHub\ChongdocBachMai\OsWebsite\obj\Debug\OsWebsite.csprojAssemblyReference.cache

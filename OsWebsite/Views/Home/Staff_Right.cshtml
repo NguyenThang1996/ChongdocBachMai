@@ -1,0 +1,17 @@
+﻿<div style="background: #525252;" class="thongtinthem">
+    <ul>
+        @foreach (var item in ViewBag.MenuIdStaff)
+        {
+            <li class="dichvu-yte">
+                <i class="fa fa-caret-right"></i>
+                <a style="font-size: 18px; font-weight: bold" href="@item.Link">
+                    @item.Name
+                </a>
+
+            </li>
+        }
+
+    </ul>
+
+</div>
+@Html.Action("Social_Banner", "Home")

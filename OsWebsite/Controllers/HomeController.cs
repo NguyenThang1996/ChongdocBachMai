@@ -78,6 +78,28 @@ namespace OsWebsite.Controllers
             var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
             return PartialView(News);
         }
+        public PartialViewResult Social_Right()
+        {
+            int LangWeb = int.Parse(Session["LangWeb"].ToString());
+            var Newscheck = db.Menu.Where(x => x.Tag == "danh-cho-cong-dong" && x.IsActive == true).ToList();
+            ViewBag.Group = db.Menu.Where(x => x.IsActive == true && x.IDLang == LangWeb && (x.Position == 2 || x.Position == 3)).ToList();
+            ViewBag.NameGroupSocial = Newscheck[0].Name.ToUpper();
+            var parentid = Newscheck[0].ID;
+            ViewBag.MenuIdSocial = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true && (x.Position == 2 || x.Position == 3)).OrderBy(x => x.IsOrder).ToList();
+            var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
+            return PartialView(News);
+        }
+        public PartialViewResult Staff_Right()
+        {
+            int LangWeb = int.Parse(Session["LangWeb"].ToString());
+            var Newscheck = db.Menu.Where(x => x.Tag == "danh-cho-nhan-vien-y-duoc" && x.IsActive == true).ToList();
+            ViewBag.Group = db.Menu.Where(x => x.IsActive == true && x.IDLang == LangWeb && (x.Position == 2 || x.Position == 3)).ToList();
+            ViewBag.NameGroupStaff = Newscheck[0].Name.ToUpper();
+            var parentid = Newscheck[0].ID;
+            ViewBag.MenuIdStaff = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true && (x.Position == 2 || x.Position == 3)).OrderBy(x => x.IsOrder).ToList();
+            var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
+            return PartialView(News);
+        }
         public PartialViewResult PublicEducation()
         {
             int LangWeb = int.Parse(Session["LangWeb"].ToString());
@@ -99,7 +121,29 @@ namespace OsWebsite.Controllers
             ViewBag.MenuIdTrainingAndEducation = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true && x.Position == 1).OrderBy(x => x.IsOrder).ToList();
             var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
             return PartialView(News);
-        }        
+        }
+        public PartialViewResult PublicEducation_Right()
+        {
+            int LangWeb = int.Parse(Session["LangWeb"].ToString());
+            var Newscheck = db.Menu.Where(x => x.Tag == "public-education" && x.IsActive == true).ToList();
+            ViewBag.Group = db.Menu.Where(x => x.IsActive == true && x.IDLang == LangWeb && (x.Position == 2 || x.Position == 3)).ToList();
+            ViewBag.NameGroupPublicEducation = Newscheck[0].Name.ToUpper();
+            var parentid = Newscheck[0].ID;
+            ViewBag.MenuIdPublicEducation = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true && x.Position == 1).OrderBy(x => x.IsOrder).ToList();
+            var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
+            return PartialView(News);
+        }
+        public PartialViewResult TrainingAndEducation_Right()
+        {
+            int LangWeb = int.Parse(Session["LangWeb"].ToString());
+            var Newscheck = db.Menu.Where(x => x.Tag == "training-and-education" && x.IsActive == true).ToList();
+            ViewBag.Group = db.Menu.Where(x => x.IsActive == true && x.IDLang == LangWeb && (x.Position == 2 || x.Position == 3)).ToList();
+            ViewBag.NameGroupTrainingAndEducation = Newscheck[0].Name.ToUpper();
+            var parentid = Newscheck[0].ID;
+            ViewBag.MenuIdTrainingAndEducation = db.Menu.Where(x => x.IDCha == parentid && x.IDLang == LangWeb && x.IsActive == true && x.Position == 1).OrderBy(x => x.IsOrder).ToList();
+            var News = db.News_Get4Cap(Newscheck[0].ID).Where(x => x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
+            return PartialView(News);
+        }
         public PartialViewResult Social_Banner()
         {
             int LangWeb = int.Parse(Session["LangWeb"].ToString());
@@ -113,6 +157,7 @@ namespace OsWebsite.Controllers
             ViewBag.Language = Language;
             return PartialView();
         }
+
         public ActionResult SetLang()
         {
             string LangDefault = "3";

@@ -1,17 +1,37 @@
 ﻿@if (int.Parse(Session["LangWeb"].ToString()) == 3)
 {
     @Html.Action("Slider", "Home")
-
-    @Html.Action("Social", "Home")
-    @Html.Action("Staff", "Home")
-
+    <div class="box-product-hot">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    @Html.Action("Social", "Home")
+                    @Html.Action("Staff", "Home")
+                </div>
+                <div class="col-md-3" style="padding: 0!important">
+                    @Html.Action("Social_Right", "Home")
+                    @Html.Action("Staff_Right", "Home")
+                </div>
+            </div>
+        </div>
+    </div>
 }
 else
 {
     @Html.Action("Slider", "Home")
-
-    @Html.Action("TrainingAndEducation", "Home")
-    @Html.Action("PublicEducation", "Home")
-
+    <div class="box-product-hot">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    @Html.Action("TrainingAndEducation", "Home")
+                    @Html.Action("PublicEducation", "Home")
+                </div>
+                <div class="col-md-3" style="padding: 0!important">
+                    @Html.Action("TrainingAndEducation_Right", "Home")
+                    @Html.Action("PublicEducation_Right", "Home")
+                </div>
+            </div>
+        </div>
+    </div>
 }
 

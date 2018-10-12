@@ -23,18 +23,18 @@
                     <ul style="border-bottom: 0px!important; padding-bottom: 2.1px" class="nav nav-tabs nav-prod menuc">
                         @foreach (var item in ViewBag.MenuIdDetail)
                         {
-                        <li>
-                            @if (ViewBag.Id == 318)
-                            {
-                                <a ttId="@item.Tag" style="padding: 10px 6px!important; letter-spacing: -1.1px; border: 0px!important; float: left; border-radius: 15px 15px 0 0; font-size: 17px; font-weight: bold; background-color: #EBEBEB; color: #000000; transition: background-color 500ms;" href="@item.Link">@item.Name</a>
+                            <li>
+                                @if (ViewBag.Id == 318)
+                                {
+                                    <a ttId="@item.Tag" style="padding: 10px 6px!important; letter-spacing: -1.1px; border: 0px!important; float: left; border-radius: 15px 15px 0 0; font-size: 17px; font-weight: bold; background-color: #EBEBEB; color: #000000; transition: background-color 500ms;" href="@item.Link">@item.Name</a>
 
-                            }
-                            else
-                            {
-                                <a ttId="@item.Tag" style="padding: 10px 6px!important; border: 0px!important; float: left; border-radius: 15px 15px 0 0; font-size: 17px; font-weight: bold; background-color: #EBEBEB; color: #000000; transition: background-color 500ms;" href="@item.Link">@item.Name</a>
-                            }
+                                }
+                                else
+                                {
+                                    <a ttId="@item.Tag" style="padding: 10px 6px!important; border: 0px!important; float: left; border-radius: 15px 15px 0 0; font-size: 17px; font-weight: bold; background-color: #EBEBEB; color: #000000; transition: background-color 500ms;" href="@item.Link">@item.Name</a>
+                                }
 
-                        </li>
+                            </li>
                         }
                     </ul>
                 </div>
@@ -61,7 +61,9 @@
                     @Html.Action("NewsOthers", "News", new { MenuID = Model[0].MenuID, IdNews = Model[0].ID })
                 </div>
             </div>
-            @Html.Action("Social_Banner", "Home")
+            <div class="col-md-3" style="padding: 0">
+                @Html.Action("Social_Banner", "Home")
+            </div>
         </div>
     </div>
 </div>

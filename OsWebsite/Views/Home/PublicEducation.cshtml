@@ -26,61 +26,37 @@
     //Replace hết kí tự lạ
     Tag = Tag.Replace("?" + Tagcheck, "");
 }
-<div class="box-product-hot">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-9">
-                <div style="padding-left: 0px; border-bottom: solid 1.2px #9a0000">
-                    <ul style="border-bottom: 0px!important; padding-bottom: 1.1px" class="nav nav-tabs nav-prod menuc">
-                        @foreach (var item in ViewBag.MenuIdPublicEducation)
-                        {
-                            <li>
-                                <a ttId="@item.Tag" style="padding: 10px 6px!important; border: 0px!important; float: left; border-radius: 15px 15px 0 0; font-size: 17px; font-weight: bold; background-color: #EBEBEB; color: #000000; transition: background-color 500ms;" href="@item.Link">@item.Name</a>
-                            </li>
-                        }
-                    </ul>
-                </div>
-                <div style="padding: 0 0; background: #f5f5f5; height: 660px" class="col-md-12">
-                    @foreach (var item in Model.Where(x => x.MenuID == 366).Take(6))
-                    {
-                        <div class="col-sm-6 col-lg-4 box-item-pro-main item_product ">
-                            <div class="box-item-product-hot" style="height: 300px;">
-                                <div class="box-img-product">
-                                    <a href="/@item.Tag">
-                                        <img src="@item.Img" alt="@item.Name">
-                                    </a>
-                                </div>
-                                <h3 class="title-product-main title_sanPham">
-                                    <a href="/@item.Tag">@item.Name</a>
-                                </h3>
-                                <span class="IdProduct-main">@Html.Raw(SubString(item.Decription.ToString(), 110))</span>
-                            </div>
-                        </div>
-                    }
-                    <div class="col-md-12">
-                        <a style="float: right; text-decoration: none; font-size: 16px" href="/general-topics">More>></a>
+
+<div style="padding-left: 0px; border-bottom: solid 1.2px #9a0000">
+    <ul style="border-bottom: 0px!important; padding-bottom: 1.1px" class="nav nav-tabs nav-prod menuc">
+        @foreach (var item in ViewBag.MenuIdPublicEducation)
+        {
+            <li>
+                <a ttId="@item.Tag" style="padding: 10px 6px!important; border: 0px!important; float: left; border-radius: 15px 15px 0 0; font-size: 17px; font-weight: bold; background-color: #EBEBEB; color: #000000; transition: background-color 500ms;" href="@item.Link">@item.Name</a>
+            </li>
+        }
+    </ul>
+</div>
+<div style="padding: 0 0; background: #f5f5f5;"class="col-md-12">
+        @foreach (var item in Model.Where(x => x.MenuID == 366).Take(6))
+        {
+            <div class="col-sm-6 col-lg-4 box-item-pro-main item_product ">
+                <div class="box-item-product-hot" style="height: 300px;">
+                    <div class="box-img-product">
+                        <a href="/@item.Tag">
+                            <img src="@item.Img" alt="@item.Name">
+                        </a>
                     </div>
+                    <h3 class="title-product-main title_sanPham">
+                        <a href="/@item.Tag">@item.Name</a>
+                    </h3>
+                    <span class="IdProduct-main">@Html.Raw(SubString(item.Decription.ToString(), 110))</span>
                 </div>
-
             </div>
-            @*<div style="background: #525252;" class="col-md-3 thongtinthem">
-                <ul>
-                    @foreach (var item in ViewBag.MenuIdStaff)
-                    {
-                        <li class="dichvu-yte">
-                            <i class="fa fa-caret-right"></i>
-                            <a style="font-size: 18px; font-weight: bold" href="@item.Link">
-                                @item.Name
-                            </a>
-
-                        </li>
-                    }
-
-                </ul>
-
-            </div>*@
-            @Html.Action("Social_Banner", "Home")
+        }
+        <div class="col-md-12">
+            <a style="float: right; text-decoration: none; font-size: 16px" href="/general-topics">More>></a>
         </div>
     </div>
-</div>
+
 
