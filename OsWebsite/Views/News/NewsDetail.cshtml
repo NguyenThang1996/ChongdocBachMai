@@ -24,13 +24,14 @@
                         @foreach (var item in ViewBag.MenuIdDetail)
                         {
                         <li>
-                            @if (ViewBag.Id == 317)
+                            @if (ViewBag.Id == 318)
                             {
-                                <a ttId="@item.Tag" style="padding: 10px 6px!important; border: 0px!important; float: left; border-radius: 15px 15px 0 0; font-size: 17px; font-weight: bold; background-color: #EBEBEB; color: #000000; transition: background-color 500ms;" href="@item.Link">@item.Name</a>
+                                <a ttId="@item.Tag" style="padding: 10px 6px!important; letter-spacing: -1.1px; border: 0px!important; float: left; border-radius: 15px 15px 0 0; font-size: 17px; font-weight: bold; background-color: #EBEBEB; color: #000000; transition: background-color 500ms;" href="@item.Link">@item.Name</a>
+
                             }
                             else
                             {
-                                <a ttId="@item.Tag" style="padding: 10px 6px!important; letter-spacing: -1.1px; border: 0px!important; float: left; border-radius: 15px 15px 0 0; font-size: 17px; font-weight: bold; background-color: #EBEBEB; color: #000000; transition: background-color 500ms;" href="@item.Link">@item.Name</a>
+                                <a ttId="@item.Tag" style="padding: 10px 6px!important; border: 0px!important; float: left; border-radius: 15px 15px 0 0; font-size: 17px; font-weight: bold; background-color: #EBEBEB; color: #000000; transition: background-color 500ms;" href="@item.Link">@item.Name</a>
                             }
 
                         </li>

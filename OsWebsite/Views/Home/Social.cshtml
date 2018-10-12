@@ -45,7 +45,7 @@
 <div class="box-product-hot">
     <div class="container">
         <div class="row">
-            <div class="col-lg-9">
+            <div class="col-md-9">
                 <div style="padding-left: 0px; border-bottom: solid 1.2px #9a0000">
                     <ul style="border-bottom: 0px!important; padding-bottom: 1.1px" class="nav nav-tabs nav-prod">
                         <li class="active">
@@ -87,7 +87,7 @@
                             <ul class="" style="padding-left: 20px;">
                                 @foreach (var child_item in ViewBag.Group)
                                 {
-                                    if (child_item.IDCha == item.ID && child_item.Position == 2)
+                                    if (child_item.IDCha == item.ID)
                                     {
                                         <li class="sub-congdong">
                                             <img src="@child_item.Images" />

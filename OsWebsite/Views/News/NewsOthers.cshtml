@@ -10,9 +10,18 @@
     }
 }
 <h4>
-    <a style="text-decoration: none; color: #000; font-weight: bold;">
-        Cùng chuyên mục
-    </a>
+    @if (Session["Othernews"] != null)
+    {
+        <a style="text-decoration: none; color: #000; font-weight: bold;">
+            @Session["Othernews"]
+        </a>
+    }
+    else
+    {
+        <a style="text-decoration: none; color: #000; font-weight: bold;">
+            Cùng chuyên mục
+        </a>
+    }
 </h4>
 @foreach (var item in Model.Take(3))
 {

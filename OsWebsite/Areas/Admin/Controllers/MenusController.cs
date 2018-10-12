@@ -405,7 +405,7 @@ namespace OsWebsite.Areas.Admin.Controllers
                 li.Add(new SelectListItem { Text = item.Name, Value = item.ID.ToString() });
             }
             ViewData["ddltopics"] = li;
-            return Json(news.OrderByDescending(x => x.ID).Take(pagesize), JsonRequestBehavior.AllowGet);
+            return Json(news.OrderByDescending(x => x.ID), JsonRequestBehavior.AllowGet);
         }
         protected override void Dispose(bool disposing)
         {

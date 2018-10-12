@@ -6,22 +6,42 @@
 <div class="header-top">
     <div class="container">
         <div style="padding-top: 15px" class="row">
-
-            <div class="col-md-4">
-                <p>
-                    <span>A: Số 78, Đường Giải Phóng, Quận Đống Đa, Hà Nội</span>
-                </p>
-            </div>
-            <div class="col-md-2">
-                <p>
-                    <span>E: pcc@@bachmai.edu.vn</span>
-                </p>
-            </div>
-            <div class="col-md-4">
-                <p>
-                    <span>P: 024.869.3731 (Máy lẻ 6821)</span>
-                </p>
-            </div>
+            @if (int.Parse(Session["LangWeb"].ToString()) == 3)
+            {
+                <div class="col-md-4">
+                    <p>
+                        <span>A: Số 78, Đường Giải Phóng, Quận Đống Đa, Hà Nội</span>
+                    </p>
+                </div>
+                <div class="col-md-2">
+                    <p>
+                        <span>E: pcc@@bachmai.edu.vn</span>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <p>
+                        <span>P: 024.869.3731 (Máy lẻ 6821)</span>
+                    </p>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-4">
+                    <p>
+                        <span>A: 78, Giai Phong Street, Dong Da District, Ha Noi City</span>
+                    </p>
+                </div>
+                <div class="col-md-2">
+                    <p>
+                        <span>E: pcc@@bachmai.edu.vn</span>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <p>
+                        <span>P: 024.869.3731 (Single Tel 6821)</span>
+                    </p>
+                </div>
+            }
             <div class="col-md-2" align="right" style="padding-right:0px;">
                 @foreach (var item in Language)
                 {

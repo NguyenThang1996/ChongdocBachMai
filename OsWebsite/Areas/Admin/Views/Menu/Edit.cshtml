@@ -170,8 +170,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                @*<input type="text" name="Keyword" class="form-control" />
-                <button type="button" id="search_news" class="btn btn-default">Tìm kiếm</button>*@
+                <input type="text" id="keyword" name="Keyword" class="form-control" />
+                <button style="margin-top: 10px" type="button" id="search_news" class="btn btn-default">Tìm kiếm</button>
                 <div class="panel-body">
                     <div class="dataTable_wrapper">
                         <table id="news_table" class="table table-striped table-bordered table-hover">
@@ -235,32 +235,40 @@
     });
 </script>
 <script>
-    $("#chonlienket").on('click', function () {
+    function loadnews() {
         $.ajax({
             url: '/Admin/Menu/GetNews',
             type: 'POST',
             datatype: 'JSON',
             contentType: 'application/json',
-            //data: JSON.stringify(
-            //    {
-            //        objHeader: modelHeader,
-            //        objDetail: modelDetail,
-            //        intLine: intLine
-            //    }),
+            data: JSON.stringify(
+            {
+                keyword: keyword
+            }),
             cache: false,
             success: function (data) {
                 $.each(data, function (index, obj) {
-                    var row = '<tr class="trOdd"><td style="text-align: left"> ' + obj.Name + ' </td><td><button type="button" class="btn btn-default lienket_btn" value="' + obj.Tag + '">Chọn</button></td></tr>'
+                    var row = '<tr class="trOdd"><td style="text-align: left"> ' + obj.Name + ' </td><td><button type="button" class="btn btn-default lienket_btn" data-id="/' + obj.Tag + '">Chọn</button></td></tr>';
                     $("#news_table tbody").append(row);
                 });
-
+                $("#news_table").find("tbody:gt(0)").remove();
+                $(".lienket_btn").click(function () {
+                    $("#lienket_inp").val($(this).data("id"))
+                    $("#selectlinkmodal").modal("hide");
+                });
+                //$("#search_news").on('click', function () {
+                //    var keyword = $("#keyword").val();
+                //    $("#news_table tbody").html("");
+                //    loadnews();
+                //});
             }
         });
 
-    });
-    $(".lienket_btn").on('click', function () {
-        alert("loo");
-        $("#lienket_inp").val($(this).val());
+    }
+    $("#chonlienket").on('click', function () {
+        var keyword = $("#keyword").val();
+        $("#news_table tbody").html("");
+        loadnews();
     });
 </script>
 @*<script type="text/javascript">
