@@ -1760,6 +1760,7 @@
     <Content Include="Views\Home\Staff_Right.cshtml" />
     <Content Include="Views\Home\PublicEducation_Right.cshtml" />
     <Content Include="Views\Home\TrainingAndEducation_Right.cshtml" />
+    <Content Include="Views\Home\MenuChildMobile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

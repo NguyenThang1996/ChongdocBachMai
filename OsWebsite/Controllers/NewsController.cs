@@ -154,7 +154,7 @@ namespace OsWebsite.Controllers
             var News = db.News.Where(x => x.Tag == Tag && x.IDLang == LangWeb && x.IsActive == true).OrderByDescending(x => x.ID).ToList();
             int id = GetParentId(News[0].MenuID);
             ViewBag.Id = GetParentId(News[0].MenuID);
-            int? idhover = News[0].MenuID;
+            int? idhover = GetSecondParentId(News[0].MenuID);
             ViewBag.MenuIdDetail = db.Menu.Where(x => x.IDCha == id && x.IDLang == LangWeb && x.IsActive == true).ToList();
             ViewBag.Url = db.Menu.Where(x => x.ID == idhover && x.IDLang == LangWeb && x.IsActive == true).FirstOrDefault().Tag;
             return View(News);
@@ -171,6 +171,13 @@ namespace OsWebsite.Controllers
             if (record.IDCha == 0) return id.GetValueOrDefault();
             return GetParentId(record.IDCha);
         }
-
+        public int GetSecondParentId(int? id)
+        {
+            Menu record = db.Menu.Find(id);
+            record = db.Menu.Find(record.IDCha);
+            if (record.IDCha == 0)
+                return id.GetValueOrDefault();
+            return record.ID;
+        }
     }
 }

@@ -31,6 +31,7 @@ namespace OsWebsite.Controllers
             //Replace hết kí tự lạ 
             Tag = Tag.Replace("?" + Tagcheck, "");
             int LangWeb = int.Parse(Session["LangWeb"].ToString());
+            ViewBag.TimeEvent = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).TimeEvent;
             ViewBag.TitleEvent = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).TitleEvent;
             ViewBag.AboutEvent = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).AboutEvent;
             ViewBag.TimelineEvent = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).TimelineEvent;

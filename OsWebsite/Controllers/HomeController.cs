@@ -41,6 +41,12 @@ namespace OsWebsite.Controllers
             ViewBag.IconShare = IconShare;
             return PartialView(menu);
         }
+        public PartialViewResult MenuChildMobile(int id)
+        {
+            int LangWeb = int.Parse(Session["LangWeb"].ToString());
+            var menu = db.Menu.Where(x => x.IDLang == LangWeb && x.IsActive == true && x.MenuType.Count(m => m.MenuPage.CodeMenu == "Main" && m.IDLang == LangWeb) > 0 && (x.Position == 1 || x.Position == 3)).OrderBy(x => x.IsOrder).ToList();
+            return PartialView(menu);
+        }
         public PartialViewResult Slider()
         {
             int LangWeb = int.Parse(Session["LangWeb"].ToString());

@@ -157,7 +157,7 @@
                             <div class="content-tab">
                                 <div class="tab-pane">
                                     <div class="row">
-                                        <div class="col-md-3 address-date" style="font-size: 16px;">Bạch Mai, 05/11/2018</div>
+                                        <div class="col-md-3 address-date" style="font-size: 16px;">  @Html.Raw(ViewBag.TimeEvent)</div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -220,13 +220,19 @@
                                                                 @*<input class="data-dky" id="Chucvu" type="text" placeholder="-- Chọn --" />*@
                                                                 <select class="data-dky" id="Chucvu" name="Chucvu">
                                                                     <option value="">-- Chọn --</option>
-                                                                    <option value="1">Giáo sư</option>
-                                                                    <option value="2">Phó giáo sư</option>
-                                                                    <option value="3">Thạc sĩ</option>
-                                                                    <option value="4">Tiến sĩ</option>
-                                                                    <option value="5">Bác sĩ</option>
-                                                                    <option value="6">Nghiên cứu sinh</option>
-                                                                    <option value="7">Khác</option>
+                                                                    <option value="1">GS.TS.BS</option>
+                                                                    <option value="2">PGS.TS.BS</option>
+                                                                    <option value="3">TS.BS</option>
+                                                                    <option value="4">ThS.BS</option>
+                                                                    <option value="5">BS</option>
+                                                                    <option value="6">BSCKII</option>
+                                                                    <option value="7">BSCKI</option>
+                                                                    <option value="8">BSNT</option>
+                                                                    <option value="9">Sinh viên</option>
+                                                                    <option value="10">ThS.Điều dưỡng</option>
+                                                                    <option value="11">Cử nhân điều dưỡng</option>
+                                                                    <option value="12">Nhân viên y tế</option>
+                                                                    <option value="13">Khác</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -287,8 +293,10 @@
                         </div>
                     </div>
                 </div>
-                
-                @Html.Action("Social_Banner", "Home")
+
+                <div class="col-md-3" style="padding: 0">
+                    @Html.Action("Social_Banner", "Home")
+                </div>
             </div>
         </div>
     </div>

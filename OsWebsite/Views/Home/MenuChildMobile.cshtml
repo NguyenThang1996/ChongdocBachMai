@@ -1,0 +1,14 @@
+﻿@model List<OsWebsite.Models.Menu>
+
+@if (Model.Count > 0)
+{
+    <ul class="menu-child">
+        @foreach (var childitem in Model)
+        {
+            <li>
+                <a href="@childitem.Link">@childitem.Name</a>
+                @*@Html.Action("MenuChildMobile", "Home", new { id = childitem.ID })*@
+            </li>
+        }
+    </ul>
+}

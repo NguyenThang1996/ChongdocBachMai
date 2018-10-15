@@ -38,6 +38,8 @@ namespace OsWebsite.Models
         public string AboutEvent { get; set; }
         public string TimelineEvent { get; set; }
         public string GuestEvent { get; set; }
+        public string TimeEvent { get; set; }
+        public string TimeEventCount { get; set; }
     
         public virtual Language Language { get; set; }
     }

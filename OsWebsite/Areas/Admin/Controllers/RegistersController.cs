@@ -23,29 +23,53 @@ namespace OsWebsite.Areas.Admin.Controllers
             {
                 if (item.Job == "1")
                 {
-                    item.Job = "Giáo sư";
+                    item.Job = "GS.TS.BS";
                 }
                 if (item.Job == "2")
                 {
-                    item.Job = "Phó giáo sư";
+                    item.Job = "PGS.TS.BS";
                 }
                 if (item.Job == "3")
                 {
-                    item.Job = "Thạc sĩ";
+                    item.Job = "TS.BS";
                 }
                 if (item.Job == "4")
                 {
-                    item.Job = "Tiến sĩ";
+                    item.Job = "ThS.BS";
                 }
                 if (item.Job == "5")
                 {
-                    item.Job = "Bác sĩ";
+                    item.Job = "BS";
                 }
                 if (item.Job == "6")
                 {
-                    item.Job = "Nghiên cứu sinh";
+                    item.Job = "BSCKII";
                 }
                 if (item.Job == "7")
+                {
+                    item.Job = "BSCKI";
+                }
+                if (item.Job == "8")
+                {
+                    item.Job = "BSNT";
+                }
+                if (item.Job == "9")
+                {
+                    item.Job = "Sinh viên";
+                }
+                if (item.Job == "10")
+                {
+                    item.Job = "ThS.Điều dưỡng";
+                }
+                if (item.Job == "11")
+                {
+                    item.Job = "ThS.Điều dưỡng";
+                }
+                if (item.Job == "12")
+                {
+                    item.Job = "Nhân viên y tế";
+                }
+                if (item.Job == "13")
                 {
                     item.Job = "Khác";
                 }
@@ -81,13 +105,19 @@ namespace OsWebsite.Areas.Admin.Controllers
             }
             ViewBag.Job = new SelectList(new List<SelectListItem>
             {
-                    new SelectListItem { Text = "Giáo sư", Value = "1"},
-                    new SelectListItem { Text = "Phó giáo sư", Value = "2"},
-                    new SelectListItem { Text = "Thạc sĩ", Value = "3"},
-                    new SelectListItem { Text = "Tiến sĩ", Value = "4"},
-                    new SelectListItem { Text = "Bác sĩ", Value = "5"},
-                    new SelectListItem { Text = "Nghiên cứu sinh", Value = "6"},
-                    new SelectListItem { Text = "Khác", Value = "7"}
+                    new SelectListItem { Text = "GS.TS.BS", Value = "1"},
+                    new SelectListItem { Text = "PGS.TS.BS", Value = "2"},
+                    new SelectListItem { Text = "TS.BS", Value = "3"},
+                    new SelectListItem { Text = "ThS.BS", Value = "4"},
+                    new SelectListItem { Text = "BS", Value = "5"},
+                    new SelectListItem { Text = "BSCKII", Value = "6"},
+                    new SelectListItem { Text = "BSCKI", Value = "7"},
+                    new SelectListItem { Text = "BSNT", Value = "8"},
+                    new SelectListItem { Text = "Sinh viên", Value = "9"},
+                    new SelectListItem { Text = "ThS.Điều dưỡng", Value = "10"},
+                    new SelectListItem { Text = "Cử nhân điều dưỡng", Value = "11"},
+                    new SelectListItem { Text = "Nhân viên y tế", Value = "12"},
+                    new SelectListItem { Text = "Khác", Value = "13"}
             }, "Value", "Text", register.Job);
             register.IsActive = true;
             db.SaveChanges();

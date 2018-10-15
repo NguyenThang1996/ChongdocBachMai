@@ -144,9 +144,16 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            @Html.Label("Thời gian địa điểm sự kiện", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.TextAreaFor(model => model.TimeEvent, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.TimeEvent)
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             @Html.Label("Tên sự kiện", htmlAttributes: new { @class = "control-label col-md-2" })
                                             <div class="col-md-10">
-                                                @Html.TextAreaFor(model => model.TitleEvent, new { @class = "form-control" })
+                                                @Html.TextAreaFor(model => model.TitleEvent, new { @class = "ckeditor" })
                                                 @Html.ValidationMessageFor(model => model.TitleEvent)
                                             </div>
                                         </div>

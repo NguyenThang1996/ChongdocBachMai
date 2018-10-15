@@ -1,16 +1,23 @@
 ﻿@{
-                /**/
+    /**/
 
-                if (Session["LangWeb"] == null || Session["LangWeb"] == "")
-                {
-                    Response.Redirect("~/Home/SetLang");
-                }
+    if (Session["LangWeb"] == null || Session["LangWeb"] == "")
+    {
+        Response.Redirect("~/Home/SetLang");
+    }
 }
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Chống độc Bạch Mai</title>
+    @if (int.Parse(Session["LangWeb"].ToString()) == 3)
+    {
+        <title>Trung tâm Chống độc - Bệnh viện Bạch Mai</title>
+    }
+    else
+    {
+        <title>Bach Mai Poison control center</title>
+    }
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="/Icon/Logo.png" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="~/skin/css/bootstrap.min.css" />
@@ -241,7 +248,7 @@
 <body>
     <div id="mm-0" class="mm-page mm-slideout">
         <div class="wapper">
-            @Html.Action("Header", "Home")
+            @*@Html.Action("Header", "Home")*@
             @Html.Action("Menu", "Home")
             @RenderBody()
             @Html.Action("Footer", "Home")

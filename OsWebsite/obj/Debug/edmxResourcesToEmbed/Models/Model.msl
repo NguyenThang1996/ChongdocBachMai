@@ -56,6 +56,8 @@
     <EntitySetMapping Name="Config">
       <EntityTypeMapping TypeName="Model.Config">
         <MappingFragment StoreEntitySet="Config">
+          <ScalarProperty Name="TimeEventCount" ColumnName="TimeEventCount" />
+          <ScalarProperty Name="TimeEvent" ColumnName="TimeEvent" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Logo" ColumnName="Logo" />
           <ScalarProperty Name="PlaceHead" ColumnName="PlaceHead" />
