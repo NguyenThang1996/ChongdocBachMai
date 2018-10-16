@@ -138,165 +138,163 @@
 
 </div>
 <div class="box-product">
-    <div id="formgioithieu" class="box-content-product-page">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-9">
-                    <div style="padding-left: 0px; border-bottom: solid 1.2px #9a0000">
-                        <ul style="border-bottom: 0px!important; padding-bottom: 2.1px" class="nav nav-tabs nav-prod menuc">
-                            @foreach (var item in ViewBag.MenuIdStaff)
-                            {
-                                <li>
-                                    <a ttId="@item.Tag" style="padding: 10px 6px!important; letter-spacing: -1.1px; border: 0px!important; float: left; border-radius: 15px 15px 0 0; font-size: 17px; font-weight: bold; background-color: #EBEBEB; color: #000000; transition: background-color 500ms;" href="@item.Link">@item.Name</a>
-                                </li>
-                            }
-                        </ul>
-                    </div>
-                    <div style="background: #f5f5f5;" class="col-md-12 hoinghi">
-                        <div class="col-md-12">
-                            <div class="content-tab">
-                                <div class="tab-pane">
-                                    <div class="row">
-                                        <div class="col-md-3 address-date" style="font-size: 16px;">  @Html.Raw(ViewBag.TimeEvent)</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <img src="~/Icon/Img_kyniem20.png" alt="Kỷ niệm" style="width:100%;" />
-                                            <div class="title-hoinghi" style="text-transform: uppercase; color:#ff0000; font-weight: bold; font-size: 18px; line-height: 25px;">
-                                                @Html.Raw(ViewBag.TitleEvent)
-                                            </div>
-                                            <ul style="padding-top: 10px" class="vertical-hoinghi">
-                                                <li>
-                                                    <div class="collapsed title-sub-hoinghi" data-toggle="collapse" data-target="#content_1">
-                                                        <a class="tab-sub">Giới thiệu</a>
-                                                        <i class="fa fa-angle-up"></i>
-                                                        <i class="fa fa-angle-down"></i>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                    <div id="content_1" class="panel-collapse collapse in content-sub-tab">
-                                                        @Html.Raw(ViewBag.AboutEvent)
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="collapsed title-sub-hoinghi" data-toggle="collapse" data-target="#content_2">
-                                                        <a class="tab-sub">Chương trình</a>
-                                                        <i class="fa fa-angle-up"></i>
-                                                        <i class="fa fa-angle-down"></i>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                    <div id="content_2" class="panel-collapse collapse in content-sub-tab">
-                                                        @Html.Raw(ViewBag.TimelineEvent)
-                                                    </div>
-                                                </li>
-                                                <li id="formdangky">
-                                                    <div class="collapsed title-sub-hoinghi" data-toggle="collapse" data-target="#content_3">
-                                                        <a class="tab-sub">Diễn giả</a>
-                                                        <i class="fa fa-angle-up"></i>
-                                                        <i class="fa fa-angle-down"></i>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                    <div id="content_3" class="panel-collapse collapse in content-sub-tab">
-                                                        @Html.Raw(ViewBag.GuestEvent)
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="collapsed title-sub-hoinghi" data-toggle="collapse" data-parent="#tab_5" href="#content_4" data-target="#content_4">
-                                                        <a class="tab-sub">Đăng ký</a>
-                                                        <i class="fa fa-angle-up"></i>
-                                                        <i class="fa fa-angle-down"></i>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-
-                                                    <div id="content_4" class="panel-collapse collapse in">
-                                                        <div class="row dangky">
-                                                            <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Họ và tên (*)</span>
-                                                            <div class="col-md-6" style="padding-left:0px;">
-                                                                <input class="data-dky" id="Name" name="Name" type="text" placeholder="Nhập Họ và tên" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="row dangky">
-                                                            <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Quý vị là (*)</span>
-                                                            <div class="col-md-6" style="padding-left:0px;">
-                                                                @*<input class="data-dky" id="Chucvu" type="text" placeholder="-- Chọn --" />*@
-                                                                <select class="data-dky" id="Chucvu" name="Chucvu">
-                                                                    <option value="">-- Chọn --</option>
-                                                                    <option value="1">GS.TS.BS</option>
-                                                                    <option value="2">PGS.TS.BS</option>
-                                                                    <option value="3">TS.BS</option>
-                                                                    <option value="4">ThS.BS</option>
-                                                                    <option value="5">BS</option>
-                                                                    <option value="6">BSCKII</option>
-                                                                    <option value="7">BSCKI</option>
-                                                                    <option value="8">BSNT</option>
-                                                                    <option value="9">Sinh viên</option>
-                                                                    <option value="10">ThS.Điều dưỡng</option>
-                                                                    <option value="11">Cử nhân điều dưỡng</option>
-                                                                    <option value="12">Nhân viên y tế</option>
-                                                                    <option value="13">Khác</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row dangky">
-                                                            <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Bệnh viện/ Đơn vị (*)</span>
-                                                            <div class="col-md-6" style="padding-left:0px;">
-                                                                <input class="data-dky" id="Tochuc" name="Tochuc" type="text" placeholder="Nhập Bệnh viện/ Tổ chức" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="row dangky">
-                                                            <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Khoa/ Phòng</span>
-                                                            <div class="col-md-6" style="padding-left:0px;">
-                                                                <input class="data-dky" id="Phong" name="Phong" type="text" placeholder="Nhập Khoa/ Phòng" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="row dangky">
-                                                            <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Địa chỉ liên hệ</span>
-                                                            <div class="col-md-6" style="padding-left:0px;">
-                                                                <input class="data-dky" id="Address" name="Address" type="text" placeholder="Nhập Địa chỉ liên hệ" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="row dangky">
-                                                            <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Số điện thoại (*)</span>
-                                                            <div class="col-md-6" style="padding-left:0px;">
-                                                                <input class="data-dky" id="Phone" name="Phone" type="tel" placeholder="Nhập Số điện thoại" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="row dangky">
-                                                            <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Email (*)</span>
-                                                            <div class="col-md-6" style="padding-left:0px;">
-                                                                <input class="data-dky" id="Email" name="Email" type="text" placeholder="Nhập Email" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="row dangky">
-                                                            <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Thông tin góp ý</span>
-                                                            <div class="col-md-8" style="padding-left:0px;">
-                                                                <textarea class="content-dky" id="Content" name="Content" type="text"></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row dangky">
-                                                            <div class="col-md-10" style="font-style:italic;">
-                                                                *Vui lòng nhập thông tin chính xác để góp phần tổ chức được tốt đẹp hơn
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-3">
-                                                                <input type="submit" class="button-dky" value="ĐĂNG KÝ THAM DỰ" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </li>
-                                            </ul>
+    <div id="formgioithieu" class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div style="padding-left: 0px; border-bottom: solid 1.2px #9a0000">
+                    <ul style="border-bottom: 0px!important; padding-bottom: 2.1px" class="nav nav-tabs nav-prod menuc">
+                        @foreach (var item in ViewBag.MenuIdStaff)
+                        {
+                            <li>
+                                <a ttId="@item.Tag" style="padding: 10px 6px!important; letter-spacing: -1.1px; border: 0px!important; float: left; border-radius: 15px 15px 0 0; font-size: 17px; font-weight: bold; background-color: #EBEBEB; color: #000000; transition: background-color 500ms;" href="@item.Link">@item.Name</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div style="background: #f5f5f5;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hoinghi">
+                    <div class="col-md-12">
+                        <div class="content-tab">
+                            <div class="tab-pane">
+                                <div class="row">
+                                    <div class="col-md-3 address-date" style="font-size: 16px;">  @Html.Raw(ViewBag.TimeEvent)</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <img src="~/Icon/Img_kyniem20.png" alt="Kỷ niệm" style="width:100%;" />
+                                        <div class="title-hoinghi" style="text-transform: uppercase; color:#ff0000; font-weight: bold; font-size: 18px; line-height: 25px;">
+                                            @Html.Raw(ViewBag.TitleEvent)
                                         </div>
+                                        <ul style="padding-top: 10px" class="vertical-hoinghi">
+                                            <li>
+                                                <div class="collapsed title-sub-hoinghi" data-toggle="collapse" data-target="#content_1">
+                                                    <a class="tab-sub">Giới thiệu</a>
+                                                    <i class="fa fa-angle-up"></i>
+                                                    <i class="fa fa-angle-down"></i>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div id="content_1" class="panel-collapse collapse in content-sub-tab">
+                                                    @Html.Raw(ViewBag.AboutEvent)
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsed title-sub-hoinghi" data-toggle="collapse" data-target="#content_2">
+                                                    <a class="tab-sub">Chương trình</a>
+                                                    <i class="fa fa-angle-up"></i>
+                                                    <i class="fa fa-angle-down"></i>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div id="content_2" class="panel-collapse collapse in content-sub-tab">
+                                                    @Html.Raw(ViewBag.TimelineEvent)
+                                                </div>
+                                            </li>
+                                            <li id="formdangky">
+                                                <div class="collapsed title-sub-hoinghi" data-toggle="collapse" data-target="#content_3">
+                                                    <a class="tab-sub">Diễn giả</a>
+                                                    <i class="fa fa-angle-up"></i>
+                                                    <i class="fa fa-angle-down"></i>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div id="content_3" class="panel-collapse collapse in content-sub-tab">
+                                                    @Html.Raw(ViewBag.GuestEvent)
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="collapsed title-sub-hoinghi" data-toggle="collapse" data-parent="#tab_5" href="#content_4" data-target="#content_4">
+                                                    <a class="tab-sub">Đăng ký</a>
+                                                    <i class="fa fa-angle-up"></i>
+                                                    <i class="fa fa-angle-down"></i>
+                                                    <div class="clearfix"></div>
+                                                </div>
+
+                                                <div id="content_4" class="panel-collapse collapse in">
+                                                    <div class="row dangky">
+                                                        <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Họ và tên (*)</span>
+                                                        <div class="col-md-6" style="padding-left:0px;">
+                                                            <input class="data-dky" id="Name" name="Name" type="text" placeholder="Nhập Họ và tên" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row dangky">
+                                                        <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Quý vị là (*)</span>
+                                                        <div class="col-md-6" style="padding-left:0px;">
+                                                            @*<input class="data-dky" id="Chucvu" type="text" placeholder="-- Chọn --" />*@
+                                                            <select class="data-dky" id="Chucvu" name="Chucvu">
+                                                                <option value="">-- Chọn --</option>
+                                                                <option value="1">GS.TS.BS</option>
+                                                                <option value="2">PGS.TS.BS</option>
+                                                                <option value="3">TS.BS</option>
+                                                                <option value="4">ThS.BS</option>
+                                                                <option value="5">BS</option>
+                                                                <option value="6">BSCKII</option>
+                                                                <option value="7">BSCKI</option>
+                                                                <option value="8">BSNT</option>
+                                                                <option value="9">Sinh viên</option>
+                                                                <option value="10">ThS.Điều dưỡng</option>
+                                                                <option value="11">Cử nhân điều dưỡng</option>
+                                                                <option value="12">Nhân viên y tế</option>
+                                                                <option value="13">Khác</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row dangky">
+                                                        <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Bệnh viện/ Đơn vị (*)</span>
+                                                        <div class="col-md-6" style="padding-left:0px;">
+                                                            <input class="data-dky" id="Tochuc" name="Tochuc" type="text" placeholder="Nhập Bệnh viện/ Tổ chức" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row dangky">
+                                                        <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Khoa/ Phòng</span>
+                                                        <div class="col-md-6" style="padding-left:0px;">
+                                                            <input class="data-dky" id="Phong" name="Phong" type="text" placeholder="Nhập Khoa/ Phòng" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row dangky">
+                                                        <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Địa chỉ liên hệ</span>
+                                                        <div class="col-md-6" style="padding-left:0px;">
+                                                            <input class="data-dky" id="Address" name="Address" type="text" placeholder="Nhập Địa chỉ liên hệ" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row dangky">
+                                                        <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Số điện thoại (*)</span>
+                                                        <div class="col-md-6" style="padding-left:0px;">
+                                                            <input class="data-dky" id="Phone" name="Phone" type="tel" placeholder="Nhập Số điện thoại" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row dangky">
+                                                        <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Email (*)</span>
+                                                        <div class="col-md-6" style="padding-left:0px;">
+                                                            <input class="data-dky" id="Email" name="Email" type="text" placeholder="Nhập Email" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row dangky">
+                                                        <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Thông tin góp ý</span>
+                                                        <div class="col-md-8" style="padding-left:0px;">
+                                                            <textarea class="content-dky" id="Content" name="Content" type="text"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row dangky">
+                                                        <div class="col-md-10" style="font-style:italic;">
+                                                            *Vui lòng nhập thông tin chính xác để góp phần tổ chức được tốt đẹp hơn
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <input type="submit" class="button-dky" value="ĐĂNG KÝ THAM DỰ" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-md-3" style="padding: 0">
-                    @Html.Action("Social_Banner", "Home")
-                </div>
+            <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12" style="padding: 0">
+                @Html.Action("Social_Banner", "Home")
             </div>
         </div>
     </div>
