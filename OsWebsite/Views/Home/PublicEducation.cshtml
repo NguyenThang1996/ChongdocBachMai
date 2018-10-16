@@ -46,8 +46,9 @@
     Tag = Tag.Replace("?" + Tagcheck, "");
 }
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0; padding-top: 20px">
+    <h3 style="font-weight: bold; color: #9a0000">@ViewBag.NameGroupPublicEducation</h3>
     <div style="padding-left: 0px; border-bottom: solid 1.2px #9a0000">
-        <ul style="border-bottom: 0px!important; padding-bottom: 1.1px" class="nav nav-tabs nav-prod menuc">
+        <ul style="border-bottom: 0px!important; padding-bottom: 1.1px" class="nav nav-tabs nav-prod menucc">
             @foreach (var item in ViewBag.MenuIdPublicEducation)
             {
                 <li>
@@ -79,12 +80,6 @@
     </div>
 </div>
 
-
-
-
-
-
-
 <script>
     var dropdown = document.getElementsByClassName("dropdown-top-right");
     var i;
@@ -99,4 +94,7 @@
             }
         });
     }
+</script>
+<script>
+    $(".menucc li a").first().addClass('activemenu');
 </script>

@@ -26,141 +26,14 @@
     <link rel="stylesheet" type="text/css" href="~/skin/css/font-awesome.min.css" />
     <link href="~/skin/owl-carousel/owl.carousel.css" rel="stylesheet" />
     <link href="~/skin/owl-carousel/owl.theme.css" rel="stylesheet" />
-    <link type="text/css" rel="stylesheet" href="~/skin/css/menumobile/css/jquery.mmenu.all.css" />
     <link href="~/skin/css/animate.css" rel="stylesheet" />
-    <style>
-        .search-item a {
-            font-size: 18px !important;
-            font-weight: 700 !important;
-        }
-
-        .box-ord {
-            display: block;
-            position: relative;
-            clear: left;
-            overflow: hidden;
-            padding-top: 0px;
-        }
-
-        .open > .dropdown-menu {
-            display: block;
-            min-width: 250px;
-            left: -275px;
-            /* overflow: hidden; */
-            padding: 0px;
-            margin: 3px 0 0 0;
-        }
-
-        .box-search {
-            margin-top: 0px;
-        }
-
-        .box-ord .text-search {
-            margin-right: 0px;
-        }
-
-        .btn-search-2 {
-            display: inline-block;
-            background: #5c7fb7;
-            color: white;
-            height: 34px;
-            margin-left: -45px;
-            border: 1px solid #5c7fb7;
-            padding: 6px 15px;
-            position: fixed;
-            border-radius: 0;
-            /*z-index: 10000;*/
-        }
-
-        @@media (min-width: 300px) and (max-width: 767px) {
-            .btn-search-mobile {
-                position: absolute;
-                top: 22px;
-                right: 75px;
-            }
-
-                .btn-search-mobile a {
-                    color: gray;
-                }
-
-            .btn-search-3 {
-                display: inline-block;
-                background: #5c7fb7;
-                color: white;
-                height: 34px;
-                margin-left: -45px;
-                border: 1px solid #5c7fb7;
-                padding: 6px 15px;
-                position: fixed;
-                border-radius: 0;
-            }
-
-            .btn-search-mobile .dropdown-menu {
-                margin: 17px 0 0 0;
-                left: -200px;
-            }
-
-            .btn-search-mobile .box-search {
-                position: relative;
-            }
-
-                .btn-search-mobile .box-search .btn-search-3 {
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                }
-        }
-
-        @@media (min-width: 768px) and (max-width: 900px) {
-            .btn-search-mobile {
-                position: absolute;
-                top: 22px;
-                right: 75px;
-            }
-
-                .btn-search-mobile a {
-                    color: gray;
-                }
-
-            .btn-search-3 {
-                display: inline-block;
-                background: #5c7fb7;
-                color: white;
-                height: 34px;
-                margin-left: -45px;
-                border: 1px solid #5c7fb7;
-                padding: 6px 15px;
-                position: fixed;
-                border-radius: 0;
-            }
-
-            .btn-search-mobile .dropdown-menu {
-                margin: 25px 0 0 0;
-                left: -200px;
-            }
-
-            .btn-search-mobile .box-search {
-                position: relative;
-            }
-
-                .btn-search-mobile .box-search .btn-search-3 {
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                }
-        }
-
-        @@media (min-width: 901px) {
-            .btn-search-mobile {
-                display: none;
-            }
-        }
-    </style>
+    <link type="text/css" rel="stylesheet" href="~/skin/css/menumobile/css/jquery.mmenu.all.css" />
     <script src="~/skin/js/jquery-2.1.4.min.js"></script>
     <script src="~/skin/js/bootstrap.min.js"></script>
     <script src="~/skin/js/owl.carousel.js"></script>
     <script src="~/Areas/Admin/Content/js/ckeditor/ckeditor.js"></script>
     <script src="~/Areas/Admin/Content/js/ckfinder/ckfinder.js"></script>
+    <script type="text/javascript" src="~/skin/css/menumobile/js/jquery.mmenu.min.all.js"></script>
     <script>
         $(document).ready(function () {
             $("#owl-slider").owlCarousel({
@@ -254,6 +127,36 @@
             @Html.Action("Footer", "Home")
         </div>
     </div>
-    @*@RenderSection("scripts", required: false)*@
+    @*<a id="back-to-top2" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click để lên đầu trang" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-menu-up"></span><span class="glyphicon glyphicon-menu-up icon2"></span></a>*@
+    <script type="text/javascript">
+        $(function () {
+            $('nav#menu').mmenu();
+        });
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 50) {
+                $('#back-to-top').fadeIn();
+            } else {
+                $('#back-to-top').fadeOut();
+            }
+        });
+        // scroll body to 0px on click
+        $('#back-to-top').click(function () {
+            $('#back-to-top').tooltip('hide');
+            $('body,html').animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+
+        $('#back-to-top').tooltip('show');
+
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 50) {
+                $('#back-to-top2').fadeIn();
+            } else {
+                $('#back-to-top2').fadeOut();
+            }
+        });
+    </script>
 </body>
 </html>
