@@ -1,7 +1,16 @@
 ﻿@using OsWebsite.Models;
 @model PagedList.IPagedList<OsWebsite.Models.News_Get4Cap_Result>
 @using PagedList.Mvc;
-
+@functions
+{
+    public static string SubString(string textToTruncate, int length)
+    {
+        if (textToTruncate == null || textToTruncate.Length < length)
+            return textToTruncate;
+        int iNextSpace = textToTruncate.LastIndexOf(" ", length);
+        return string.Format("{0}...", textToTruncate.Substring(0, (iNextSpace > 0) ? iNextSpace : length).Trim());
+    }
+}
 @{
     <title>@ViewBag.MetaTitle</title>
     if (ViewBag.MetaDescription != null)
@@ -49,7 +58,7 @@
                                     <a style="text-decoration: none!important" href="/@item.Tag"><p><span style="font-size: 16px; font-weight: bold;">@item.Name</span></p></a>
                                 </div>
                                 <div class="des-module-main">
-                                    <p><span>@Html.Raw(item.Decription)</span></p>
+                                    <p><span>@Html.Raw(SubString(item.Decription.ToString(), 400))</span></p>
                                 </div>
                             </div>
                         </div>
