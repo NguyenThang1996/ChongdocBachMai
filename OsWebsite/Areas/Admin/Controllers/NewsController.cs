@@ -104,8 +104,13 @@ namespace OsWebsite.Areas.Admin.Controllers
 
 
         // GET: Admin/News/Create
-        public ActionResult Create()
+        public ActionResult Create(string error = "")
         {
+            if (error == "thieumota")
+            {
+                ViewBag.Thieumota = "Chưa nhập mô tả!";
+            }
+
             int Lang = int.Parse(Session["LangWeb"].ToString());
             int countmax = db.News.Where(x => x.IDLang == Lang).Count();
             int ordermax = 0;
@@ -140,7 +145,16 @@ namespace OsWebsite.Areas.Admin.Controllers
                 {
                     news.Tag = news.Tag + "_2";
                 }
-                news.DecriptionTag = StringClass.NameToTag(news.Decription);
+                if (news.Decription == null)
+                {
+                    return Create("thieumota");
+                }
+
+                else
+                {
+                    news.DecriptionTag = StringClass.NameToTag(news.Decription);
+                }
+
                 news.DateCreate = DateTime.Now;
                 news.IDLang = IDLang;
                 db.News.Add(news);
@@ -212,7 +226,11 @@ namespace OsWebsite.Areas.Admin.Controllers
                     Tag = StringClass.NameToTag(news.Name) + "-" + StringClass.RandomNum(5);
                 }
                 news.Tag = Tag;
-                news.DecriptionTag = StringClass.NameToTag(news.Decription);                
+                if(news.Decription != null)
+                {
+                    news.DecriptionTag = StringClass.NameToTag(news.Decription);
+                }
+              
                 db.Entry(news).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

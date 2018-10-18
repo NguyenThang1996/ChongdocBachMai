@@ -44,10 +44,10 @@
                             @Model[0].Name
                         </a>
                     </h4>
-                    <div style="padding-top: 10px; padding-bottom: 10px" class="col-md-1">
-                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=@Model[0].Tag"><img style="padding-bottom: 10px" class="img img-responsive" src="~/Icon/Tin chi tiet/Face.png" /></a>
-                        <a id="viber_share" target="_blank" href="https://plus.google.com/share?url=@Model[0].Tag"><img style="padding-bottom: 10px" class="img img-responsive" src="~/Icon/Tin chi tiet/Viber.png" /></a>
-                        <a target="_blank" href="http://developers.zalo.me"><img style="padding-bottom: 10px" class="img img-responsive" src="~/Icon/Tin chi tiet/Zalo.png" /></a>
+                    <div style="padding-top: 10px; padding-bottom: 10px; z-index: 9999" class="col-md-1 col-lg-1 col-sm-12 col-xs-12">
+                        <a style="float: left" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=@Model[0].Tag"><img style="padding-bottom: 10px" class="img img-responsive" src="~/Icon/Tin chi tiet/Face.png" /></a>
+                        <a style="float: left" id="viber_share" target="_blank" href="https://plus.google.com/share?url=@Model[0].Tag"><img style="padding-bottom: 10px" class="img img-responsive" src="~/Icon/Tin chi tiet/Viber.png" /></a>
+                        <a style="float: left" target="_blank" href="http://developers.zalo.me"><img style="padding-bottom: 10px" class="img img-responsive" src="~/Icon/Tin chi tiet/Zalo.png" /></a>
                         <script>
                             var buttonID = "viber_share";
                             var text = "Check this out: ";
@@ -55,13 +55,13 @@
                                 .setAttribute('href', "https://3p3x.adj.st/?adjust_t=u783g1_kw9yml&adjust_fallback=https%3A%2F%2Fwww.viber.com%2F%3Futm_source%3DPartner%26utm_medium%3DSharebutton%26utm_campaign%3DDefualt&adjust_campaign=Sharebutton&adjust_deeplink=" + encodeURIComponent("viber://forward?text=" + encodeURIComponent(text + " " + window.location.href)));
                         </script>
                     </div>
-                    <div style="padding-top: 10px;  padding-bottom: 10px" class="col-md-11">
+                    <div style="padding-top: 10px;  padding-bottom: 10px" class="col-md-11 col-lg-11 col-sm-12 col-md-12 noidung">
                         @Html.Raw(@Model[0].ContentNew)
                     </div>
                     @Html.Action("NewsOthers", "News", new { MenuID = Model[0].MenuID, IdNews = Model[0].ID })
                 </div>
             </div>
-            <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12" style="padding: 0">
+            <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12" style="padding-left: 0">
                 @Html.Action("Social_Banner", "Home")
             </div>
         </div>
@@ -74,5 +74,6 @@
             if (c.lastIndexOf(channel) == 0) {
                     $(this).closest('li a').addClass('activemenu');
                 }
-        })
+    })
+    $(".noidung img").css("max-width", "100%");
 </script>

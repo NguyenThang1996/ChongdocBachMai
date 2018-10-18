@@ -58,13 +58,13 @@
         </ul>
     </div>
     <div style="padding: 0 0; background: #f5f5f5;" class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-        @foreach (var item in Model.Where(x => x.MenuID == 361).Take(6))
+        @foreach (var item in Model.Where(x => x.MenuID == 366 || x.MenuID == 348).Take(6))
         {
             <div class="col-sm-6 col-lg-4 box-item-pro-main item_product ">
                 <div class="box-item-product-hot" style="height: 300px;">
                     <div class="box-img-product">
                         <a href="/@item.Tag">
-                            <img src="@item.Img" alt="@item.Name">
+                            <img style="object-fit: cover" src="@item.Img" alt="@item.Name">
                         </a>
                     </div>
                     <h3 class="title-product-main title_sanPham">

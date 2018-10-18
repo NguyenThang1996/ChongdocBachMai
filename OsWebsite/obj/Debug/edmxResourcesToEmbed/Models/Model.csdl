@@ -79,9 +79,9 @@
     <Property Name="AboutEvent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="TimelineEvent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="GuestEvent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Language" Relationship="Self.FK_Config_Language" FromRole="Config" ToRole="Language" />
     <Property Name="TimeEvent" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="TimeEventCount" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Language" Relationship="Self.FK_Config_Language" FromRole="Config" ToRole="Language" />
   </EntityType>
   <EntityType Name="Contact">
     <Key>
@@ -246,7 +246,7 @@
     <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="Tag" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="MenuID" Type="Int32" />
-    <Property Name="Decription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Decription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DecriptionTag" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="ContentNew" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="DateCreate" Type="DateTime" Precision="3" />
@@ -790,7 +790,7 @@
     <Property Type="String" Name="Name" Nullable="true" MaxLength="200" />
     <Property Type="String" Name="Tag" Nullable="true" MaxLength="500" />
     <Property Type="Int32" Name="MenuID" Nullable="true" />
-    <Property Type="String" Name="Decription" Nullable="true" />
+    <Property Type="String" Name="Decription" Nullable="false" />
     <Property Type="String" Name="DecriptionTag" Nullable="true" />
     <Property Type="String" Name="ContentNew" Nullable="true" MaxLength="Max" />
     <Property Type="DateTime" Name="DateCreate" Nullable="true" Precision="23" />
@@ -811,7 +811,7 @@
     <Property Type="String" Name="Name" Nullable="true" MaxLength="200" />
     <Property Type="String" Name="Tag" Nullable="true" MaxLength="500" />
     <Property Type="Int32" Name="MenuID" Nullable="true" />
-    <Property Type="String" Name="Decription" Nullable="true" />
+    <Property Type="String" Name="Decription" Nullable="false" />
     <Property Type="String" Name="DecriptionTag" Nullable="true" />
     <Property Type="String" Name="ContentNew" Nullable="true" MaxLength="Max" />
     <Property Type="DateTime" Name="DateCreate" Nullable="true" Precision="23" />

@@ -224,7 +224,7 @@
     <Property Name="Name" Type="nvarchar" MaxLength="200" />
     <Property Name="Tag" Type="varchar" MaxLength="500" />
     <Property Name="MenuID" Type="int" />
-    <Property Name="Decription" Type="nvarchar(max)" />
+    <Property Name="Decription" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DecriptionTag" Type="varchar(max)" />
     <Property Name="ContentNew" Type="ntext" />
     <Property Name="DateCreate" Type="datetime" />

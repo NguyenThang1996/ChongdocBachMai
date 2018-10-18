@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Advertise">
           <Key>
             <PropertyRef Name="Id" />
@@ -229,7 +229,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="200" />
           <Property Name="Tag" Type="varchar" MaxLength="500" />
           <Property Name="MenuID" Type="int" />
-          <Property Name="Decription" Type="nvarchar(max)" />
+          <Property Name="Decription" Type="nvarchar(max)" Nullable="false" />
           <Property Name="DecriptionTag" Type="varchar(max)" />
           <Property Name="ContentNew" Type="ntext" />
           <Property Name="DateCreate" Type="datetime" />
@@ -736,7 +736,8 @@
             <End Role="Regional" EntitySet="Regional" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -819,9 +820,9 @@
           <Property Name="AboutEvent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TimelineEvent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="GuestEvent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Language" Relationship="Self.FK_Config_Language" FromRole="Config" ToRole="Language" />
           <Property Name="TimeEvent" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="TimeEventCount" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Language" Relationship="Self.FK_Config_Language" FromRole="Config" ToRole="Language" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -986,7 +987,7 @@
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Tag" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="MenuID" Type="Int32" />
-          <Property Name="Decription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Decription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DecriptionTag" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ContentNew" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DateCreate" Type="DateTime" Precision="3" />
@@ -1492,20 +1493,20 @@
             <End Role="ProductImages" EntitySet="ProductImages" />
           </AssociationSet>
           <FunctionImport Name="DacapMenu" ReturnType="Collection(Model.DacapMenu_Result)">
-          <Parameter Name="IDLang" Mode="In" Type="Int32" />
+            <Parameter Name="IDLang" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DacapProduct" ReturnType="Collection(Model.DacapProduct_Result)">
             <Parameter Name="IDLang" Mode="In" Type="Int32" />
             <Parameter Name="Position" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="News_Get4Cap" ReturnType="Collection(Model.News_Get4Cap_Result)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="News_Others" ReturnType="Collection(Model.News_Others_Result)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Product_Get4Cap" ReturnType="Collection(Model.Product_Get4Cap_Result)">
-          <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_Visitor_GetByAll" ReturnType="Collection(Model.sp_Visitor_GetByAll_Result)" />
         </EntityContainer>
@@ -1530,7 +1531,7 @@
           <Property Type="String" Name="Name" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="Tag" Nullable="true" MaxLength="500" />
           <Property Type="Int32" Name="MenuID" Nullable="true" />
-          <Property Type="String" Name="Decription" Nullable="true" />
+          <Property Type="String" Name="Decription" Nullable="false" />
           <Property Type="String" Name="DecriptionTag" Nullable="true" />
           <Property Type="String" Name="ContentNew" Nullable="true" MaxLength="Max" />
           <Property Type="DateTime" Name="DateCreate" Nullable="true" Precision="23" />
@@ -1551,7 +1552,7 @@
           <Property Type="String" Name="Name" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="Tag" Nullable="true" MaxLength="500" />
           <Property Type="Int32" Name="MenuID" Nullable="true" />
-          <Property Type="String" Name="Decription" Nullable="true" />
+          <Property Type="String" Name="Decription" Nullable="false" />
           <Property Type="String" Name="DecriptionTag" Nullable="true" />
           <Property Type="String" Name="ContentNew" Nullable="true" MaxLength="Max" />
           <Property Type="DateTime" Name="DateCreate" Nullable="true" Precision="23" />
@@ -1664,8 +1665,6 @@
           <EntitySetMapping Name="Config">
             <EntityTypeMapping TypeName="Model.Config">
               <MappingFragment StoreEntitySet="Config">
-                <ScalarProperty Name="TimeEventCount" ColumnName="TimeEventCount" />
-                <ScalarProperty Name="TimeEvent" ColumnName="TimeEvent" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Logo" ColumnName="Logo" />
                 <ScalarProperty Name="PlaceHead" ColumnName="PlaceHead" />
@@ -1690,6 +1689,8 @@
                 <ScalarProperty Name="AboutEvent" ColumnName="AboutEvent" />
                 <ScalarProperty Name="TimelineEvent" ColumnName="TimelineEvent" />
                 <ScalarProperty Name="GuestEvent" ColumnName="GuestEvent" />
+                <ScalarProperty Name="TimeEvent" ColumnName="TimeEvent" />
+                <ScalarProperty Name="TimeEventCount" ColumnName="TimeEventCount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
