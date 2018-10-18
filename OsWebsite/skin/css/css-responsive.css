@@ -1,4 +1,30 @@
-@media (max-width: 992px) {
+@media (max-width: 992px){
+    .tinkhac{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .banner-social{
+        margin-left: 15px;
+    }
+    .read-more{
+        padding-top: 40px!important;
+    }
+    .thongtinthem{
+        margin-top: 20px!important;
+    }
+    .box-right-vi, box-right-en
+    {
+        padding-left: 20px!important;
+        padding-top: 20px;
+    }
+    .title-module-main p
+    {
+        padding-top: 20px;
+    }
+    .box-img-module img{
+        height: 150px!important;
+        width: 100%;
+    }
     .banner-kyniem {
         display: none;
     }
@@ -124,6 +150,7 @@
     .box-product-hot .box-item-product-hot img,
     .box-content-product-page .box-item-product-hot .box-img-product img {
         height: 200px;
+        width: 100%;
     }
 
     .banner-page {
