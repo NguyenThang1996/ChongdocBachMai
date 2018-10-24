@@ -63,7 +63,7 @@
         padding-top: 5px;
         padding-bottom: 5px;
     }
-    
+
     .content-dky {
         border: 1px solid #ccc;
         border-radius: 5px;
@@ -208,15 +208,14 @@
 
                                                 <div id="content_4" class="panel-collapse collapse in">
                                                     <div class="row dangky">
-                                                        <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Họ và tên (*)</span>
+                                                        <div class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Họ và tên(<span style="color: #9a0000" class="required">*</span>)</div>
                                                         <div class="col-md-6" style="padding-left:0px;">
                                                             <input class="data-dky" id="Name" name="Name" type="text" placeholder="Nhập Họ và tên" />
                                                         </div>
                                                     </div>
                                                     <div class="row dangky">
-                                                        <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Quý vị là (*)</span>
+                                                        <div class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Quý vị là(<span style="color: #9a0000" class="required">*</span>)</div>
                                                         <div class="col-md-6" style="padding-left:0px;">
-                                                            @*<input class="data-dky" id="Chucvu" type="text" placeholder="-- Chọn --" />*@
                                                             <select class="data-dky" id="Chucvu" name="Chucvu">
                                                                 <option value="">-- Chọn --</option>
                                                                 <option value="1">GS.TS.BS</option>
@@ -236,7 +235,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="row dangky">
-                                                        <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Bệnh viện/ Đơn vị (*)</span>
+                                                        <div class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Bệnh viện / Đơn vị(<span style="color: #9a0000" class="required">*</span>)</div>
                                                         <div class="col-md-6" style="padding-left:0px;">
                                                             <input class="data-dky" id="Tochuc" name="Tochuc" type="text" placeholder="Nhập Bệnh viện/ Tổ chức" />
                                                         </div>
@@ -254,13 +253,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="row dangky">
-                                                        <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Số điện thoại (*)</span>
+                                                        <div class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Số điện thoại(<span style="color: #9a0000" class="required">*</span>)</div>
                                                         <div class="col-md-6" style="padding-left:0px;">
                                                             <input class="data-dky" id="Phone" name="Phone" type="tel" placeholder="Nhập Số điện thoại" />
                                                         </div>
                                                     </div>
                                                     <div class="row dangky">
-                                                        <span class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Email (*)</span>
+                                                        <div class="col-md-3" style="padding-right:0px; padding-top:3px; padding-bottom:3px;">Email(<span style="color: #9a0000" class="required">*</span>)</div>
                                                         <div class="col-md-6" style="padding-left:0px;">
                                                             <input class="data-dky" id="Email" name="Email" type="text" placeholder="Nhập Email" />
                                                         </div>
@@ -318,18 +317,18 @@
             return false;
         }
         if ($("#Chucvu").val() === "") {
-            alert("Bạn vui lòng nhập chức vụ");
+            alert("Bạn vui lòng chọn chức vụ");
             $("#Chucvu").focus();
             return false;
-        }
-        if ($("#Content").val() === "") {
-            alert("Bạn vui lòng nhập thông tin góp ý");
-            $("#Content").focus();
+        } if ($("#Phone").val() === "") {
+            alert("Bạn vui lòng nhập số điện thoại");
+            $("#Phone").focus();
             return false;
         }
+
         var isorder = document.getElementById('Phone').value
         if (isNaN(isorder)) {
-            alert("Số điện thoại phải bằng số");
+            alert("Bạn vui lòng nhập đúng số điện thoại");
             $("#Phone").focus();
             return false;
         }
@@ -348,12 +347,12 @@
                 $("#Name").val("");
                 $("#Chucvu").val("");
                 $("#Tochuc").val("");
-                $("Phong").val("");
+                $("#Phong").val("");
                 $("#Address").val("");
                 $("#Phone").val("");
                 $("#Email").val("");
                 $("#Content").val("");
-                alert("Cảm ơn bạn đã đăng ký. Chúng tôi sẽ gửi email xác nhận cho bạn sớm nhất có thể!");
+                alert("Cảm ơn bạn đã đăng ký. Chúng tôi sẽ liên hệ lại với bạn sớm nhất có thể!");
             }
         });
     });

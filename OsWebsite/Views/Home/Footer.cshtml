@@ -1,17 +1,17 @@
 ﻿<div class="box-footer">
     <div class="container">
         <div class="row">
-            <div class="col-sm-7 col-md-7 box-menu-footer">
-                <div class="col-md-2 icon-web">
+            <div class="col-sm-12 col-lg-8 col-xs-12 col-md-8 box-menu-footer">
+                <div class="col-md-2 col-lg-2 col-sm-2 col-xs-3 icon-web">
                     <img src="/Areas/Admin/Content/Images/Footer/Logo.png" />
                 </div>
-                <div class="col-md-10 info-web">
+                <div class="col-md-10 col-lg-10 col-sm-10 col-xs-9 info-web">
                     @Html.Raw(ViewBag.Contact)
 
                 </div>
 
             </div>
-            <div class="col-sm-5 col-md-5 box-menu-footer">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 box-menu-footer">
                 @foreach (var item in ViewBag.IconShare)
                 {
                     <a target="_blank" href="@item.Link"><img style="float: right; margin: 40px 10px" src="@item.Image" alt="@item.Name" /></a>

@@ -1,10 +1,26 @@
 @media (max-width: 992px){
-    .tinkhac{
-        padding-left: 0px;
-        padding-right: 0px;
+    .viber
+    {
+        position: absolute;
+        left: 50px;
     }
+    .zalo{
+        position: absolute;
+        left: 90px;
+    }
+    .box-footer .box-menu-footer .icon-web img
+    {
+        width: 70px;
+    }
+    .btn-search-mobile {
+        display: block !important;
+    }
+    .chitiet-right {
+        padding-left: 15px !important;
+    }
+
     .banner-social{
-        margin-left: 15px;
+
     }
     .read-more{
         padding-top: 40px!important;
@@ -14,7 +30,7 @@
     }
     .box-right-vi, box-right-en
     {
-        padding-left: 20px!important;
+        padding-left: 15px!important;
         padding-top: 20px;
     }
     .title-module-main p
@@ -50,7 +66,7 @@
     .box-logo h1 a img {
         width: 200px;
         text-align: left;
-        margin: 10px 15px;
+        margin: 15px 15px;
     }
 
     .title-about a {
@@ -160,6 +176,24 @@
 
     .box-project {
         padding-top: 0px
+    }
+}
+
+@media (min-width: 993px) and (max-width: 1199px) {
+  
+    .box-menu {
+        /*position: relative;*/
+        min-height: 60px;
+        top: 60px;
+    }
+    .box-menu-head .menu-head-bottom{
+        margin-top: 12px;
+    }
+
+    .box-logo h1 a img {
+        width: 200px;
+        text-align: left;
+        margin: 15px 15px;
     }
 }
 

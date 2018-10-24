@@ -14,6 +14,39 @@
                     </a>
                 </h1>
             </div>
+            <div class="btn-search-mobile" style="position: absolute; top: 22px; right: 50px; display: none">               
+                <div style="margin-top: 10px;" class="dropdown notifications-menu ngonngu_mobile">
+                    <a href="#" style="color: gray; text-decoration: none" class="dropdown-toggle" data-toggle="dropdown">
+                        @if (int.Parse(Session["LangWeb"].ToString()) == 3)
+                        {
+                            <span style="background: none; color: black; font-size: 17px" class="label label-warning">
+                                VN
+                                <i class="fa fa-caret-down "></i>
+                            </span>
+                        }
+                        else
+                        {
+                            <span style="background: none; color: black; font-size: 17px" class="label label-warning">
+                                EN
+                                <i class="fa fa-caret-down "></i>
+                            </span>
+                        }
+                    </a>
+                    <ul style="margin: 17px 0 0 0; list-style: none" class="dropdown-menu dropdown_menu_mobile">
+                        <li style="padding: 3px">
+                            <ul style="list-style: none; padding-left: 0px" class="menu menulang menulang_mobile">
+                                @foreach (var item in Language)
+                                {
+                                    <li style="padding: 3px;">
+                                        <a style="text-decoration: none" href="@Url.Action("ChangeLang","Home", new { @IDLang = item.IDLang})"><img src="@item.IconLang" />@item.NameLang</a>
+                                    </li>
+                                    
+                                }
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <div class="btnmenu-mobile" style="display:none"><a href="#menu"><i class="fa fa-bars" aria-hidden="true"></i></a> </div>
             <div class="box-menu-head">
                 <div class="clear"></div>
@@ -34,7 +67,15 @@
                                                 {
                                                     <li>
                                                         <a href="@childitem.Link">@childitem.Name</a>
-                                                        <ul class="menu-child2"></ul>
+                                                        <ul class="menu-child2">
+                                                            @foreach (var childitem2 in Model)
+                                                            {
+                                                                if (childitem2.IDCha == childitem.ID)
+                                                                {
+                                                                    <li><a href="@childitem2.Link"><i class="fa fa-caret-right" aria-hidden="true"></i> @childitem2.Name</a></li>
+                                                                }
+                                                            }
+                                                        </ul>
                                                     </li>
                                                 }
 
@@ -54,7 +95,15 @@
                                                 {
                                                     <li>
                                                         <a href="@childitem.Link">@childitem.Name</a>
-                                                        <ul class="menu-child2"></ul>
+                                                        <ul class="menu-child2">
+                                                            @foreach (var childitem2 in Model)
+                                                            {
+                                                                if (childitem2.IDCha == childitem.ID)
+                                                                {
+                                                                    <li><a href="@childitem2.Link">@childitem2.Name</a></li>
+                                                                }
+                                                            }
+                                                        </ul>
                                                     </li>
                                                 }
 

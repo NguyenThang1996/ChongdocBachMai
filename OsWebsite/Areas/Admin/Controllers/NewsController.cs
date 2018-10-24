@@ -180,8 +180,12 @@ namespace OsWebsite.Areas.Admin.Controllers
         }
 
         // GET: Admin/News/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, string error = "")
         {
+            if (error == "thieumota")
+            {
+                ViewBag.Thieumota = "Chưa nhập mô tả!";
+            }
             int ordermax = db.News.Max(e => e.IsOder) + 1;
             ViewBag.OrderMax = ordermax;
             if (id == null)
@@ -211,6 +215,10 @@ namespace OsWebsite.Areas.Admin.Controllers
             int idnew = int.Parse(Request["ID"]);
             if (ModelState.IsValid)
             {
+                if (news.Decription == null)
+                {
+                    return Create("thieumota");
+                }
                 news.DateUpdate = DateTime.Now;
                 string Tag = "";
                 string Tagcheck = news.Tag.Substring(news.Tag.LastIndexOf("-") + 1);

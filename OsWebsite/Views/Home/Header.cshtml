@@ -45,7 +45,7 @@
             <div class="col-md-2" align="right" style="padding-right:0px;">
                 @foreach (var item in Language)
                 {
-                    <a href="@Url.Action("ChangeLang","Home",new { @IDLang = item.IDLang})"><img src="@item.IconLang" /></a>
+                    <a href="@Url.Action("ChangeLang","Home", new { @IDLang = item.IDLang})"><img src="@item.IconLang" /></a>
                 }
             </div>
         </div>
