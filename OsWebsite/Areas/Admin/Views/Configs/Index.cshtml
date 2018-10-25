@@ -151,6 +151,15 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            @Html.Label("Ảnh sự kiện", htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.TextBoxFor(model => model.ImageEvent, new { @class = "form-control", @id = "anhbia" })
+                                                @Html.ValidationMessageFor(model => model.ImageEvent)
+                                                <br />
+                                                <input id="chonanhbia" class="btn btn-default" type="button" value="Chọn hình ảnh" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             @Html.Label("Tên sự kiện", htmlAttributes: new { @class = "control-label col-md-2" })
                                             <div class="col-md-10">
                                                 @Html.TextAreaFor(model => model.TitleEvent, new { @class = "ckeditor" })
@@ -196,14 +205,15 @@
         </div>
     </div>
 </div>
-    <script language="javascript" type="text/javascript">
-        $(function () {
-            $("#chonanhbia").click(function () {
-                var finder = new CKFinder();
-                finder.selectActionFunction = function (fileUrl) {
-                    $("#anhbia").val(fileUrl);
-                };
-                finder.popup();
-            });
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $("#chonanhbia").click(function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $("#anhbia").val(fileUrl);
+            };
+            finder.popup();
         });
-    </script>
+    });
+    $("#anhbia").val("/Icon/NoImage.png");
+</script>

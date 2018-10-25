@@ -82,6 +82,7 @@
     <Property Name="TimeEvent" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="TimeEventCount" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Language" Relationship="Self.FK_Config_Language" FromRole="Config" ToRole="Language" />
+    <Property Name="ImageEvent" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Contact">
     <Key>

@@ -34,6 +34,7 @@ namespace OsWebsite.Controllers
             ViewBag.TimeEvent = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).TimeEvent;
             ViewBag.TitleEvent = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).TitleEvent;
             ViewBag.AboutEvent = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).AboutEvent;
+            ViewBag.ImageEvent = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).ImageEvent;
             ViewBag.TimelineEvent = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).TimelineEvent;
             ViewBag.GuestEvent = db.Config.FirstOrDefault(x => x.IDLang == LangWeb).GuestEvent;
             var Newscheck = db.Menu.Where(x => x.Tag == Tag && x.IsActive == true).ToList();

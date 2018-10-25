@@ -170,7 +170,7 @@
                         {
                             <div id="printlist">
                                 <h2 style="text-align: center">Danh sách đăng ký tham gia sự kiện</h2>
-                                <table border="1" cellpadding="3">
+                                <table style="border-collapse: collapse" border="1" cellpadding="3">
                                     <tr>
                                         <th>STT</th>
                                         <th>
@@ -198,7 +198,7 @@
                                         if (item.IsActive == true)
                                         {
                                             <tr>
-                                                <td>
+                                                <td style="text-align: center">
                                                     @i
                                                 </td>
                                                 <td>
@@ -221,6 +221,9 @@
                                         else
                                         {
                                             <tr class="trOdd">
+                                                <td style="text-align: center">
+                                                    @i
+                                                </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Name)
                                                 </td>

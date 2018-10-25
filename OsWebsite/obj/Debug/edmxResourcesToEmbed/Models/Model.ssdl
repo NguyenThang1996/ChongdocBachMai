@@ -79,6 +79,7 @@
     <Property Name="GuestEvent" Type="nvarchar(max)" />
     <Property Name="TimeEvent" Type="nvarchar" MaxLength="250" />
     <Property Name="TimeEventCount" Type="nvarchar" MaxLength="250" />
+    <Property Name="ImageEvent" Type="nvarchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="Contact">
     <Key>

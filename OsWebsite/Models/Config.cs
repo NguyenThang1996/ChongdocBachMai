@@ -40,6 +40,7 @@ namespace OsWebsite.Models
         public string GuestEvent { get; set; }
         public string TimeEvent { get; set; }
         public string TimeEventCount { get; set; }
+        public string ImageEvent { get; set; }
     
         public virtual Language Language { get; set; }
     }

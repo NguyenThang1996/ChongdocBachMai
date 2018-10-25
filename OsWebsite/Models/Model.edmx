@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Advertise">
           <Key>
             <PropertyRef Name="Id" />
@@ -84,6 +84,7 @@
           <Property Name="GuestEvent" Type="nvarchar(max)" />
           <Property Name="TimeEvent" Type="nvarchar" MaxLength="250" />
           <Property Name="TimeEventCount" Type="nvarchar" MaxLength="250" />
+          <Property Name="ImageEvent" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -736,8 +737,7 @@
             <End Role="Regional" EntitySet="Regional" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -823,6 +823,7 @@
           <Property Name="TimeEvent" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="TimeEventCount" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Language" Relationship="Self.FK_Config_Language" FromRole="Config" ToRole="Language" />
+          <Property Name="ImageEvent" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -1493,20 +1494,20 @@
             <End Role="ProductImages" EntitySet="ProductImages" />
           </AssociationSet>
           <FunctionImport Name="DacapMenu" ReturnType="Collection(Model.DacapMenu_Result)">
-            <Parameter Name="IDLang" Mode="In" Type="Int32" />
+          <Parameter Name="IDLang" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="DacapProduct" ReturnType="Collection(Model.DacapProduct_Result)">
             <Parameter Name="IDLang" Mode="In" Type="Int32" />
             <Parameter Name="Position" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="News_Get4Cap" ReturnType="Collection(Model.News_Get4Cap_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="News_Others" ReturnType="Collection(Model.News_Others_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Product_Get4Cap" ReturnType="Collection(Model.Product_Get4Cap_Result)">
-            <Parameter Name="Id" Mode="In" Type="Int32" />
+          <Parameter Name="Id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_Visitor_GetByAll" ReturnType="Collection(Model.sp_Visitor_GetByAll_Result)" />
         </EntityContainer>
@@ -1665,6 +1666,7 @@
           <EntitySetMapping Name="Config">
             <EntityTypeMapping TypeName="Model.Config">
               <MappingFragment StoreEntitySet="Config">
+                <ScalarProperty Name="ImageEvent" ColumnName="ImageEvent" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Logo" ColumnName="Logo" />
                 <ScalarProperty Name="PlaceHead" ColumnName="PlaceHead" />

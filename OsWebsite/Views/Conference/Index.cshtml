@@ -160,7 +160,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <img src="~/Icon/Img_kyniem20.png" alt="Kỷ niệm" style="width:100%;" />
+                                        <img src="@ViewBag.ImageEvent" style="width:100%;" />
                                         <div class="title-hoinghi" style="text-transform: uppercase; color:#ff0000; font-weight: bold; font-size: 18px; line-height: 25px;">
                                             @Html.Raw(ViewBag.TitleEvent)
                                         </div>
@@ -300,6 +300,11 @@
 </div>
 
 <script type="text/javascript">
+    function isValidEmailAddress(emailAddress) {
+        var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+        return pattern.test(emailAddress);
+    }
+
     $(".button-dky").click(function () {
         if ($("#Name").val() === "") {
             alert("Bạn vui lòng nhập tên");
@@ -316,6 +321,11 @@
             $("#Email").focus();
             return false;
         }
+        if (!isValidEmailAddress($("#Email").val())) {
+            alert("Bạn vui lòng nhập đúng email");
+            $("#Email").focus();
+            return false;
+        }
         if ($("#Chucvu").val() === "") {
             alert("Bạn vui lòng chọn chức vụ");
             $("#Chucvu").focus();
@@ -325,9 +335,8 @@
             $("#Phone").focus();
             return false;
         }
-
-        var isorder = document.getElementById('Phone').value
-        if (isNaN(isorder)) {
+        var isphone = document.getElementById('Phone').value
+        if (isNaN(isphone)) {
             alert("Bạn vui lòng nhập đúng số điện thoại");
             $("#Phone").focus();
             return false;
